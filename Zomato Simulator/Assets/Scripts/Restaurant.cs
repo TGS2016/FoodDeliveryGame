@@ -11,10 +11,10 @@ public class Restaurant : MonoBehaviour
 
     public int AcceptingCapacity = 5;
 
-    private bool _acceptingOrders;
+    private bool _acceptingOrders = true;
     private GameObject PendingOrdersIcon;
 
-    public static Action<Restaurant> OnOrderRecieved;
+    public static Action<int, int> OnOrderPickedUp;
 
     public bool isInitialized = false;
     private void Awake()
@@ -28,19 +28,33 @@ public class Restaurant : MonoBehaviour
         set { _acceptingOrders = value; }
     }
 
+    private void Start()
+    {
+        UpdateRestaurantStatus();
+    }
+
     private void Update()
+    {
+        // AcceptingOrders = Orders.Count < AcceptingCapacity;
+        //PendingOrdersIcon.SetActive(Orders.Count > 0);
+
+
+    }
+
+
+    public void UpdateRestaurantStatus()
     {
         AcceptingOrders = Orders.Count < AcceptingCapacity;
         PendingOrdersIcon.SetActive(Orders.Count > 0);
     }
-
     //rpc goes here
-    internal void OrderPickedUp(GameObject order)
+    internal void OrderPickedUp(int orderID)
     {
-        int orderID = order.transform.GetSiblingIndex();
         int RestaurantID = CommonReferences.Restaurants.IndexOf(this);
-        CommonReferences.Instance.myPlayer.RPC_Order_PickedUP(orderID,RestaurantID);
+        CommonReferences.Instance.myZomatoApp.RPC_Order_PickedUP(orderID,RestaurantID);
+        CommonReferences.Instance.myInventory.PickUpFood(Orders[orderID]);
         Orders.RemoveAt(orderID);
+        UpdateRestaurantStatus();
     }
 
     internal void RemoveThisFromList(int orderID)
@@ -48,16 +62,21 @@ public class Restaurant : MonoBehaviour
         if(orderID < Orders.Count)
         {
             Orders.RemoveAt(orderID);
+            int RestaurantID = CommonReferences.Restaurants.IndexOf(this);
+            OnOrderPickedUp?.Invoke(orderID, RestaurantID);
+            UpdateRestaurantStatus();
         }
     }
 
-    public void OrderRecieved(int DriverID)
+    internal void AddThisInList(int orderID, OrderDetails orderDetails)
     {
-       
-        /*OnOrderRecieved?.Invoke(this);*/
+        Orders.Add(orderDetails);
+        int RestaurantID = CommonReferences.Restaurants.IndexOf(this);
+        OnOrderPickedUp?.Invoke(orderID, RestaurantID);
+    }
 
-
-
+    public void OrderRecieved(int DriverID)
+    {   
         OrderDetails order =  PhotonNetwork.Instantiate("OrderPrefab", this.transform.position, Quaternion.identity).GetComponent<OrderDetails>();
 
         int localfoodID = UnityEngine.Random.Range(0, FoodServed.Count);

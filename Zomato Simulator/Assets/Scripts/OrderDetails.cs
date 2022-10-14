@@ -14,7 +14,6 @@ public class OrderDetails : MonoBehaviour, IPunObservable
     public float HotPlateTimer;
     public float RatingTimer = 60;
 
-    public bool isPickedUp = false;
     public bool FreeForAll = false;
 
     public Sprite foodPic;
@@ -38,6 +37,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
         this.HotPlateTimer = Vector2.Distance(DeliveryAddress.position, Vector2.zero) * 10;
 
         CommonReferences.Restaurants[RestaurantID].Orders.Add(this);
+        CommonReferences.Restaurants[RestaurantID].UpdateRestaurantStatus();
         isInitialized = true;
     }
 
@@ -53,8 +53,6 @@ public class OrderDetails : MonoBehaviour, IPunObservable
 
             stream.SendNext(HotPlateTimer);
             stream.SendNext(RatingTimer);
-
-            stream.SendNext(isPickedUp);
         }
         else
         {
@@ -69,6 +67,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
                 if (RestaurantID != -1)
                 {
                     CommonReferences.Restaurants[RestaurantID].Orders.Add(this);
+                    CommonReferences.Restaurants[RestaurantID].UpdateRestaurantStatus();
                     this.foodPic = CommonReferences.Instance.foodTypes[FoodPicID];
                 }
                 if (DriverID != -1)

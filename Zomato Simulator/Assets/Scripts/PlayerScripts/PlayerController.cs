@@ -10,15 +10,17 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rb2d;
 
     public float speed;
-    [SerializeField] PhotonView PV;
+    private PhotonView PV;
 
     private void Awake()
     {
         _input = GetComponent<PlayerInput>();
         _rb2d = GetComponent<Rigidbody2D>();
+        PV = GetComponent<PhotonView>();
         if (PV.IsMine)
         {
             CommonReferences.Instance.myPlayer = this;
+            CommonReferences.Instance.myPV = this.PV;
         }
     }
 
@@ -34,20 +36,4 @@ public class PlayerController : MonoBehaviour
     {
         _rb2d.MovePosition(_rb2d.position + _input.GetPlayerMovement() * Time.fixedDeltaTime * speed);
     }
-
-    internal void RPC_Order_PickedUP(int orderID, int RestaurantID)
-    {
-        if (PV.IsMine)
-        {
-            PV.RPC("RPC_OrderPickedUp", RpcTarget.Others, orderID, RestaurantID);
-        }
-    }
-
-    [PunRPC]
-    public void RPC_OrderPickedUp(int orderID, int RestaurantID)
-    {
-        CommonReferences.Restaurants[RestaurantID].RemoveThisFromList(orderID);
-    }
-
-
 }

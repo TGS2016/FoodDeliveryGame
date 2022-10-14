@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Photon.Pun;
 using Random = UnityEngine.Random;
 
 public class CommonReferences : MonoBehaviour
@@ -13,7 +14,11 @@ public class CommonReferences : MonoBehaviour
     public static List<Restaurant> Restaurants = new List<Restaurant>();
 
     public List<Sprite> foodTypes = new List<Sprite>();
+
+    public PhotonView myPV;
     public PlayerController myPlayer;
+    public PlayerZomatoApp myZomatoApp;
+    public Inventory myInventory;
 
     private void Awake()
     {

@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 1413392045183824487}
   - component: {fileID: 1217151120837499023}
   - component: {fileID: -7249627930467151215}
+  - component: {fileID: -310660945045766924}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -183,7 +184,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  PV: {fileID: 6825885953041686892}
 --- !u!114 &6825885953041686892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,3 +254,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: facd6c0ad92057c45987bffc8a28ae6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-310660945045766924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2920100840446361831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14130f73ea63cc14c85ef508286a296b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxFoodCapacity: 3
+  myPickedUpFood: []
