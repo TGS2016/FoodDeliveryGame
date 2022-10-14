@@ -2,24 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using Photon.Pun;
 
-[CustomEditor(typeof(OrderDispatcher))]
-    public class InspectorHelper : Editor
+[CustomEditor(typeof(PlayerZomatoApp))]
+public class InspectorHelper : Editor
+{
+    public override void OnInspectorGUI()
     {
-        public override void OnInspectorGUI()
+        
+        DrawDefaultInspector();
+        PlayerZomatoApp Player = (PlayerZomatoApp)target;
+
+        if (GUILayout.Button("Dispatch Order"))
         {
-            DrawDefaultInspector();
-        OrderDispatcher _OrderDispatcher = (OrderDispatcher)target;
-
-            if (GUILayout.Button("Dispatch Order"))
-            {
-                _OrderDispatcher.DispatchOrder(0);
-            }
-
-           
-
+            Player.GetAnOrder();
         }
     }
+}
 
 [CustomEditor(typeof(Restaurant))]
 public class RestaurantHelper : Editor

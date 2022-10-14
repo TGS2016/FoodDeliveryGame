@@ -24,8 +24,6 @@ public class OrderList : MonoBehaviour
             button.onClick.AddListener(() =>
             {
                 RS.OrderPickedUp(button.gameObject);
-
-                //rpc here
                 DestroyImmediate(button.gameObject);
                 if(transform.GetChild(0).childCount == 0 )
                 {

@@ -1,25 +1,89 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 
-public class OrderDetails : MonoBehaviour
+public class OrderDetails : MonoBehaviour, IPunObservable
 {
-    public int DriverID;
+    public int DriverID = -1;
+    public int FoodPicID = -1;
+    public int HomeID = -1;
+    public int RestaurantID = -1;
+
     public float HotPlateTimer;
-    public float RatingTimer;
+    public float RatingTimer = 60;
+
+    public bool isPickedUp = false;
     public bool FreeForAll = false;
 
     public Sprite foodPic;
     public Sprite Client;
-    public GameObject DeliveryAddress;
+    public Transform DeliveryAddress;
 
-    /*public OrderDetails(int DriverID, GameObject DeliveryAddress , Sprite foodPic )
+    public bool isInitialized = false;
+
+    public void InitializeOrder(int DriverID, int foodPicIndex, int RestaurantID)
     {
         this.DriverID = DriverID;
-        this.DeliveryAddress = DeliveryAddress;
-        this.foodPic = foodPic;
+        this.FoodPicID = foodPicIndex;
+        this.RestaurantID = RestaurantID;
 
-        HotPlateTimer = Vector2.Distance(DeliveryAddress.transform.position, Vector2.zero) * 10;
-    }*/
+        this.HomeID = Random.Range(0, CommonReferences.Houses.Count);
+
+
+        this.DeliveryAddress = CommonReferences.Houses[HomeID];
+        this.foodPic = CommonReferences.Instance.foodTypes[foodPicIndex];
+
+        this.HotPlateTimer = Vector2.Distance(DeliveryAddress.position, Vector2.zero) * 10;
+
+        CommonReferences.Restaurants[RestaurantID].Orders.Add(this);
+        isInitialized = true;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+
+        if (stream.IsWriting)
+        {
+            stream.SendNext(DriverID);
+            stream.SendNext(FoodPicID);
+            stream.SendNext(HomeID);
+            stream.SendNext(RestaurantID);
+
+            stream.SendNext(HotPlateTimer);
+            stream.SendNext(RatingTimer);
+
+            stream.SendNext(isPickedUp);
+        }
+        else
+        {
+            if (!isInitialized)
+            {
+                DriverID = (int)stream.ReceiveNext();
+                FoodPicID = (int)stream.ReceiveNext();
+                HomeID = (int)stream.ReceiveNext();
+                RestaurantID = (int)stream.ReceiveNext();
+                HotPlateTimer = (float)stream.ReceiveNext();
+                RatingTimer = (float)stream.ReceiveNext();
+                if (RestaurantID != -1)
+                {
+                    CommonReferences.Restaurants[RestaurantID].Orders.Add(this);
+                    this.foodPic = CommonReferences.Instance.foodTypes[FoodPicID];
+                }
+                if (DriverID != -1)
+                {
+                    isInitialized = true;
+                }
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (HotPlateTimer > 0)
+        {
+            HotPlateTimer -= Time.deltaTime;
+        }
+    }
 }
