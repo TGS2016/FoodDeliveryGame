@@ -22,6 +22,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
     public Transform DeliveryAddress;
 
     public bool isInitialized = false;
+    private bool FoodHasBeenAdded= false;
 
     public void InitializeOrder(int DriverID, int foodPicIndex, int RestaurantID)
     {
@@ -43,7 +44,6 @@ public class OrderDetails : MonoBehaviour, IPunObservable
         isInitialized = true;
     }
 
-    private bool FoodHasBeenAdded= false;
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
 

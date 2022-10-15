@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,18 +23,14 @@ public class MPNetworkPlayerSpawner : MonoBehaviourPunCallbacks
         //NetworkManager.insta.SendUserRole(PhotonNetwork.LocalPlayer.UserId);
     }
 
-    public override void OnJoinedRoom()
-    {
-        base.OnJoinedRoom();
-    }
-
-
     public override void OnLeftRoom()
     {
+        Debug.Log("I LEFT");
+        if (spawnedPlayerPrefab) PhotonNetwork.Destroy(spawnedPlayerPrefab);
         base.OnLeftRoom();
         Debug.Log("OnLeftRoom");
-        if(spawnedPlayerPrefab) PhotonNetwork.Destroy(spawnedPlayerPrefab);
+
     }
 
-   
+
 }
