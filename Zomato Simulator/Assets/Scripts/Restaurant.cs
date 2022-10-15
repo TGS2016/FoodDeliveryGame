@@ -55,6 +55,7 @@ public class Restaurant : MonoBehaviour
         CommonReferences.Instance.myZomatoApp.RPC_Order_PickedUP(orderID,RestaurantID);
         CommonReferences.Instance.myInventory.PickUpFood(Orders[orderID]);
         Orders.RemoveAt(orderID);
+        OnOrderPickedUp?.Invoke(orderID, RestaurantID);
         UpdateRestaurantStatus();
     }
 

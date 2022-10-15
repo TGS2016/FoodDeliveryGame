@@ -70,7 +70,7 @@ public class OrderList : MonoBehaviour
                 Transform food = Instantiate(FoodIconPrefab).transform;
                 Button button = food.GetComponent<Button>();
                 
-                food.parent = MenuCard;
+                food.SetParent(MenuCard);
                 food.GetComponent<Image>().sprite = RS.Orders[OrderID].foodPic;
                 Debug.Log("sprite should be assigned here : " + RS.Orders[OrderID].foodPic.name);
                 Debug.Log("food should be assigned here : " + food.name);
@@ -109,11 +109,11 @@ public class OrderList : MonoBehaviour
         if (CommonReferences.Instance.myInventory.myPickedUpFood.Count < CommonReferences.Instance.myInventory.MaxFoodCapacity)
         {
             RS.OrderPickedUp(orderID);
-            DestroyImmediate(button);
+            /*DestroyImmediate(button);
             if (MenuCard.childCount == 0)
             {
                 Debug.Log("nothing to show here");
-            }
+            }*/
         }
     }
 

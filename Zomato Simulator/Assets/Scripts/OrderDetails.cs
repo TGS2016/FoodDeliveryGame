@@ -43,23 +43,21 @@ public class OrderDetails : MonoBehaviour, IPunObservable
         isInitialized = true;
     }
 
-    bool foodhasbeenadded = false;
+    private bool FoodHasBeenAdded= false;
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
 
         if (stream.IsWriting)
         {
             stream.SendNext(isPickedUp);
-            if (!isPickedUp)
-            {
-                stream.SendNext(DriverID);
-                stream.SendNext(FoodPicID);
-                stream.SendNext(HomeID);
-                stream.SendNext(RestaurantID);
+            stream.SendNext(DriverID);
+            stream.SendNext(FoodPicID);
+            stream.SendNext(HomeID);
+            stream.SendNext(RestaurantID);
 
-                stream.SendNext(HotPlateTimer);
-                stream.SendNext(RatingTimer);
-            }
+            stream.SendNext(HotPlateTimer);
+            stream.SendNext(RatingTimer);
+
         }
         else
         {
@@ -72,21 +70,21 @@ public class OrderDetails : MonoBehaviour, IPunObservable
                 RestaurantID = (int)stream.ReceiveNext();
                 HotPlateTimer = (float)stream.ReceiveNext();
                 RatingTimer = (float)stream.ReceiveNext();
-               
+
                 if (DriverID != -1)
                 {
                     isInitialized = true;
                 }
             }
-            //if (!isPickedUp && !foodhasbeenadded)
+            if (!isPickedUp && !FoodHasBeenAdded)
             {
                 //CommonReferences.Restaurants[RestaurantID].Orders.Add(this);
-                if (FoodPicID != -1)
+                if(FoodPicID != -1)
                 {
+                    FoodHasBeenAdded = true;
                     this.foodPic = CommonReferences.Instance.foodTypes[FoodPicID];
                     CommonReferences.Restaurants[RestaurantID].AddThisInList(this);
                     CommonReferences.Restaurants[RestaurantID].UpdateRestaurantStatus();
-                    foodhasbeenadded = true;
                 }
             }
         }
