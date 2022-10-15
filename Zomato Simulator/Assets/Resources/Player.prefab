@@ -266,5 +266,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14130f73ea63cc14c85ef508286a296b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxFoodCapacity: 3
+  MaxFoodCapacity: 20
   myPickedUpFood: []

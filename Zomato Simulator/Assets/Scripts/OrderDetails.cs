@@ -15,6 +15,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
     public float RatingTimer = 60;
 
     public bool FreeForAll = false;
+    public bool isPickedUp = false;
 
     public Sprite foodPic;
     public Sprite Client;
@@ -36,26 +37,33 @@ public class OrderDetails : MonoBehaviour, IPunObservable
 
         this.HotPlateTimer = Vector2.Distance(DeliveryAddress.position, Vector2.zero) * 10;
 
-        CommonReferences.Restaurants[RestaurantID].Orders.Add(this);
+        //CommonReferences.Restaurants[RestaurantID].Orders.Add(this);
+        CommonReferences.Restaurants[RestaurantID].AddThisInList(this);
         CommonReferences.Restaurants[RestaurantID].UpdateRestaurantStatus();
         isInitialized = true;
     }
 
+    bool foodhasbeenadded = false;
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
 
         if (stream.IsWriting)
         {
-            stream.SendNext(DriverID);
-            stream.SendNext(FoodPicID);
-            stream.SendNext(HomeID);
-            stream.SendNext(RestaurantID);
+            stream.SendNext(isPickedUp);
+            if (!isPickedUp)
+            {
+                stream.SendNext(DriverID);
+                stream.SendNext(FoodPicID);
+                stream.SendNext(HomeID);
+                stream.SendNext(RestaurantID);
 
-            stream.SendNext(HotPlateTimer);
-            stream.SendNext(RatingTimer);
+                stream.SendNext(HotPlateTimer);
+                stream.SendNext(RatingTimer);
+            }
         }
         else
         {
+            isPickedUp = (bool)stream.ReceiveNext();
             if (!isInitialized)
             {
                 DriverID = (int)stream.ReceiveNext();
@@ -64,15 +72,21 @@ public class OrderDetails : MonoBehaviour, IPunObservable
                 RestaurantID = (int)stream.ReceiveNext();
                 HotPlateTimer = (float)stream.ReceiveNext();
                 RatingTimer = (float)stream.ReceiveNext();
-                if (RestaurantID != -1)
-                {
-                    CommonReferences.Restaurants[RestaurantID].Orders.Add(this);
-                    CommonReferences.Restaurants[RestaurantID].UpdateRestaurantStatus();
-                    this.foodPic = CommonReferences.Instance.foodTypes[FoodPicID];
-                }
+               
                 if (DriverID != -1)
                 {
                     isInitialized = true;
+                }
+            }
+            //if (!isPickedUp && !foodhasbeenadded)
+            {
+                //CommonReferences.Restaurants[RestaurantID].Orders.Add(this);
+                if (FoodPicID != -1)
+                {
+                    this.foodPic = CommonReferences.Instance.foodTypes[FoodPicID];
+                    CommonReferences.Restaurants[RestaurantID].AddThisInList(this);
+                    CommonReferences.Restaurants[RestaurantID].UpdateRestaurantStatus();
+                    foodhasbeenadded = true;
                 }
             }
         }

@@ -15,6 +15,7 @@ public class Restaurant : MonoBehaviour
     private GameObject PendingOrdersIcon;
 
     public static Action<int, int> OnOrderPickedUp;
+    public static Action<int, int> OnOrderReceived;
 
     public bool isInitialized = false;
     private void Awake()
@@ -68,11 +69,12 @@ public class Restaurant : MonoBehaviour
         }
     }
 
-    internal void AddThisInList(int orderID, OrderDetails orderDetails)
+    internal void AddThisInList(OrderDetails orderDetails)
     {
         Orders.Add(orderDetails);
+        int orderID = Orders.IndexOf(orderDetails);
         int RestaurantID = CommonReferences.Restaurants.IndexOf(this);
-        OnOrderPickedUp?.Invoke(orderID, RestaurantID);
+        OnOrderReceived?.Invoke(orderID, RestaurantID);
     }
 
     public void OrderRecieved(int DriverID)

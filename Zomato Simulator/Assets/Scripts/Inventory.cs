@@ -19,13 +19,15 @@ public class Inventory : MonoBehaviourPunCallbacks
     public void PickUpFood(OrderDetails pickedUpFood)
     {
         myPickedUpFood.Add(pickedUpFood);
+        pickedUpFood.isPickedUp = true;
         pickedUpFood.GetComponent<PhotonView>().RequestOwnership();
+        pickedUpFood.transform.parent = this.transform;
     }
 
     public override void OnLeftRoom()
     {
         base.OnLeftRoom();
-        for (int i = 0; i < myPickedUpFood.Count; i++)
+       /* for (int i = 0; i < myPickedUpFood.Count; i++)
         {
             int temp = i;
             if (myPickedUpFood[temp].gameObject != null && myPickedUpFood[temp].gameObject.GetComponent<PhotonView>().IsMine)
@@ -33,7 +35,7 @@ public class Inventory : MonoBehaviourPunCallbacks
                 PhotonNetwork.Destroy(myPickedUpFood[temp].gameObject);
                 Debug.Log(myPickedUpFood[temp].gameObject);
             }
-        }
+        }*/
     }
 
 
