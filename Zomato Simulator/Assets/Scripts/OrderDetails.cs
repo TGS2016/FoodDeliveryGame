@@ -39,6 +39,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
         this.HotPlateTimer = Vector2.Distance(DeliveryAddress.position, Vector2.zero) * 10;
 
         //CommonReferences.Restaurants[RestaurantID].Orders.Add(this);
+        CommonReferences.HouseNumOfOrders[HomeID]++;
         CommonReferences.Restaurants[RestaurantID].AddThisInList(this);
         CommonReferences.Restaurants[RestaurantID].UpdateRestaurantStatus();
         isInitialized = true;
@@ -78,11 +79,11 @@ public class OrderDetails : MonoBehaviour, IPunObservable
             }
             if (!isPickedUp && !FoodHasBeenAdded)
             {
-                //CommonReferences.Restaurants[RestaurantID].Orders.Add(this);
                 if(FoodPicID != -1)
                 {
                     FoodHasBeenAdded = true;
                     this.foodPic = CommonReferences.Instance.foodTypes[FoodPicID];
+                    CommonReferences.HouseNumOfOrders[HomeID]++;
                     CommonReferences.Restaurants[RestaurantID].AddThisInList(this);
                     CommonReferences.Restaurants[RestaurantID].UpdateRestaurantStatus();
                 }

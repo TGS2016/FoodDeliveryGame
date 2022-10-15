@@ -137,10 +137,11 @@ public class MPNetworkManager : MonoBehaviourPunCallbacks
         myRoom.IsVisible = true;
         myRoom.IsOpen = true;
         myRoom.PublishUserId = true;
-        //myRoom.CleanupCacheOnLeave = true;
-        myRoom.CleanupCacheOnLeave = false;
+        myRoom.CleanupCacheOnLeave = true;
+        //myRoom.CleanupCacheOnLeave = false;
         myRoom.CustomRoomProperties = expectedCustomRoomProperties;
         myRoom.CustomRoomPropertiesForLobby = CreateRoomPropertiesForLobby();
+        
         
         PhotonNetwork.CreateRoom(null, myRoom, null);
     }
@@ -198,8 +199,6 @@ public class MPNetworkManager : MonoBehaviourPunCallbacks
         base.OnPlayerLeftRoom(otherPlayer);
         UIManager.Instance.UpdateStatus(otherPlayer.NickName + " Left");
     }
-
-
     #endregion
 
 

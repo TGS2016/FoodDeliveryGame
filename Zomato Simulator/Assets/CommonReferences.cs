@@ -11,6 +11,7 @@ public class CommonReferences : MonoBehaviour
     public Transform HouseParent;
     public Transform RestaurantParent;
     public static List<Transform> Houses = new List<Transform>();
+    public static List<int> HouseNumOfOrders = new List<int>();
     public static List<Restaurant> Restaurants = new List<Restaurant>();
 
     public List<Sprite> foodTypes = new List<Sprite>();
@@ -20,6 +21,8 @@ public class CommonReferences : MonoBehaviour
     public PlayerZomatoApp myZomatoApp;
     public Inventory myInventory;
 
+    public static Action OnOrderDispatched;
+    public static Action<int> OnDisplayHouse;
     private void Awake()
     {
         if (Instance == null)
@@ -34,6 +37,7 @@ public class CommonReferences : MonoBehaviour
             int temp = i;
             var h = HouseParent.GetChild(temp);
             Houses.Add(h);
+            HouseNumOfOrders.Add(0);
         }
         #endregion
         #region populate Restaurants
@@ -50,10 +54,14 @@ public class CommonReferences : MonoBehaviour
         #endregion
     }
 
-
-
-
-    public static Action OnOrderDispatched;
+    private void OnEnable()
+    {
+        OnDisplayHouse += DisplayHouse;
+    }
+    private void OnDisable()
+    {
+        OnDisplayHouse -= DisplayHouse;
+    }
     public void DispatchOrder(int DriverID)
     {
         List<Restaurant> AcceptingRestaurants = new List<Restaurant>();
@@ -74,5 +82,26 @@ public class CommonReferences : MonoBehaviour
         {
             Debug.Log("All Restaurants are full");
         }
+    }
+
+    public void DisplayHouse(int HouseID)
+    {
+        if (HouseID != -1)
+        {
+            Houses[HouseID].GetChild(0).gameObject.SetActive(true);
+            Houses[HouseID].gameObject.AddComponent<EnableIcon>();
+        }
+    }
+
+    public void HouseDelivered(int HouseID)
+    {
+        HouseNumOfOrders[HouseID]--;
+        if (HouseNumOfOrders[HouseID] == 0)
+        {
+            Houses[HouseID].GetChild(0).gameObject.SetActive(false);
+            Destroy(Houses[HouseID].gameObject.GetComponent<EnableIcon>());
+            return;
+        }
+        Debug.Log(HouseNumOfOrders[HouseID] + "orders left");
     }
 }

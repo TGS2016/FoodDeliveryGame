@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class OrderList : MonoBehaviour
 {
     public GameObject FoodIconPrefab;
+    public GameObject EmptyPanel;
     private Transform MenuCard;
     private int RestaurantID;
 
@@ -18,12 +19,14 @@ public class OrderList : MonoBehaviour
 
     private void OnEnable()
     {
+        CommonReferences.Instance.myPlayer.canMove = false;
         Restaurant.OnOrderPickedUp += OnRemoveItem;
         Restaurant.OnOrderReceived += OnAddItem;
     }
     private void OnDisable()
     {
         DestroyOrderList();
+        CommonReferences.Instance.myPlayer.canMove = true;
         Restaurant.OnOrderPickedUp -= OnRemoveItem;
         Restaurant.OnOrderReceived -= OnAddItem;
     }
@@ -44,8 +47,6 @@ public class OrderList : MonoBehaviour
         }
         #endregion
     }
-
-
     private void OnClickMethod(Button button, Restaurant RS)
     {
         int orderID = button.transform.GetSiblingIndex();
@@ -58,7 +59,6 @@ public class OrderList : MonoBehaviour
             OnTryPickOrder(RS, button.gameObject);
         }
     }
-
     private void OnAddItem(int OrderID, int RestaurantID)
     {
         
@@ -80,6 +80,7 @@ public class OrderList : MonoBehaviour
                 {
                     OnClickMethod(button, RS);
                 });
+                CheckAndOpenEmptyPanel();
             }
         }
     }
@@ -90,6 +91,7 @@ public class OrderList : MonoBehaviour
             if (MenuCard.childCount >= OrderID && MenuCard.gameObject.activeSelf)
             {
                 DestroyImmediate(MenuCard.GetChild(OrderID).gameObject);
+                CheckAndOpenEmptyPanel();
             }
         }
     }
@@ -101,7 +103,6 @@ public class OrderList : MonoBehaviour
             DestroyImmediate(MenuCard.GetChild(0).gameObject);
         }
     }
-
     private void OnTryPickOrder(Restaurant RS, GameObject button)
     {
         int orderID = button.transform.GetSiblingIndex();
@@ -109,17 +110,15 @@ public class OrderList : MonoBehaviour
         if (CommonReferences.Instance.myInventory.myPickedUpFood.Count < CommonReferences.Instance.myInventory.MaxFoodCapacity)
         {
             RS.OrderPickedUp(orderID);
-            /*DestroyImmediate(button);
-            if (MenuCard.childCount == 0)
-            {
-                Debug.Log("nothing to show here");
-            }*/
         }
     }
-
     public void OnOthersOrderClicked(Restaurant RS, GameObject button)
     {
         Debug.Log("Not My order");
         OnTryPickOrder(RS, button.gameObject);
+    }
+    public void CheckAndOpenEmptyPanel()
+    {
+        EmptyPanel.SetActive(MenuCard.childCount == 0);
     }
 }

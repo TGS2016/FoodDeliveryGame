@@ -25,12 +25,13 @@ public class MPNetworkPlayerSpawner : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom()
     {
-        Debug.Log("I LEFT");
-        if (spawnedPlayerPrefab) PhotonNetwork.Destroy(spawnedPlayerPrefab);
         base.OnLeftRoom();
-        Debug.Log("OnLeftRoom");
-
+        Debug.Log("I LEFT");
+        if (spawnedPlayerPrefab)
+        {
+            PhotonNetwork.Destroy(spawnedPlayerPrefab);
+            Debug.Log("Destroyed Prefab");
+        }
     }
-
 
 }

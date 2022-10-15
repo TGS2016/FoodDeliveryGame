@@ -1283,7 +1283,7 @@ namespace Photon.Realtime
                 this.DebugReturn(DebugLevel.INFO, "Disconnect() call gets skipped due to State " + this.State + ". DisconnectedCause: " + this.DisconnectedCause + " Parameter cause: " + cause);
                 return;
             }
-
+           
             if (this.State != ClientState.Disconnected)
             {
                 this.State = ClientState.Disconnecting;

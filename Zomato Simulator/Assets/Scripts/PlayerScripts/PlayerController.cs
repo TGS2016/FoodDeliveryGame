@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
     private PhotonView PV;
+    public bool canMove { get; set; }
 
     private void Awake()
     {
@@ -22,11 +23,12 @@ public class PlayerController : MonoBehaviour
             CommonReferences.Instance.myPlayer = this;
             CommonReferences.Instance.myPV = this.PV;
         }
+        canMove = true;
     }
 
     private void FixedUpdate()
     {
-        if (PV.IsMine)
+        if (PV.IsMine && canMove)
         {
             Move();
         }
