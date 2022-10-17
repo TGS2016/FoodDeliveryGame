@@ -22,7 +22,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
     public Transform DeliveryAddress;
 
     public bool isInitialized = false;
-    private bool FoodHasBeenAdded= false;
+    private bool FoodHasBeenAdded= true;
 
     public void InitializeOrder(int DriverID, int foodPicIndex, int RestaurantID)
     {
@@ -72,6 +72,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
                 HotPlateTimer = (float)stream.ReceiveNext();
                 RatingTimer = (float)stream.ReceiveNext();
 
+                FoodHasBeenAdded = false;
                 if (DriverID != -1)
                 {
                     isInitialized = true;
@@ -81,6 +82,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
             {
                 if(FoodPicID != -1)
                 {
+                    Debug.Log("why are you being called twice");
                     FoodHasBeenAdded = true;
                     this.foodPic = CommonReferences.Instance.foodTypes[FoodPicID];
                     CommonReferences.HouseNumOfOrders[HomeID]++;

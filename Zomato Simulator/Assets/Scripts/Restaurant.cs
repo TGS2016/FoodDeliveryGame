@@ -16,6 +16,11 @@ public class Restaurant : MonoBehaviour
 
     public static Action<int, int> OnOrderPickedUp;
     public static Action<int, int> OnOrderReceived;
+    public bool AcceptingOrders
+    {
+        get { return _acceptingOrders; }
+        set { _acceptingOrders = value; }
+    }
 
     public bool isInitialized = false;
     private void Awake()
@@ -23,16 +28,11 @@ public class Restaurant : MonoBehaviour
         PendingOrdersIcon = transform.GetChild(0).gameObject;
         
     }
-    public bool AcceptingOrders
-    {
-        get { return _acceptingOrders; }
-        set { _acceptingOrders = value; }
-    }
-
     private void Start()
     {
         UpdateRestaurantStatus();
     }
+
 
     private void Update()
     {
@@ -42,42 +42,7 @@ public class Restaurant : MonoBehaviour
 
     }
 
-
-    public void UpdateRestaurantStatus()
-    {
-        AcceptingOrders = Orders.Count < AcceptingCapacity;
-        PendingOrdersIcon.SetActive(Orders.Count > 0);
-    }
-    //rpc goes here
-    internal void OrderPickedUp(int orderID)
-    {
-        int RestaurantID = CommonReferences.Restaurants.IndexOf(this);
-        CommonReferences.Instance.myZomatoApp.RPC_Order_PickedUP(orderID,RestaurantID);
-        CommonReferences.Instance.myInventory.PickUpFood(Orders[orderID]);
-        Orders.RemoveAt(orderID);
-        OnOrderPickedUp?.Invoke(orderID, RestaurantID);
-        UpdateRestaurantStatus();
-    }
-
-    internal void RemoveThisFromList(int orderID)
-    {
-        if(orderID < Orders.Count)
-        {
-            Orders.RemoveAt(orderID);
-            int RestaurantID = CommonReferences.Restaurants.IndexOf(this);
-            OnOrderPickedUp?.Invoke(orderID, RestaurantID);
-            UpdateRestaurantStatus();
-        }
-    }
-
-    internal void AddThisInList(OrderDetails orderDetails)
-    {
-        Orders.Add(orderDetails);
-        int orderID = Orders.IndexOf(orderDetails);
-        int RestaurantID = CommonReferences.Restaurants.IndexOf(this);
-        OnOrderReceived?.Invoke(orderID, RestaurantID);
-    }
-
+    #region Order Recieved
     public void OrderRecieved(int DriverID)
     {   
         OrderDetails order =  PhotonNetwork.Instantiate("OrderPrefab", this.transform.position, Quaternion.identity).GetComponent<OrderDetails>();
@@ -90,7 +55,45 @@ public class Restaurant : MonoBehaviour
         order.InitializeOrder(DriverID, foodID, RestaurantID);
         
     }
+    internal void AddThisInList(OrderDetails orderDetails)
+    {
+        Orders.Add(orderDetails);
+        int orderID = Orders.IndexOf(orderDetails);
+        int RestaurantID = CommonReferences.Restaurants.IndexOf(this);
+        OnOrderReceived?.Invoke(orderID, RestaurantID);
+    }
 
+    #endregion
+
+    #region Order Picked Up
+    internal void OrderPickedUp(int orderID)
+    {
+        int RestaurantID = CommonReferences.Restaurants.IndexOf(this);
+        CommonReferences.Instance.myZomatoApp.RPC_Order_PickedUP(orderID,RestaurantID);
+        CommonReferences.Instance.myInventory.PickUpFood(Orders[orderID]);
+        Orders.RemoveAt(orderID);
+        OnOrderPickedUp?.Invoke(orderID, RestaurantID);
+        UpdateRestaurantStatus();
+    }
+    internal void RemoveThisFromList(int orderID)
+    {
+        if(orderID < Orders.Count)
+        {
+            Orders.RemoveAt(orderID);
+            int RestaurantID = CommonReferences.Restaurants.IndexOf(this);
+            OnOrderPickedUp?.Invoke(orderID, RestaurantID);
+            UpdateRestaurantStatus();
+        }
+    }
+
+    #endregion
+
+    #region Misc
+    public void UpdateRestaurantStatus()
+    {
+        AcceptingOrders = Orders.Count < AcceptingCapacity;
+        PendingOrdersIcon.SetActive(Orders.Count > 0);
+    }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
 
@@ -119,4 +122,7 @@ public class Restaurant : MonoBehaviour
             }
         }
     }
+
+    #endregion
+    //rpc goes here
 }

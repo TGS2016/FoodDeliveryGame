@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Photon.Realtime;
 using System.Collections.Generic;
 using UnityEngine;
 [DefaultExecutionOrder(1)]
@@ -15,11 +16,12 @@ public class Inventory : MonoBehaviour
             CommonReferences.Instance.myInventory = this;
         }
     }
+
     public void PickUpFood(OrderDetails pickedUpFood)
     {
+        pickedUpFood.GetComponent<PhotonView>().RequestOwnership();
         myPickedUpFood.Add(pickedUpFood);
         pickedUpFood.isPickedUp = true;
-        pickedUpFood.GetComponent<PhotonView>().RequestOwnership();
         pickedUpFood.transform.parent = this.transform;
 
         CommonReferences.OnDisplayHouse?.Invoke(pickedUpFood.HomeID);
@@ -30,8 +32,8 @@ public class Inventory : MonoBehaviour
         BagGameObject.SetActive(true);
     }
 
-   
 
+    #region misc not implemented
     /*public override void OnLeftRoom()
     {
         base.OnLeftRoom();
@@ -45,6 +47,7 @@ public class Inventory : MonoBehaviour
             }
         }*//*
     }*/
+    #endregion
 
 
 }

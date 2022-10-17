@@ -31,8 +31,7 @@ public class OrderList : MonoBehaviour
         Restaurant.OnOrderReceived -= OnAddItem;
     }
 
-
-
+    #region open Menu
     public void ShowOrders(Restaurant RS)
     {
         this.gameObject.SetActive(true);
@@ -47,21 +46,9 @@ public class OrderList : MonoBehaviour
         }
         #endregion
     }
-    private void OnClickMethod(Button button, Restaurant RS)
-    {
-        int orderID = button.transform.GetSiblingIndex();
-        if (RS.Orders[orderID].DriverID != CommonReferences.Instance.myPV.ViewID && !RS.Orders[orderID].FreeForAll)
-        {
-            OnOthersOrderClicked(RS, button.gameObject);
-        }
-        else
-        {
-            OnTryPickOrder(RS, button.gameObject);
-        }
-    }
     private void OnAddItem(int OrderID, int RestaurantID)
     {
-        
+
         if (this.RestaurantID == RestaurantID)
         {
             if (MenuCard.gameObject.activeSelf)
@@ -69,7 +56,7 @@ public class OrderList : MonoBehaviour
                 Restaurant RS = CommonReferences.Restaurants[RestaurantID];
                 Transform food = Instantiate(FoodIconPrefab).transform;
                 Button button = food.GetComponent<Button>();
-                
+
                 food.SetParent(MenuCard);
                 food.GetComponent<Image>().sprite = RS.Orders[OrderID].foodPic;
                 Debug.Log("sprite should be assigned here : " + RS.Orders[OrderID].foodPic.name);
@@ -84,6 +71,38 @@ public class OrderList : MonoBehaviour
             }
         }
     }
+    #endregion
+
+    #region order Select
+    private void OnClickMethod(Button button, Restaurant RS)
+    {
+        int orderID = button.transform.GetSiblingIndex();
+        if (RS.Orders[orderID].DriverID != CommonReferences.Instance.myPV.ViewID && !RS.Orders[orderID].FreeForAll)
+        {
+            OnOthersOrderClicked(RS, button.gameObject);
+        }
+        else
+        {
+            OnTryPickOrder(RS, button.gameObject);
+        }
+    }
+    private void OnTryPickOrder(Restaurant RS, GameObject button)
+    {
+        int orderID = button.transform.GetSiblingIndex();
+        Debug.Log("Trying to Pick up order num : " + orderID);
+        if (CommonReferences.Instance.myInventory.myPickedUpFood.Count < CommonReferences.Instance.myInventory.MaxFoodCapacity)
+        {
+            RS.OrderPickedUp(orderID);
+        }
+    }
+    public void OnOthersOrderClicked(Restaurant RS, GameObject button)
+    {
+        Debug.Log("Not My order");
+        OnTryPickOrder(RS, button.gameObject);
+    }
+    #endregion
+
+    #region Order Remove
     private void OnRemoveItem(int OrderID, int RestaurantID)
     {
         if (this.RestaurantID == RestaurantID)
@@ -103,22 +122,14 @@ public class OrderList : MonoBehaviour
             DestroyImmediate(MenuCard.GetChild(0).gameObject);
         }
     }
-    private void OnTryPickOrder(Restaurant RS, GameObject button)
-    {
-        int orderID = button.transform.GetSiblingIndex();
-        Debug.Log("Trying to Pick up order num : " + orderID);
-        if (CommonReferences.Instance.myInventory.myPickedUpFood.Count < CommonReferences.Instance.myInventory.MaxFoodCapacity)
-        {
-            RS.OrderPickedUp(orderID);
-        }
-    }
-    public void OnOthersOrderClicked(Restaurant RS, GameObject button)
-    {
-        Debug.Log("Not My order");
-        OnTryPickOrder(RS, button.gameObject);
-    }
+    #endregion
+
+    #region Misc
     public void CheckAndOpenEmptyPanel()
     {
         EmptyPanel.SetActive(MenuCard.childCount == 0);
     }
+    #endregion
+
+
 }
