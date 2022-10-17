@@ -39,7 +39,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
         this.HotPlateTimer = Vector2.Distance(DeliveryAddress.position, Vector2.zero) * 10;
 
         //CommonReferences.Restaurants[RestaurantID].Orders.Add(this);
-        CommonReferences.HouseNumOfOrders[HomeID]++;
+        //CommonReferences.PendingOrdersForHouse[HomeID]++;
         CommonReferences.Restaurants[RestaurantID].AddThisInList(this);
         CommonReferences.Restaurants[RestaurantID].UpdateRestaurantStatus();
         isInitialized = true;
@@ -85,7 +85,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
                     Debug.Log("why are you being called twice");
                     FoodHasBeenAdded = true;
                     this.foodPic = CommonReferences.Instance.foodTypes[FoodPicID];
-                    CommonReferences.HouseNumOfOrders[HomeID]++;
+                    //CommonReferences.PendingOrdersForHouse[HomeID]++;
                     CommonReferences.Restaurants[RestaurantID].AddThisInList(this);
                     CommonReferences.Restaurants[RestaurantID].UpdateRestaurantStatus();
                 }

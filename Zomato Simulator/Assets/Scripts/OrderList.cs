@@ -130,6 +130,4 @@ public class OrderList : MonoBehaviour
         EmptyPanel.SetActive(MenuCard.childCount == 0);
     }
     #endregion
-
-
 }

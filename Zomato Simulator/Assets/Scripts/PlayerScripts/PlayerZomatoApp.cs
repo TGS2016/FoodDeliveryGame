@@ -16,10 +16,6 @@ public class PlayerZomatoApp : MonoBehaviour
             myID = PV.ViewID;
         }
     }
-    private void Start()
-    {
-       
-    }
 
     public void GetAnOrder()
     {

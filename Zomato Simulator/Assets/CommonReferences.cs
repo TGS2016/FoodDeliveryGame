@@ -11,7 +11,7 @@ public class CommonReferences : MonoBehaviour
     public Transform HouseParent;
     public Transform RestaurantParent;
     public static List<Transform> Houses = new List<Transform>();
-    public static List<int> HouseNumOfOrders = new List<int>();
+    public static List<int> PendingOrdersForHouse = new List<int>();
     public static List<Restaurant> Restaurants = new List<Restaurant>();
 
     public List<Sprite> foodTypes = new List<Sprite>();
@@ -37,7 +37,7 @@ public class CommonReferences : MonoBehaviour
             int temp = i;
             var h = HouseParent.GetChild(temp);
             Houses.Add(h);
-            HouseNumOfOrders.Add(0);
+            PendingOrdersForHouse.Add(0);
         }
         #endregion
         #region populate Restaurants
@@ -95,13 +95,13 @@ public class CommonReferences : MonoBehaviour
 
     public void HouseDelivered(int HouseID)
     {
-        HouseNumOfOrders[HouseID]--;
-        if (HouseNumOfOrders[HouseID] == 0)
+        PendingOrdersForHouse[HouseID]--;
+        if (PendingOrdersForHouse[HouseID] == 0)
         {
             Houses[HouseID].GetChild(0).gameObject.SetActive(false);
             Destroy(Houses[HouseID].gameObject.GetComponent<EnableIcon>());
             return;
         }
-        Debug.Log(HouseNumOfOrders[HouseID] + "orders left");
+        Debug.Log(PendingOrdersForHouse[HouseID] + "orders left");
     }
 }
