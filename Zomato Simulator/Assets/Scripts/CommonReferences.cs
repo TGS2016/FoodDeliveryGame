@@ -10,11 +10,12 @@ public class CommonReferences : MonoBehaviour
     public static CommonReferences Instance;
     public Transform HouseParent;
     public Transform RestaurantParent;
-    public static List<Transform> Houses = new List<Transform>();
-    public static List<int> PendingOrdersForHouse = new List<int>();
+    public List<Sprite> foodTypes = new List<Sprite>();
+
+    public static List<House> Houses = new List<House>();
     public static List<Restaurant> Restaurants = new List<Restaurant>();
 
-    public List<Sprite> foodTypes = new List<Sprite>();
+    public Transform OrderUIParent;
 
     public PhotonView myPV;
     public PlayerController myPlayer;
@@ -35,9 +36,9 @@ public class CommonReferences : MonoBehaviour
         for (int i = 0; i < HouseCount; i++)
         {
             int temp = i;
-            var h = HouseParent.GetChild(temp);
+            var h = HouseParent.GetChild(temp).GetComponent<House>(); 
             Houses.Add(h);
-            PendingOrdersForHouse.Add(0);
+            //PendingOrdersForHouse.Add(0);
         }
         #endregion
         #region populate Restaurants
@@ -56,12 +57,14 @@ public class CommonReferences : MonoBehaviour
 
     private void OnEnable()
     {
-        OnDisplayHouse += DisplayHouse;
+        OnDisplayHouse += DisplayHouseIcon;
     }
     private void OnDisable()
     {
-        OnDisplayHouse -= DisplayHouse;
+        OnDisplayHouse -= DisplayHouseIcon;
     }
+
+    #region DispatchOrder
     public void DispatchOrder(int DriverID)
     {
         List<Restaurant> AcceptingRestaurants = new List<Restaurant>();
@@ -83,25 +86,22 @@ public class CommonReferences : MonoBehaviour
             Debug.Log("All Restaurants are full");
         }
     }
+    #endregion
 
-    public void DisplayHouse(int HouseID)
+    #region DisplayHouse
+    public void DisplayHouseIcon(int HouseID)
     {
         if (HouseID != -1)
         {
-            Houses[HouseID].GetChild(0).gameObject.SetActive(true);
-            Houses[HouseID].gameObject.AddComponent<EnableIcon>();
+            Houses[HouseID].ToggleHouseIcon();
         }
     }
+    #endregion
 
-    public void HouseDelivered(int HouseID)
+    #region HouseDelivered
+    public void HouseDelivered(int HouseID, int foodID)
     {
-        PendingOrdersForHouse[HouseID]--;
-        if (PendingOrdersForHouse[HouseID] == 0)
-        {
-            Houses[HouseID].GetChild(0).gameObject.SetActive(false);
-            Destroy(Houses[HouseID].gameObject.GetComponent<EnableIcon>());
-            return;
-        }
-        Debug.Log(PendingOrdersForHouse[HouseID] + "orders left");
+        Houses[HouseID].HouseDelivered(foodID);
     }
+    #endregion
 }

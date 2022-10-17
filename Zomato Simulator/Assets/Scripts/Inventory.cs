@@ -28,7 +28,9 @@ public class Inventory : MonoBehaviour
         pickedUpFood.isPickedUp = true;
         pickedUpFood.transform.parent = ItemDataHolder.transform;
 
-        CommonReferences.PendingOrdersForHouse[pickedUpFood.HomeID]++;
+        //CommonReferences.Houses[pickedUpFood.HomeID].PendingOrders++;
+        CommonReferences.Houses[pickedUpFood.HomeID].PendingFood.Add(pickedUpFood.FoodPicID);
+        //CommonReferences.PendingOrdersForHouse[pickedUpFood.HomeID]++;
         CommonReferences.OnDisplayHouse?.Invoke(pickedUpFood.HomeID);
     }
 
@@ -36,6 +38,7 @@ public class Inventory : MonoBehaviour
     {
         BagParent.gameObject.SetActive(true);
         DisplayInventory(HouseID_ofClickedHouse);
+        CommonReferences.Instance.myPlayer.canMove = false;
     }
 
     public void DisplayInventory(int HouseID_ofClickedHouse)
@@ -63,20 +66,23 @@ public class Inventory : MonoBehaviour
         if (CompareHouses(FoodID, HouseID_ofClickedHouse))
         {
             Debug.Log("Item Delivered");
-            GameObject DeliveredFood = myPickedUpFood[FoodID].gameObject;
+            OrderDetails DeliveredFood = myPickedUpFood[FoodID];
+            CommonReferences.Instance.HouseDelivered(HouseID_ofClickedHouse, DeliveredFood.FoodPicID);
+
+
             myPickedUpFood.RemoveAt(FoodID);
-            DestroyImmediate(DeliveredFood);
+            DestroyImmediate(DeliveredFood.gameObject);
             DestroyImmediate(foodButton.gameObject);
-            CommonReferences.Instance.HouseDelivered(HouseID_ofClickedHouse);
+
         }
     }
 
     private bool CompareHouses(int FoodID ,int HouseID_ofClickedHouse)
     {
-        Debug.Log("Food ID is :" + FoodID + 
-                  "House ID is :" + HouseID_ofClickedHouse +
-                  "Correct House ? " + (HouseID_ofClickedHouse == myPickedUpFood[FoodID].HomeID));
-        return HouseID_ofClickedHouse == myPickedUpFood[FoodID].HomeID;
+        OrderDetails Order = myPickedUpFood[FoodID];
+        House House = CommonReferences.Houses[HouseID_ofClickedHouse];
+
+        return House.PendingFood.Contains(Order.FoodPicID);
     }
 
     public void CloseBag()
@@ -88,6 +94,7 @@ public class Inventory : MonoBehaviour
         {
             DestroyImmediate(ItemHolder.GetChild(0).gameObject);
         }
+        CommonReferences.Instance.myPlayer.canMove = true;
     }
 
     #region misc not implemented

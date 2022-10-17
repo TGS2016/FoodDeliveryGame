@@ -45,7 +45,7 @@ public class Restaurant : MonoBehaviour
     #region Order Recieved
     public void OrderRecieved(int DriverID)
     {   
-        OrderDetails order =  PhotonNetwork.Instantiate("OrderPrefab", this.transform.position, Quaternion.identity).GetComponent<OrderDetails>();
+        OrderDetails order =  PhotonNetwork.Instantiate("OrderDetailsPrefab", this.transform.position, Quaternion.identity).GetComponent<OrderDetails>();
 
         int localfoodID = UnityEngine.Random.Range(0, FoodServed.Count);
         int foodID = CommonReferences.Instance.foodTypes.IndexOf(FoodServed[localfoodID]);
@@ -66,7 +66,7 @@ public class Restaurant : MonoBehaviour
     #endregion
 
     #region Order Picked Up
-    internal void OrderPickedUp(int orderID)
+    internal void OrderPickedUpByMyself(int orderID)
     {
         int RestaurantID = CommonReferences.Restaurants.IndexOf(this);
         CommonReferences.Instance.myZomatoApp.RPC_Order_PickedUP(orderID,RestaurantID);
@@ -75,10 +75,15 @@ public class Restaurant : MonoBehaviour
         OnOrderPickedUp?.Invoke(orderID, RestaurantID);
         UpdateRestaurantStatus();
     }
-    internal void RemoveThisFromList(int orderID)
+    internal void OrderPickedUpBySomeoneElse(int orderID)
     {
-        if(orderID < Orders.Count)
+        if (orderID < Orders.Count)
         {
+            if (Orders[orderID].DriverID == CommonReferences.Instance.myPV.ViewID)
+            {
+                Debug.Log("SOMEONE STOLE MY ORDER");
+            }
+
             Orders.RemoveAt(orderID);
             int RestaurantID = CommonReferences.Restaurants.IndexOf(this);
             OnOrderPickedUp?.Invoke(orderID, RestaurantID);

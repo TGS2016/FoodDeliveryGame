@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-
+using UnityEngine.UI;
 
 public class OrderDetails : MonoBehaviour, IPunObservable
 {
@@ -11,7 +11,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
     public int HomeID = -1;
     public int RestaurantID = -1;
 
-    public float HotPlateTimer;
+    public float HotPlateTimer= 60;
     public float RatingTimer = 60;
 
     public bool FreeForAll = false;
@@ -22,8 +22,19 @@ public class OrderDetails : MonoBehaviour, IPunObservable
     public Transform DeliveryAddress;
 
     public bool isInitialized = false;
-    private bool FoodHasBeenAdded= true;
+    private bool FoodHasBeenAdded= false;
 
+    public GameObject OrderPrefab;
+
+    private GameObject myUIPrefab;
+
+    private void OnDisable()
+    {
+        if(myUIPrefab != null)
+        {
+            Destroy(myUIPrefab);
+        }
+    }
     public void InitializeOrder(int DriverID, int foodPicIndex, int RestaurantID)
     {
         this.DriverID = DriverID;
@@ -33,16 +44,19 @@ public class OrderDetails : MonoBehaviour, IPunObservable
         this.HomeID = Random.Range(0, CommonReferences.Houses.Count);
 
 
-        this.DeliveryAddress = CommonReferences.Houses[HomeID];
+        this.DeliveryAddress = CommonReferences.Houses[HomeID].transform;
         this.foodPic = CommonReferences.Instance.foodTypes[foodPicIndex];
 
         this.HotPlateTimer = Vector2.Distance(DeliveryAddress.position, Vector2.zero) * 10;
 
         //CommonReferences.Restaurants[RestaurantID].Orders.Add(this);
         //CommonReferences.PendingOrdersForHouse[HomeID]++;
+
+        InstantiateInUI();
         CommonReferences.Restaurants[RestaurantID].AddThisInList(this);
         CommonReferences.Restaurants[RestaurantID].UpdateRestaurantStatus();
         isInitialized = true;
+        FoodHasBeenAdded = true;
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -72,7 +86,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
                 HotPlateTimer = (float)stream.ReceiveNext();
                 RatingTimer = (float)stream.ReceiveNext();
 
-                FoodHasBeenAdded = false;
+                //FoodHasBeenAdded = false;
                 if (DriverID != -1)
                 {
                     isInitialized = true;
@@ -99,5 +113,20 @@ public class OrderDetails : MonoBehaviour, IPunObservable
         {
             HotPlateTimer -= Time.deltaTime;
         }
+    }
+
+    private void InstantiateInUI()
+    {
+        
+        myUIPrefab = Instantiate(OrderPrefab);
+        Image myUIPic = myUIPrefab.GetComponent<Image>();
+        Button myUIButton = myUIPrefab.GetComponent<Button>();
+
+
+        myUIButton.enabled = false;
+        myUIPrefab.transform.SetParent(CommonReferences.Instance.OrderUIParent);
+        myUIPrefab.transform.SetAsLastSibling();
+
+        myUIPic.sprite = foodPic;
     }
 }

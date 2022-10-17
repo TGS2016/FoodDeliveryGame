@@ -92,7 +92,7 @@ public class OrderList : MonoBehaviour
         Debug.Log("Trying to Pick up order num : " + orderID);
         if (CommonReferences.Instance.myInventory.myPickedUpFood.Count < CommonReferences.Instance.myInventory.MaxFoodCapacity)
         {
-            RS.OrderPickedUp(orderID);
+            RS.OrderPickedUpByMyself(orderID);
         }
     }
     public void OnOthersOrderClicked(Restaurant RS, GameObject button)

@@ -33,4 +33,10 @@ public class UIManager : MonoBehaviour
         Debug.Log(status);
         //throw new NotImplementedException();
     }
+
+
+    [SerializeField] Transform PendingOrdersParent;
+    [SerializeField] GameObject FoodUIPrefab;
+
+
 }

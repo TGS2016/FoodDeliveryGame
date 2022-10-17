@@ -126,9 +126,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FoodServed:
   - {fileID: 21300000, guid: 6f2f7a2bff564e348beb8c00d1116fdc, type: 3}
-  - {fileID: 21300000, guid: b8d2b6932def5d643aa1b41297711e73, type: 3}
+  - {fileID: 21300000, guid: 06bd6d5c63d59d44b9498c5297fe7093, type: 3}
+  - {fileID: 21300000, guid: 71e2b6379f65d1641aa9777be458fdd2, type: 3}
   - {fileID: 21300000, guid: 1132ad937f233964eba21a32107c583a, type: 3}
-  - {fileID: 21300000, guid: e1d066283bf849844ab2f5f280bcfe89, type: 3}
+  - {fileID: 21300000, guid: 43a1f4b0f85fff844a32c0641bd749e4, type: 3}
   Orders: []
   AcceptingCapacity: 5
   isInitialized: 0

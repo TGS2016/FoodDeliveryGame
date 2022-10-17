@@ -33,7 +33,7 @@ public class PlayerZomatoApp : MonoBehaviour
     [PunRPC]
     public void RPC_OrderPickedUp(int orderID, int RestaurantID)
     {
-        CommonReferences.Restaurants[RestaurantID].RemoveThisFromList(orderID);
+        CommonReferences.Restaurants[RestaurantID].OrderPickedUpBySomeoneElse(orderID);
     }
 
 
