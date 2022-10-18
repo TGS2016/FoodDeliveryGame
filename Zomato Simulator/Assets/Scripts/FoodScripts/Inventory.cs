@@ -28,9 +28,9 @@ public class Inventory : MonoBehaviour
         pickedUpFood.isPickedUp = true;
         pickedUpFood.transform.parent = ItemDataHolder.transform;
 
-        //CommonReferences.Houses[pickedUpFood.HomeID].PendingOrders++;
-        CommonReferences.Houses[pickedUpFood.HomeID].PendingFood.Add(pickedUpFood.FoodPicID);
-        //CommonReferences.PendingOrdersForHouse[pickedUpFood.HomeID]++;
+        
+        CommonReferences.Houses[pickedUpFood.HomeID].PendingFood.Add(pickedUpFood);
+        //CommonReferences.Houses[pickedUpFood.HomeID].PendingNumOfFood.Add(pickedUpFood.FoodPicID);
         CommonReferences.OnDisplayHouse?.Invoke(pickedUpFood.HomeID);
     }
 
@@ -47,42 +47,60 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < Items; i++)
         {
             int temp = i;
-            Transform food = Instantiate(FoodIcon).transform;
-            Button foodButton = food.GetComponent<Button>();
+            var food = Instantiate(this.FoodIcon).transform;
+            var foodButton = food.GetComponent<Button>();
+            var foodDetails = food.GetComponent<FoodIconDetailsHolder>();
+            foodDetails.ClientFeatures[0].transform.parent.gameObject.SetActive(false);
+
+            foodDetails.orderDetails = myPickedUpFood[temp];
             food.SetParent(BagParent.GetChild(0));
-            food.GetComponent<Image>().sprite = myPickedUpFood[temp].foodPic;
 
             foodButton.onClick.AddListener(() =>
             {
-                foodButtonOnClickMethod(HouseID_ofClickedHouse, foodButton);
+                foodButtonOnClickMethod(HouseID_ofClickedHouse, foodDetails.gameObject);
             });
 
         }
     }
 
-    public void foodButtonOnClickMethod(int HouseID_ofClickedHouse, Button foodButton)
+    public void foodButtonOnClickMethod(int HouseID_ofClickedHouse, GameObject foodDetails)
     {
-        int FoodID = foodButton.transform.GetSiblingIndex();
-        if (CompareHouses(FoodID, HouseID_ofClickedHouse))
+        int FoodID = foodDetails.transform.GetSiblingIndex();
+        OrderDetails ClickedFood = myPickedUpFood[FoodID];
+        House House = CommonReferences.Houses[HouseID_ofClickedHouse];
+        if (DidTheyOrderThisFood(ClickedFood, House))
         {
-            Debug.Log("Item Delivered");
-            OrderDetails DeliveredFood = myPickedUpFood[FoodID];
-            CommonReferences.Instance.HouseDelivered(HouseID_ofClickedHouse, DeliveredFood.FoodPicID);
+            if (!IsOwnerSame(ClickedFood, House))
+            {
+                var actualFood = myPickedUpFood.Find(x => x.HomeID == HouseID_ofClickedHouse);
+                ClickedFood.TransferDataToNewOrder(actualFood);
+            }
+            Debug.Log("Item being delivered");
 
 
+            CommonReferences.Instance.HouseDelivered(ClickedFood,HouseID_ofClickedHouse);
+
+            Debug.Log("removed now");
             myPickedUpFood.RemoveAt(FoodID);
-            DestroyImmediate(DeliveredFood.gameObject);
-            DestroyImmediate(foodButton.gameObject);
+
+            DestroyImmediate(ClickedFood.gameObject);
+            DestroyImmediate(foodDetails.gameObject);
 
         }
     }
 
-    private bool CompareHouses(int FoodID ,int HouseID_ofClickedHouse)
+    private bool DidTheyOrderThisFood(OrderDetails Order ,House House)
     {
-        OrderDetails Order = myPickedUpFood[FoodID];
-        House House = CommonReferences.Houses[HouseID_ofClickedHouse];
+        if (House.PendingFood.Count == 0) return false;
+        else
+        return House.PendingFood[0].FoodPicID == Order.FoodPicID;//.Contains(Order.FoodPicID);
+    }
 
-        return House.PendingFood.Contains(Order.FoodPicID);
+    private bool IsOwnerSame(OrderDetails Food, House House)
+    {
+        if (House.PendingFood.Count == 0) return false;
+        else
+        return Food.HomeID == CommonReferences.Houses.IndexOf(House);
     }
 
     public void CloseBag()
@@ -96,6 +114,7 @@ public class Inventory : MonoBehaviour
         }
         CommonReferences.Instance.myPlayer.canMove = true;
     }
+
 
     #region misc not implemented
     /*public override void OnLeftRoom()
@@ -112,6 +131,4 @@ public class Inventory : MonoBehaviour
         }*//*
     }*/
     #endregion
-
-
 }

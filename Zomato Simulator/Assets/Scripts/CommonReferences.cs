@@ -14,6 +14,7 @@ public class CommonReferences : MonoBehaviour
 
     public static List<House> Houses = new List<House>();
     public static List<Restaurant> Restaurants = new List<Restaurant>();
+    public static RandomSample ClientGenerator;
 
     public Transform OrderUIParent;
 
@@ -24,6 +25,7 @@ public class CommonReferences : MonoBehaviour
 
     public static Action OnOrderDispatched;
     public static Action<int> OnDisplayHouse;
+
     private void Awake()
     {
         if (Instance == null)
@@ -52,6 +54,9 @@ public class CommonReferences : MonoBehaviour
                 Restaurants.Add(r);
             }
         }
+        #endregion
+        #region ClientGenerator
+        ClientGenerator = GetComponent<RandomSample>();
         #endregion
     }
 
@@ -99,7 +104,7 @@ public class CommonReferences : MonoBehaviour
     #endregion
 
     #region HouseDelivered
-    public void HouseDelivered(int HouseID, int foodID)
+    public void HouseDelivered(OrderDetails foodID ,int HouseID)
     {
         Houses[HouseID].HouseDelivered(foodID);
     }

@@ -57,8 +57,8 @@ MonoBehaviour:
   FoodPicID: -1
   HomeID: -1
   RestaurantID: -1
-  HotPlateTimer: 0
-  RatingTimer: 0
+  HotPlateTimer: 60
+  RatingTimer: 60
   FreeForAll: 0
   isPickedUp: 0
   foodPic: {fileID: 0}
@@ -66,6 +66,7 @@ MonoBehaviour:
   DeliveryAddress: {fileID: 0}
   isInitialized: 0
   OrderPrefab: {fileID: 7389736183931128785, guid: ce9946f949e90f645a8708c2787d49af, type: 3}
+  ClientPic: []
 --- !u!114 &8039407981955478255
 MonoBehaviour:
   m_ObjectHideFlags: 0

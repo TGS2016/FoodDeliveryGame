@@ -47,16 +47,15 @@ public class OrderDetails : MonoBehaviour, IPunObservable
         this.DeliveryAddress = CommonReferences.Houses[HomeID].transform;
         this.foodPic = CommonReferences.Instance.foodTypes[foodPicIndex];
 
-        this.HotPlateTimer = Vector2.Distance(DeliveryAddress.position, Vector2.zero) * 10;
+        //this.HotPlateTimer = Vector2.Distance(DeliveryAddress.position, Vector2.zero) * 10;
 
-        //CommonReferences.Restaurants[RestaurantID].Orders.Add(this);
-        //CommonReferences.PendingOrdersForHouse[HomeID]++;
-
+        GetRandomPerson();
         InstantiateInUI();
         CommonReferences.Restaurants[RestaurantID].AddThisInList(this);
         CommonReferences.Restaurants[RestaurantID].UpdateRestaurantStatus();
         isInitialized = true;
         FoodHasBeenAdded = true;
+        
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -98,6 +97,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
                 {
                     Debug.Log("why are you being called twice");
                     FoodHasBeenAdded = true;
+                    GetRandomPerson();
                     this.foodPic = CommonReferences.Instance.foodTypes[FoodPicID];
                     //CommonReferences.PendingOrdersForHouse[HomeID]++;
                     CommonReferences.Restaurants[RestaurantID].AddThisInList(this);
@@ -119,14 +119,29 @@ public class OrderDetails : MonoBehaviour, IPunObservable
     {
         
         myUIPrefab = Instantiate(OrderPrefab);
-        Image myUIPic = myUIPrefab.GetComponent<Image>();
-        Button myUIButton = myUIPrefab.GetComponent<Button>();
+        var myIconDetails = myUIPrefab.GetComponent<FoodIconDetailsHolder>();
+        var myUIButton = myUIPrefab.GetComponent<Button>();
 
 
+        myIconDetails.orderDetails = this;
         myUIButton.enabled = false;
         myUIPrefab.transform.SetParent(CommonReferences.Instance.OrderUIParent);
         myUIPrefab.transform.SetAsLastSibling();
+    }
 
-        myUIPic.sprite = foodPic;
+    public List<Sprite> ClientPic = new List<Sprite>();
+    private void GetRandomPerson()
+    {
+        ClientPic = CommonReferences.ClientGenerator.GetClientPic(); 
+    }
+
+    public void TransferDataToNewOrder(OrderDetails NewOrder)
+    {
+        NewOrder.HomeID = this.HomeID;
+        NewOrder.DeliveryAddress = this.DeliveryAddress;
+        NewOrder.ClientPic = this.ClientPic;
+
+        NewOrder.myUIPrefab.GetComponent<FoodIconDetailsHolder>().orderDetails = NewOrder;
     }
 }
+
