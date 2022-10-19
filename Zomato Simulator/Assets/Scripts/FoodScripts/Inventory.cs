@@ -5,13 +5,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [DefaultExecutionOrder(1)]
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
 {
     public Transform ItemDataHolder;
     public Transform BagParent;
     public GameObject FoodIcon;
     public int MaxFoodCapacity = 3;
+    public List<OrderDetails> MyDispatchedOrders = new List<OrderDetails>();
     public List<OrderDetails> myPickedUpFood = new List<OrderDetails>();
+
+
 
     private void Awake()
     {
@@ -20,17 +23,55 @@ public class Inventory : MonoBehaviour
             CommonReferences.Instance.myInventory = this;
         }
     }
+    private void OnEnable()
+    {
+        PhotonNetwork.AddCallbackTarget(this);
+    }
+    private void OnDisable()
+    {
+        PhotonNetwork.RemoveCallbackTarget(this);
+    }
+    public void OnOwnershipRequest(PhotonView targetView, Player requestingPlayer)
+    {
+        Debug.Log("transfer requested");
+    }
 
+    public void OnOwnershipTransfered(PhotonView targetView, Player previousOwner)
+    {
+        if (targetView.IsMine)
+        {
+            Debug.Log("transfer successful");
+            AddToBag(TempClickedFood);
+        }
+    }
+
+    public void OnOwnershipTransferFailed(PhotonView targetView, Player senderOfFailedRequest)
+    {
+
+    }
+    OrderDetails TempClickedFood;
     public void PickUpFood(OrderDetails pickedUpFood)
     {
-        pickedUpFood.GetComponent<PhotonView>().RequestOwnership();
+        Debug.Log("ive been summoned");
+        TempClickedFood = pickedUpFood;
+        var foodPV = pickedUpFood.GetComponent<PhotonView>();
+        if (!foodPV.IsMine)
+        {
+            pickedUpFood.TransferOwnership();
+            return; 
+        }
+        AddToBag(pickedUpFood);
+    }
+
+    public void AddToBag(OrderDetails pickedUpFood)
+    {
         myPickedUpFood.Add(pickedUpFood);
         pickedUpFood.isPickedUp = true;
+
+        Debug.Log("CHANGE STATE to " + pickedUpFood.isPickedUp + pickedUpFood.name);
         pickedUpFood.transform.parent = ItemDataHolder.transform;
 
-        
         CommonReferences.Houses[pickedUpFood.HomeID].PendingFood.Add(pickedUpFood);
-        //CommonReferences.Houses[pickedUpFood.HomeID].PendingNumOfFood.Add(pickedUpFood.FoodPicID);
         CommonReferences.OnDisplayHouse?.Invoke(pickedUpFood.HomeID);
     }
 
@@ -114,6 +155,8 @@ public class Inventory : MonoBehaviour
         }
         CommonReferences.Instance.myPlayer.canMove = true;
     }
+
+    
 
 
     #region misc not implemented

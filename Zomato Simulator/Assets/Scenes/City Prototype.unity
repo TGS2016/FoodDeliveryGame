@@ -178,6 +178,7 @@ MonoBehaviour:
   BagParent: {fileID: 514657139}
   FoodIcon: {fileID: 7389736183931128785, guid: ce9946f949e90f645a8708c2787d49af, type: 3}
   MaxFoodCapacity: 1000
+  MyDispatchedOrders: []
   myPickedUpFood: []
 --- !u!222 &31708586
 CanvasRenderer:
@@ -1443,7 +1444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.21176471}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

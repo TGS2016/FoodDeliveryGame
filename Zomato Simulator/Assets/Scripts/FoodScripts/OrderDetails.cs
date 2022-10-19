@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
+using Photon.Realtime;
 
 public class OrderDetails : MonoBehaviour, IPunObservable
 {
@@ -15,8 +16,26 @@ public class OrderDetails : MonoBehaviour, IPunObservable
     public float RatingTimer = 60;
 
     public bool FreeForAll = false;
-    public bool isPickedUp = false;
-
+    [SerializeField]private bool _isPickedUp;
+     public bool isPickedUp
+     {
+         get { return _isPickedUp; }
+         set
+         {
+             _isPickedUp = value;
+            Debug.Log("food has been picked up" + isPickedUp);
+            if (isPickedUp)
+            {
+                Debug.Log("this");
+                var myInv = CommonReferences.Instance.myInventory;
+                if (myInv.MyDispatchedOrders.Contains(this) && !myInv.myPickedUpFood.Contains(this))
+                {
+                    myInv.MyDispatchedOrders.Remove(this);
+                    Destroy(this.gameObject);
+                }
+            }
+        }
+     }
     public Sprite foodPic;
     public Sprite Client;
     public Transform DeliveryAddress;
@@ -27,7 +46,13 @@ public class OrderDetails : MonoBehaviour, IPunObservable
     public GameObject OrderPrefab;
 
     private GameObject myUIPrefab;
+    private PhotonView myPV;
 
+    public static System.Action<OrderDetails> onOtherPlayerPickedUP;
+    private void OnEnable()
+    {
+        myPV = GetComponent<PhotonView>();
+    }
     private void OnDisable()
     {
         if(myUIPrefab != null)
@@ -75,33 +100,41 @@ public class OrderDetails : MonoBehaviour, IPunObservable
         }
         else
         {
-            isPickedUp = (bool)stream.ReceiveNext();
-            if (!isInitialized)
+            if (!myPV.IsMine)
             {
-                DriverID = (int)stream.ReceiveNext();
-                FoodPicID = (int)stream.ReceiveNext();
-                HomeID = (int)stream.ReceiveNext();
-                RestaurantID = (int)stream.ReceiveNext();
-                HotPlateTimer = (float)stream.ReceiveNext();
-                RatingTimer = (float)stream.ReceiveNext();
+                isPickedUp = (bool)stream.ReceiveNext();
+                Debug.Log(isPickedUp);
+                if (!isPickedUp)
+                {
 
-                //FoodHasBeenAdded = false;
-                if (DriverID != -1)
-                {
-                    isInitialized = true;
-                }
-            }
-            if (!isPickedUp && !FoodHasBeenAdded)
-            {
-                if(FoodPicID != -1)
-                {
-                    Debug.Log("why are you being called twice");
-                    FoodHasBeenAdded = true;
-                    GetRandomPerson();
-                    this.foodPic = CommonReferences.Instance.foodTypes[FoodPicID];
-                    //CommonReferences.PendingOrdersForHouse[HomeID]++;
-                    CommonReferences.Restaurants[RestaurantID].AddThisInList(this);
-                    CommonReferences.Restaurants[RestaurantID].UpdateRestaurantStatus();
+                    if (!isInitialized)
+                    {
+                        DriverID = (int)stream.ReceiveNext();
+                        FoodPicID = (int)stream.ReceiveNext();
+                        HomeID = (int)stream.ReceiveNext();
+                        RestaurantID = (int)stream.ReceiveNext();
+                        HotPlateTimer = (float)stream.ReceiveNext();
+                        RatingTimer = (float)stream.ReceiveNext();
+
+                        //FoodHasBeenAdded = false;
+                        if (DriverID != -1)
+                        {
+                            isInitialized = true;
+                        }
+                    }
+                    if (!FoodHasBeenAdded)
+                    {
+                        if (FoodPicID != -1)
+                        {
+                            Debug.Log("why are you being called twice");
+                            FoodHasBeenAdded = true;
+                            GetRandomPerson();
+                            this.foodPic = CommonReferences.Instance.foodTypes[FoodPicID];
+                            //CommonReferences.PendingOrdersForHouse[HomeID]++;
+                            CommonReferences.Restaurants[RestaurantID].AddThisInList(this);
+                            CommonReferences.Restaurants[RestaurantID].UpdateRestaurantStatus();
+                        }
+                    }
                 }
             }
         }
@@ -115,7 +148,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
         }
     }
 
-    private void InstantiateInUI()
+    public void InstantiateInUI()
     {
         
         myUIPrefab = Instantiate(OrderPrefab);
@@ -127,6 +160,8 @@ public class OrderDetails : MonoBehaviour, IPunObservable
         myUIButton.enabled = false;
         myUIPrefab.transform.SetParent(CommonReferences.Instance.OrderUIParent);
         myUIPrefab.transform.SetAsLastSibling();
+
+        CommonReferences.Instance.myInventory.MyDispatchedOrders.Add(this);
     }
 
     public List<Sprite> ClientPic = new List<Sprite>();
@@ -143,5 +178,12 @@ public class OrderDetails : MonoBehaviour, IPunObservable
 
         NewOrder.myUIPrefab.GetComponent<FoodIconDetailsHolder>().orderDetails = NewOrder;
     }
+
+    public void TransferOwnership()
+    {
+        myPV.RequestOwnership();
+    }
+
+    
 }
 

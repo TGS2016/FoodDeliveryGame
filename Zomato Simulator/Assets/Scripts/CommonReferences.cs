@@ -32,6 +32,7 @@ public class CommonReferences : MonoBehaviour
         {
             Instance = this;
         }
+        PhotonNetwork.SendRate = 10;
 
         #region populate houses
         int HouseCount = HouseParent.childCount;

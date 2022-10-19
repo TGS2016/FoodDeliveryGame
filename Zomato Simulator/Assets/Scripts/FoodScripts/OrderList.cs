@@ -81,27 +81,37 @@ public class OrderList : MonoBehaviour
         int orderID = FoodDetails.transform.GetSiblingIndex();
         if (RS.Orders[orderID].DriverID != CommonReferences.Instance.myPV.ViewID && !RS.Orders[orderID].FreeForAll)
         {
-            OnOthersOrderClicked(RS, FoodDetails.gameObject);
+            /*OnOthersOrderClicked(RS, FoodDetails.gameObject);*/
+
+            //picking someone else's order
+            OnTryPickOrder(RS, FoodDetails.gameObject, false);
         }
         else
         {
-            OnTryPickOrder(RS, FoodDetails.gameObject);
+            //picking our own order
+            OnTryPickOrder(RS, FoodDetails.gameObject,true);
         }
     }
-    private void OnTryPickOrder(Restaurant RS, GameObject FoodDetails)
+    private void OnTryPickOrder(Restaurant RS, GameObject FoodDetails, bool isMyOrder = true)
     {
         int orderID = FoodDetails.transform.GetSiblingIndex();
+        if(!isMyOrder)
+        {
+            Debug.Log("Not My order");
+            RS.Orders[orderID].InstantiateInUI();
+        }
         Debug.Log("Trying to Pick up order num : " + orderID);
         if (CommonReferences.Instance.myInventory.myPickedUpFood.Count < CommonReferences.Instance.myInventory.MaxFoodCapacity)
         {
             RS.OrderPickedUpByMyself(orderID);
         }
+
     }
-    public void OnOthersOrderClicked(Restaurant RS, GameObject FoodDetails)
+    /*public void OnOthersOrderClicked(Restaurant RS, GameObject FoodDetails)
     {
         Debug.Log("Not My order");
-        OnTryPickOrder(RS, FoodDetails.gameObject);
-    }
+        OnTryPickOrder(RS, FoodDetails.gameObject, false);
+    }*/
     #endregion
 
     #region Order Remove
