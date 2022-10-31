@@ -1,0 +1,1284 @@
+fileFormatVersion: 2
+guid: 4caa802b01b918842ad996b8993976e1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 667443077986557909
+    second: Tileset_1_MV_0
+  - first:
+      213: 7023273572926051304
+    second: Tileset_1_MV_1
+  - first:
+      213: -920833029180080252
+    second: Tileset_1_MV_2
+  - first:
+      213: 429514998091175461
+    second: Tileset_1_MV_3
+  - first:
+      213: 1981740407307166321
+    second: Tileset_1_MV_4
+  - first:
+      213: 125065748290358487
+    second: Tileset_1_MV_5
+  - first:
+      213: 1049525023722089980
+    second: Tileset_1_MV_6
+  - first:
+      213: 1232488620284670459
+    second: Tileset_1_MV_7
+  - first:
+      213: 8267795771088082928
+    second: Tileset_1_MV_8
+  - first:
+      213: -5232482684095994095
+    second: Tileset_1_MV_9
+  - first:
+      213: 9077820296516694225
+    second: Tileset_1_MV_10
+  - first:
+      213: 7917210946171310348
+    second: Tileset_1_MV_11
+  - first:
+      213: 7950378705234619302
+    second: Tileset_1_MV_12
+  - first:
+      213: 3714128454912760999
+    second: Tileset_1_MV_13
+  - first:
+      213: -8801355901330513988
+    second: Tileset_1_MV_14
+  - first:
+      213: -4954240922099710638
+    second: Tileset_1_MV_15
+  - first:
+      213: -8761460920546405897
+    second: Tileset_1_MV_16
+  - first:
+      213: 4289008999015991840
+    second: Tileset_1_MV_17
+  - first:
+      213: 9085406627229290782
+    second: Tileset_1_MV_18
+  - first:
+      213: 202235907862742001
+    second: Tileset_1_MV_19
+  - first:
+      213: -7530117360023774546
+    second: Tileset_1_MV_20
+  - first:
+      213: 3973721772724515311
+    second: Tileset_1_MV_21
+  - first:
+      213: 5944574150912011910
+    second: Tileset_1_MV_22
+  - first:
+      213: -606459689811406928
+    second: Tileset_1_MV_23
+  - first:
+      213: -199897506463303108
+    second: Tileset_1_MV_24
+  - first:
+      213: 6560746015511967473
+    second: Tileset_1_MV_25
+  - first:
+      213: 2393697007814243603
+    second: Tileset_1_MV_26
+  - first:
+      213: 3309819447943790780
+    second: Tileset_1_MV_27
+  - first:
+      213: 1995771757099661756
+    second: Tileset_1_MV_28
+  - first:
+      213: 7199759122711169704
+    second: Tileset_1_MV_29
+  - first:
+      213: 5937848414893780682
+    second: Tileset_1_MV_30
+  - first:
+      213: 5708307624591466233
+    second: Tileset_1_MV_31
+  - first:
+      213: 6088812684201567412
+    second: Tileset_1_MV_32
+  - first:
+      213: 8402718862817850132
+    second: Tileset_1_MV_33
+  - first:
+      213: -970029147060444988
+    second: Tileset_1_MV_34
+  - first:
+      213: -6924469279139307011
+    second: Tileset_1_MV_35
+  - first:
+      213: -7646416130623732282
+    second: Tileset_1_MV_36
+  - first:
+      213: 5315625329857290879
+    second: Tileset_1_MV_37
+  - first:
+      213: -6735686185198094712
+    second: Tileset_1_MV_38
+  - first:
+      213: 3626587724469913894
+    second: Tileset_1_MV_39
+  - first:
+      213: -1109325097331418697
+    second: Tileset_1_MV_40
+  - first:
+      213: 5288249777323331787
+    second: Tileset_1_MV_41
+  - first:
+      213: 3265729457553820704
+    second: Tileset_1_MV_42
+  - first:
+      213: 6528846735372120656
+    second: Tileset_1_MV_43
+  - first:
+      213: 7702603125535953523
+    second: Tileset_1_MV_44
+  - first:
+      213: -3273060454713414140
+    second: Tileset_1_MV_45
+  - first:
+      213: 5422774614847447094
+    second: Tileset_1_MV_46
+  - first:
+      213: -7012477395324244018
+    second: Tileset_1_MV_47
+  - first:
+      213: 5642774983355561855
+    second: Tileset_1_MV_48
+  - first:
+      213: -1458009300704646075
+    second: Tileset_1_MV_49
+  - first:
+      213: 6799254435345136703
+    second: Tileset_1_MV_50
+  - first:
+      213: -1002177903918972754
+    second: Tileset_1_MV_51
+  - first:
+      213: -3033461315139542574
+    second: Tileset_1_MV_52
+  - first:
+      213: 6513571602521654521
+    second: Tileset_1_MV_53
+  - first:
+      213: -3258557268806198106
+    second: Tileset_1_MV_54
+  - first:
+      213: 1656860202555229246
+    second: Tileset_1_MV_55
+  - first:
+      213: 4627765264613014338
+    second: Tileset_1_MV_56
+  - first:
+      213: -6195005522234512376
+    second: Tileset_1_MV_57
+  - first:
+      213: 4915219392388742433
+    second: Tileset_1_MV_58
+  - first:
+      213: 4082815353795550646
+    second: Tileset_1_MV_59
+  - first:
+      213: 3024741884876495015
+    second: Tileset_1_MV_60
+  - first:
+      213: 4439076956982983110
+    second: Tileset_1_MV_61
+  - first:
+      213: 2505067627810746973
+    second: Tileset_1_MV_62
+  - first:
+      213: -4081951603044161674
+    second: Tileset_1_MV_63
+  - first:
+      213: 1125316395837539232
+    second: Tileset_1_MV_64
+  - first:
+      213: 3357450210863369569
+    second: Tileset_1_MV_65
+  - first:
+      213: -564201422433373312
+    second: Tileset_1_MV_66
+  - first:
+      213: 8329573586321763856
+    second: Tileset_1_MV_67
+  - first:
+      213: -388581264200795105
+    second: Tileset_1_MV_68
+  - first:
+      213: 7454259904959974777
+    second: Tileset_1_MV_69
+  - first:
+      213: -4593124857571533989
+    second: Tileset_1_MV_70
+  - first:
+      213: 6300459837271441909
+    second: Tileset_1_MV_71
+  - first:
+      213: 311386362430292473
+    second: Tileset_1_MV_72
+  - first:
+      213: 7796514237802340515
+    second: Tileset_1_MV_73
+  - first:
+      213: -5178051489206047566
+    second: Tileset_1_MV_74
+  - first:
+      213: 4380668776095978922
+    second: Tileset_1_MV_75
+  - first:
+      213: -4663107072605843730
+    second: Tileset_1_MV_76
+  - first:
+      213: -5885791330612998235
+    second: Tileset_1_MV_77
+  - first:
+      213: -1580415944808449609
+    second: Tileset_1_MV_78
+  - first:
+      213: 1103798603691958812
+    second: Tileset_1_MV_79
+  - first:
+      213: 3996928310679088498
+    second: Tileset_1_MV_80
+  - first:
+      213: -600031068589389759
+    second: Tileset_1_MV_81
+  - first:
+      213: -7535954942599063053
+    second: Tileset_1_MV_82
+  - first:
+      213: 8351540019040844249
+    second: Tileset_1_MV_83
+  - first:
+      213: 1885961101362416815
+    second: Tileset_1_MV_84
+  - first:
+      213: 3827893033955327277
+    second: Tileset_1_MV_85
+  - first:
+      213: 3963528098075673519
+    second: Tileset_1_MV_86
+  - first:
+      213: 4814026435213146796
+    second: Tileset_1_MV_87
+  - first:
+      213: -5114123682192973771
+    second: Tileset_1_MV_88
+  - first:
+      213: 4440367377706034057
+    second: Tileset_1_MV_89
+  - first:
+      213: -3672665392483133693
+    second: Tileset_1_MV_90
+  - first:
+      213: 4616575105781814707
+    second: Tileset_1_MV_91
+  - first:
+      213: -6871741667732415781
+    second: Tileset_1_MV_92
+  - first:
+      213: 2393760143232032272
+    second: Tileset_1_MV_93
+  - first:
+      213: -4620518062927949791
+    second: Tileset_1_MV_94
+  - first:
+      213: 7593158808222145547
+    second: Tileset_1_MV_95
+  - first:
+      213: 3182114011876125987
+    second: Tileset_1_MV_96
+  - first:
+      213: 6288817981559697116
+    second: Tileset_1_MV_97
+  - first:
+      213: -4579562102785532493
+    second: Tileset_1_MV_98
+  - first:
+      213: 4754655961701353858
+    second: Tileset_1_MV_99
+  - first:
+      213: -5909815383947370483
+    second: Tileset_1_MV_100
+  - first:
+      213: 8311996389926093538
+    second: Tileset_1_MV_101
+  - first:
+      213: -5669067100620061507
+    second: Tileset_1_MV_102
+  - first:
+      213: 1954046428529573958
+    second: Tileset_1_MV_103
+  - first:
+      213: -7416041406076515283
+    second: Tileset_1_MV_104
+  - first:
+      213: 7004376047767063112
+    second: Tileset_1_MV_105
+  - first:
+      213: 3143612311131403265
+    second: Tileset_1_MV_106
+  - first:
+      213: -6685402621999026950
+    second: Tileset_1_MV_107
+  - first:
+      213: 7852031228067420124
+    second: Tileset_1_MV_108
+  - first:
+      213: -7117793442762086017
+    second: Tileset_1_MV_109
+  - first:
+      213: -7110709302029772156
+    second: Tileset_1_MV_110
+  - first:
+      213: -8198920694099281130
+    second: Tileset_1_MV_111
+  - first:
+      213: 6622647445985812981
+    second: Tileset_1_MV_112
+  - first:
+      213: 8205161821370163868
+    second: Tileset_1_MV_113
+  - first:
+      213: 6505036427216129312
+    second: Tileset_1_MV_114
+  - first:
+      213: -6190186108925756789
+    second: Tileset_1_MV_115
+  - first:
+      213: 5356473092221771165
+    second: Tileset_1_MV_116
+  - first:
+      213: -5681800805718957041
+    second: Tileset_1_MV_117
+  - first:
+      213: 1772116968330222228
+    second: Tileset_1_MV_118
+  - first:
+      213: -271730408561187656
+    second: Tileset_1_MV_119
+  - first:
+      213: 4884045512494567685
+    second: Tileset_1_MV_120
+  - first:
+      213: 2924807666340229790
+    second: Tileset_1_MV_121
+  - first:
+      213: 7349820918554635727
+    second: Tileset_1_MV_122
+  - first:
+      213: 4814306387055370630
+    second: Tileset_1_MV_123
+  - first:
+      213: -2452250501043626553
+    second: Tileset_1_MV_124
+  - first:
+      213: 3672640018813296330
+    second: Tileset_1_MV_125
+  - first:
+      213: 6645328090150845577
+    second: Tileset_1_MV_126
+  - first:
+      213: -4056174481065981981
+    second: Tileset_1_MV_127
+  - first:
+      213: -3414056412331142219
+    second: Tileset_1_MV_128
+  - first:
+      213: 7739365023644834584
+    second: Tileset_1_MV_129
+  - first:
+      213: -6740094884014688801
+    second: Tileset_1_MV_130
+  - first:
+      213: -3119345510819315693
+    second: Tileset_1_MV_131
+  - first:
+      213: -5263478806053820059
+    second: Tileset_1_MV_132
+  - first:
+      213: 3137326494447155997
+    second: Tileset_1_MV_133
+  - first:
+      213: -4420281234849838079
+    second: Tileset_1_MV_134
+  - first:
+      213: -3592583678763152258
+    second: Tileset_1_MV_135
+  - first:
+      213: -3057448208041004983
+    second: Tileset_1_MV_136
+  - first:
+      213: 2096929382509920662
+    second: Tileset_1_MV_137
+  - first:
+      213: 5053460399399101735
+    second: Tileset_1_MV_138
+  - first:
+      213: 4110322413364390855
+    second: Tileset_1_MV_139
+  - first:
+      213: -7723403388817187073
+    second: Tileset_1_MV_140
+  - first:
+      213: -2927829576243035167
+    second: Tileset_1_MV_141
+  - first:
+      213: -5766237549933819640
+    second: Tileset_1_MV_142
+  - first:
+      213: -1050802776520474812
+    second: Tileset_1_MV_143
+  - first:
+      213: -7840974878751635041
+    second: Tileset_1_MV_144
+  - first:
+      213: -3466192942884904587
+    second: Tileset_1_MV_145
+  - first:
+      213: -4129813089559812228
+    second: Tileset_1_MV_146
+  - first:
+      213: -7773862840592696696
+    second: Tileset_1_MV_147
+  - first:
+      213: 5485670576270684249
+    second: Tileset_1_MV_148
+  - first:
+      213: 8004662948778405417
+    second: Tileset_1_MV_149
+  - first:
+      213: -6184982240993238711
+    second: Tileset_1_MV_150
+  - first:
+      213: -419739637658448574
+    second: Tileset_1_MV_151
+  - first:
+      213: 2287392954506067932
+    second: Tileset_1_MV_152
+  - first:
+      213: 5006101634147957672
+    second: Tileset_1_MV_153
+  - first:
+      213: 8384476299928770676
+    second: Tileset_1_MV_154
+  - first:
+      213: 4245890450203726721
+    second: Tileset_1_MV_155
+  - first:
+      213: 8568222871543512016
+    second: Tileset_1_MV_156
+  - first:
+      213: 6374159593365463319
+    second: Tileset_1_MV_157
+  - first:
+      213: -6680827880789675527
+    second: Tileset_1_MV_158
+  - first:
+      213: 7199661560776170336
+    second: Tileset_1_MV_159
+  - first:
+      213: 7528140352829569374
+    second: Tileset_1_MV_160
+  - first:
+      213: -1973753966178027800
+    second: Tileset_1_MV_161
+  - first:
+      213: 6979862766788371925
+    second: Tileset_1_MV_162
+  - first:
+      213: -8676560492033232057
+    second: Tileset_1_MV_163
+  - first:
+      213: -634227351225475386
+    second: Tileset_1_MV_164
+  - first:
+      213: -6884301128142802898
+    second: Tileset_1_MV_165
+  - first:
+      213: 2931032456206203584
+    second: Tileset_1_MV_166
+  - first:
+      213: 261255071336478077
+    second: Tileset_1_MV_167
+  - first:
+      213: 1069554107862242819
+    second: Tileset_1_MV_168
+  - first:
+      213: -2877092194001372433
+    second: Tileset_1_MV_169
+  - first:
+      213: -5603113055526491474
+    second: Tileset_1_MV_170
+  - first:
+      213: -1384681362638446919
+    second: Tileset_1_MV_171
+  - first:
+      213: -2710773121758825978
+    second: Tileset_1_MV_172
+  - first:
+      213: -598696269540872479
+    second: Tileset_1_MV_173
+  - first:
+      213: -6272148508541091073
+    second: Tileset_1_MV_174
+  - first:
+      213: 5564908459236312196
+    second: Tileset_1_MV_175
+  - first:
+      213: 1246028169780746604
+    second: Tileset_1_MV_176
+  - first:
+      213: 2256734674174079105
+    second: Tileset_1_MV_177
+  - first:
+      213: 6578830757679029175
+    second: Tileset_1_MV_178
+  - first:
+      213: -1314227795740103438
+    second: Tileset_1_MV_179
+  - first:
+      213: 3230390930109380706
+    second: Tileset_1_MV_180
+  - first:
+      213: -8876733654614770667
+    second: Tileset_1_MV_181
+  - first:
+      213: -45637965353422224
+    second: Tileset_1_MV_182
+  - first:
+      213: 1405313142673817590
+    second: Tileset_1_MV_183
+  - first:
+      213: 8638312037096628073
+    second: Tileset_1_MV_184
+  - first:
+      213: -813914859198642032
+    second: Tileset_1_MV_185
+  - first:
+      213: 2627600828590895520
+    second: Tileset_1_MV_186
+  - first:
+      213: 4672741626879377719
+    second: Tileset_1_MV_187
+  - first:
+      213: -7194529081831365562
+    second: Tileset_1_MV_188
+  - first:
+      213: 5622535875044909704
+    second: Tileset_1_MV_189
+  - first:
+      213: -8964651143290566677
+    second: Tileset_1_MV_190
+  - first:
+      213: 9090186349900155652
+    second: Tileset_1_MV_191
+  - first:
+      213: -9032772666224049476
+    second: Tileset_1_MV_192
+  - first:
+      213: -8504896014910545901
+    second: Tileset_1_MV_193
+  - first:
+      213: 4651808494519391038
+    second: Tileset_1_MV_194
+  - first:
+      213: 2022979380857394680
+    second: Tileset_1_MV_195
+  - first:
+      213: -8258789858888983202
+    second: Tileset_1_MV_196
+  - first:
+      213: -2118705757280822711
+    second: Tileset_1_MV_197
+  - first:
+      213: 737965737195633079
+    second: Tileset_1_MV_198
+  - first:
+      213: -4774310734815385082
+    second: Tileset_1_MV_199
+  - first:
+      213: 8584630460492777494
+    second: Tileset_1_MV_200
+  - first:
+      213: -1240153074960069633
+    second: Tileset_1_MV_201
+  - first:
+      213: -2741211461724863093
+    second: Tileset_1_MV_202
+  - first:
+      213: -5527373757854012772
+    second: Tileset_1_MV_203
+  - first:
+      213: 179263026176842675
+    second: Tileset_1_MV_204
+  - first:
+      213: -6728387105986295982
+    second: Tileset_1_MV_205
+  - first:
+      213: 2907807635616888488
+    second: Tileset_1_MV_206
+  - first:
+      213: -35444348646607340
+    second: Tileset_1_MV_207
+  - first:
+      213: 4656243528804280941
+    second: Tileset_1_MV_208
+  - first:
+      213: 1867317409755983947
+    second: Tileset_1_MV_209
+  - first:
+      213: 3426893682449738182
+    second: Tileset_1_MV_210
+  - first:
+      213: -2909249209577520108
+    second: Tileset_1_MV_211
+  - first:
+      213: 6707527128852395763
+    second: Tileset_1_MV_212
+  - first:
+      213: 4542078884624907917
+    second: Tileset_1_MV_213
+  - first:
+      213: -2935344048925291275
+    second: Tileset_1_MV_214
+  - first:
+      213: -8413147887413653597
+    second: Tileset_1_MV_215
+  - first:
+      213: -8338923498595146861
+    second: Tileset_1_MV_216
+  - first:
+      213: -9149307621044017690
+    second: Tileset_1_MV_217
+  - first:
+      213: 2647781744275058665
+    second: Tileset_1_MV_218
+  - first:
+      213: 4080334882601010168
+    second: Tileset_1_MV_219
+  - first:
+      213: 659940320411283538
+    second: Tileset_1_MV_220
+  - first:
+      213: -6384133352962057327
+    second: Tileset_1_MV_221
+  - first:
+      213: -8572283286728782677
+    second: Tileset_1_MV_222
+  - first:
+      213: -2841292021162546251
+    second: Tileset_1_MV_223
+  - first:
+      213: 4883249200074135790
+    second: Tileset_1_MV_224
+  - first:
+      213: -4507529064859465205
+    second: Tileset_1_MV_225
+  - first:
+      213: 298393652448663115
+    second: Tileset_1_MV_226
+  - first:
+      213: 8906088404570162490
+    second: Tileset_1_MV_227
+  - first:
+      213: 6578730695206551966
+    second: Tileset_1_MV_228
+  - first:
+      213: 85898542488640319
+    second: Tileset_1_MV_229
+  - first:
+      213: -1408826579206272789
+    second: Tileset_1_MV_230
+  - first:
+      213: 1491886748904452996
+    second: Tileset_1_MV_231
+  - first:
+      213: 8861896296318816946
+    second: Tileset_1_MV_232
+  - first:
+      213: -7899438510872332800
+    second: Tileset_1_MV_233
+  - first:
+      213: 6854182549256674891
+    second: Tileset_1_MV_234
+  - first:
+      213: 5013327111245681390
+    second: Tileset_1_MV_235
+  - first:
+      213: -7630772706774948397
+    second: Tileset_1_MV_236
+  - first:
+      213: 5000719815848519971
+    second: Tileset_1_MV_237
+  - first:
+      213: -5930241450155860535
+    second: Tileset_1_MV_238
+  - first:
+      213: 3766876908840457597
+    second: Tileset_1_MV_239
+  - first:
+      213: -4948766123163335290
+    second: Tileset_1_MV_240
+  - first:
+      213: 7435628064701384865
+    second: Tileset_1_MV_241
+  - first:
+      213: 5117194944857011497
+    second: Tileset_1_MV_242
+  - first:
+      213: -2588012336336403703
+    second: Tileset_1_MV_243
+  - first:
+      213: 146219289394314573
+    second: Tileset_1_MV_244
+  - first:
+      213: -706010835973868237
+    second: Tileset_1_MV_245
+  - first:
+      213: 8753414818537924408
+    second: Tileset_1_MV_246
+  - first:
+      213: -4261380084908118391
+    second: Tileset_1_MV_247
+  - first:
+      213: -3727047409430622697
+    second: Tileset_1_MV_248
+  - first:
+      213: 4918833162907395954
+    second: Tileset_1_MV_249
+  - first:
+      213: -4530537162072758427
+    second: Tileset_1_MV_250
+  - first:
+      213: -7752336812164984546
+    second: Tileset_1_MV_251
+  - first:
+      213: -5895132851381971516
+    second: Tileset_1_MV_252
+  - first:
+      213: -7069900299193950988
+    second: Tileset_1_MV_253
+  - first:
+      213: 4034538800938855067
+    second: Tileset_1_MV_254
+  - first:
+      213: -4066911228089943418
+    second: Tileset_1_MV_255
+  - first:
+      213: -9001826146703592746
+    second: Custom 1_2
+  - first:
+      213: 1590940446639072883
+    second: Custom 1_3
+  - first:
+      213: -2440456383238034299
+    second: Custom 1_4
+  - first:
+      213: -5270494678621697719
+    second: Custom 1_5
+  - first:
+      213: 7404538857347830196
+    second: Custom 1_6
+  - first:
+      213: -292165178786111439
+    second: Custom 1_7
+  - first:
+      213: 8415567630912933188
+    second: Custom 1_8
+  - first:
+      213: -8272649778913466844
+    second: Custom 1_9
+  - first:
+      213: -3842696114525400542
+    second: Custom 1_0
+  - first:
+      213: -6976899646007043831
+    second: Custom 1_10
+  - first:
+      213: 6689748509253281289
+    second: Custom 1_1
+  - first:
+      213: 8009512583371667304
+    second: Custom 1_11
+  - first:
+      213: -8650997888537871393
+    second: Custom 1_12
+  - first:
+      213: -6345871469630734599
+    second: Custom 1_13
+  - first:
+      213: -3632929779969071424
+    second: Custom 1_14
+  - first:
+      213: -7501779014840729152
+    second: Custom 1_15
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 48
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Custom 1_2
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 384
+        width: 87
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d2b8e330d6131380800000000000000
+      internalID: -9001826146703592746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom 1_3
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 240
+        width: 84
+        height: 177
+      alignment: 9
+      pivot: {x: 0.2, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37629b438e7241610800000000000000
+      internalID: 1590940446639072883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom 1_4
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 288
+        width: 93
+        height: 69
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58c234b79d1c12ed0800000000000000
+      internalID: -2440456383238034299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom 1_5
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 312
+        width: 93
+        height: 69
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 949ca2a93017bd6b0800000000000000
+      internalID: -5270494678621697719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom 1_6
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 243
+        width: 33
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b15bcd1cd432c660800000000000000
+      internalID: 7404538857347830196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom 1_7
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 243
+        width: 33
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13027be515502fbf0800000000000000
+      internalID: -292165178786111439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom 1_8
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 146
+        width: 87
+        height: 80
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44d47d73c2a1ac470800000000000000
+      internalID: 8415567630912933188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom 1_9
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 48
+        width: 84
+        height: 177
+      alignment: 9
+      pivot: {x: 0.8, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42626a04bd4a13d80800000000000000
+      internalID: -8272649778913466844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom 1_0
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 240
+        width: 94
+        height: 159
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22290f94e300caac0800000000000000
+      internalID: -3842696114525400542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom 1_10
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 96
+        width: 94
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9099336bcb21d2f90800000000000000
+      internalID: -6976899646007043831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom 1_1
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 288
+        width: 94
+        height: 160
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 906adba43d2c6dc50800000000000000
+      internalID: 6689748509253281289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom 1_11
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 146
+        width: 90
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 867b3e32241872f60800000000000000
+      internalID: 8009512583371667304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom 1_12
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 146
+        width: 90
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdbbb0d514b71f780800000000000000
+      internalID: -8650997888537871393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom 1_13
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 144
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9febf5e258feee7a0800000000000000
+      internalID: -6345871469630734599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom 1_14
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 624
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c6610bfc9d359dc0800000000000000
+      internalID: -3632929779969071424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Custom 1_15
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 480
+        width: 96
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c140fc6bb354e790800000000000000
+      internalID: -7501779014840729152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

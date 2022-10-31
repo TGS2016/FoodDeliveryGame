@@ -1,0 +1,1029 @@
+fileFormatVersion: 2
+guid: b62518cd28343db48870671e05ae4ece
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5110588999638910222
+    second: City Roads_0
+  - first:
+      213: -438200367609382485
+    second: City Roads_1
+  - first:
+      213: 7077646134380516206
+    second: City Roads_2
+  - first:
+      213: -6468922754262017992
+    second: City Roads_3
+  - first:
+      213: 2807915608540348318
+    second: City Roads_4
+  - first:
+      213: -2199366115040283735
+    second: City Roads_5
+  - first:
+      213: -6282816882850284999
+    second: City Roads_6
+  - first:
+      213: 8262324176614221209
+    second: City Roads_7
+  - first:
+      213: -4888176174827309465
+    second: City Roads_8
+  - first:
+      213: 1770430390896324177
+    second: City Roads_9
+  - first:
+      213: 3352356906887021965
+    second: City Roads_10
+  - first:
+      213: -3434619284087909497
+    second: City Roads_11
+  - first:
+      213: 1171198983167576850
+    second: City Roads_12
+  - first:
+      213: -8584422933765901155
+    second: City Roads_13
+  - first:
+      213: 2943554750295935519
+    second: City Roads_14
+  - first:
+      213: -8730904529691346618
+    second: City Roads_15
+  - first:
+      213: -588636646377499650
+    second: City Roads_16
+  - first:
+      213: 1689945358893428337
+    second: City Roads_17
+  - first:
+      213: -3456490106159583946
+    second: City Roads_18
+  - first:
+      213: 4008050314341748693
+    second: City Roads_19
+  - first:
+      213: -2476336114467431061
+    second: City Roads_20
+  - first:
+      213: -239240898512909851
+    second: City Roads_23
+  - first:
+      213: 7353295786544552764
+    second: City Roads_25
+  - first:
+      213: 6306025171135700938
+    second: City Roads_21
+  - first:
+      213: -5816204025137195858
+    second: City Roads_22
+  - first:
+      213: -8714765281746880049
+    second: City Roads_24
+  - first:
+      213: 6209232595584016362
+    second: City Roads_26
+  - first:
+      213: 4205207964199980648
+    second: City Roads_27
+  - first:
+      213: -169458906229675574
+    second: City Roads_28
+  - first:
+      213: 5559412743732851729
+    second: City Roads_29
+  - first:
+      213: -3691190074837429927
+    second: City Roads_30
+  - first:
+      213: -7114925435908136511
+    second: City Roads_31
+  - first:
+      213: 8427045486271825927
+    second: City Roads_32
+  - first:
+      213: -1620361447811903144
+    second: City Roads_33
+  - first:
+      213: -4201392830903812546
+    second: City Roads_34
+  - first:
+      213: 5439636363124626
+    second: City Roads_35
+  - first:
+      213: 1194287498525233659
+    second: City Roads_36
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 0
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 46
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: City Roads_0
+      rect:
+        serializedVersion: 2
+        x: 1679
+        y: 528
+        width: 720
+        height: 624
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e050f7c3e957ce640800000000000000
+      internalID: 5110588999638910222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_1
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1488
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba9723c56133be9f0800000000000000
+      internalID: -438200367609382485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_2
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1392
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e63daa509a9d83260800000000000000
+      internalID: 7077646134380516206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_3
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 1392
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83855c06705c936a0800000000000000
+      internalID: -6468922754262017992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_4
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 1344
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9f72567e58b7f620800000000000000
+      internalID: 2807915608540348318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_5
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 1488
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a33efdcb284a71e0800000000000000
+      internalID: -2199366115040283735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_6
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 1536
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93ab1e43553fec8a0800000000000000
+      internalID: -6282816882850284999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_7
+      rect:
+        serializedVersion: 2
+        x: 2112
+        y: 1536
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 995663e101ca9a270800000000000000
+      internalID: 8262324176614221209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_8
+      rect:
+        serializedVersion: 2
+        x: 2112
+        y: 1488
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 766f3ebeaa5b92cb0800000000000000
+      internalID: -4888176174827309465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_9
+      rect:
+        serializedVersion: 2
+        x: 2112
+        y: 1392
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15e6ee47f05d19810800000000000000
+      internalID: 1770430390896324177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_10
+      rect:
+        serializedVersion: 2
+        x: 2112
+        y: 1344
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d85045368d6f58e20800000000000000
+      internalID: 3352356906887021965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_11
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 1488
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 783db3165f7c550d0800000000000000
+      internalID: -3434619284087909497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_12
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 1392
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21b8009154fe04010800000000000000
+      internalID: 1171198983167576850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_13
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 1392
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d94ba2fe2d00ed880800000000000000
+      internalID: -8584422933765901155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_14
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1392
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1a8d44237b99d820800000000000000
+      internalID: 2943554750295935519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_15
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 649f5eba69895d680800000000000000
+      internalID: -8730904529691346618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_16
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1488
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef354eeb61eb4d7f0800000000000000
+      internalID: -588636646377499650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_17
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1440
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17ea9a6a954e37710800000000000000
+      internalID: 1689945358893428337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_18
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 1440
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63da4bccf841800d0800000000000000
+      internalID: -3456490106159583946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_19
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 1488
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5df8b3c76847f9730800000000000000
+      internalID: 4008050314341748693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_20
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 1536
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6d92b09c6942add0800000000000000
+      internalID: -2476336114467431061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_23
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 1104
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e9846c9bab0eacf0800000000000000
+      internalID: -239240898512909851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_25
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 960
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3b5d55fe872c0660800000000000000
+      internalID: 7353295786544552764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_21
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 1388
+        width: 148
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18.39917, y: 17.615967}
+        - {x: -61.531334, y: -99}
+        - {x: 34.374916, y: -99}
+        - {x: 73.04679, y: -50.036327}
+        - {x: 22.080566, y: 13.339844}
+        - {x: 72.66724, y: 62.904785}
+        - {x: 73.04679, y: 86.10912}
+        - {x: -72.35946, y: 86.10912}
+        - {x: -74, y: 57.084717}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acf173e7b70838750800000000000000
+      internalID: 6306025171135700938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_22
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 1488
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea410843141b84fa0800000000000000
+      internalID: -5816204025137195858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_24
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 1488
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc9f198262fee0780800000000000000
+      internalID: -8714765281746880049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_26
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1488
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aefdf83d520ab2650800000000000000
+      internalID: 6209232595584016362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_27
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1536
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86e88c00d56eb5a30800000000000000
+      internalID: 4205207964199980648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_28
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 1536
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac9672ac506f5adf0800000000000000
+      internalID: -169458906229675574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_29
+      rect:
+        serializedVersion: 2
+        x: 1872
+        y: 1488
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 114f9f57f60072d40800000000000000
+      internalID: 5559412743732851729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_30
+      rect:
+        serializedVersion: 2
+        x: 1872
+        y: 1392
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9511ed60f2246ccc0800000000000000
+      internalID: -3691190074837429927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_31
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 1392
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c1ed453305b24d90800000000000000
+      internalID: -7114925435908136511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_32
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 1344
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7088a4ba831e2f470800000000000000
+      internalID: 8427045486271825927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_33
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 1392
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8511f6729d15389e0800000000000000
+      internalID: -1620361447811903144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_34
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1392
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3efa10fa77a1b5c0800000000000000
+      internalID: -4201392830903812546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_35
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1344
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29f91290253531000800000000000000
+      internalID: 5439636363124626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: City Roads_36
+      rect:
+        serializedVersion: 2
+        x: 1469
+        y: 1488
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf1594df626f29010800000000000000
+      internalID: 1194287498525233659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

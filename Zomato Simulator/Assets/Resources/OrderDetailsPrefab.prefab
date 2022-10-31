@@ -60,7 +60,7 @@ MonoBehaviour:
   HotPlateTimer: 60
   RatingTimer: 60
   FreeForAll: 0
-  isPickedUp: 0
+  _isPickedUp: 0
   foodPic: {fileID: 0}
   Client: {fileID: 0}
   DeliveryAddress: {fileID: 0}
