@@ -25,4 +25,12 @@ public class PlayerInput : MonoBehaviour
     {
         return _PlayerInputAction.Player.Move.ReadValue<Vector2>();
     }
+    public float GetVerticalInput()
+    {
+        return _PlayerInputAction.Player.Move.ReadValue<Vector2>().y;
+    }
+    public float GetHorizontalInput()
+    {
+        return _PlayerInputAction.Player.Move.ReadValue<Vector2>().x;
+    }
 }
