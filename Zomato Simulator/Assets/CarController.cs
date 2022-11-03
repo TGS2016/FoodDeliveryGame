@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,19 +7,24 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
 
+    //CAR THEME
+    public int currentCar;
+    public int currentCarColor;
+
+    public PhotonView pv; 
     private PlayerInput _input;
     private Rigidbody2D _rb2d;
 
     public float speed;
-    
-    public bool canMove { get; set; }
+
+    public bool canDrive;
 
 
     [Header("Car Turn Properties")]
     [SerializeField] float driftFactor;
     [SerializeField] float turnAmount;
 
-    [SerializeField] Sprite[] car_sprites;
+    [SerializeField] List<Sprite> car_sprites;
 
     public SpriteRenderer carSpriteRenderer;
 
@@ -29,20 +35,61 @@ public class CarController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _input = GetComponent<PlayerInput>();
-        _rb2d = GetComponent<Rigidbody2D>();      
-       
-        canMove = true;
+        if (!pv.IsMine) return;
+        
+            _input = GetComponent<PlayerInput>();
+            _rb2d = GetComponent<Rigidbody2D>();
+
+        _rb2d.isKinematic = true;
+
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Move();
+        if (!pv.IsMine) return;
+
+        if (canDrive)
+        {
+            Move();
+        }
 
        
     }
 
+    private void Update()
+    {
+        if (canDrive && _input.GetInteractButton())
+        {
+
+            //EXIT CAR
+            ToggleCar(false);            
+            CommonReferences.Instance.myPlayer.TogglePlayer(true);
+        }
+    }
+
+    internal void ToggleCar(bool enabled)
+    {
+        StartCoroutine(toggleCar(enabled));
+        
+    }
+    IEnumerator toggleCar(bool enabled)
+    {
+        yield return new WaitForEndOfFrame();
+        canDrive = enabled;
+        _rb2d.isKinematic = !enabled;
+    }
+
+
+    internal void SetupCar(int selected_car, int selected_car_color)
+    {
+        currentCar = selected_car;
+        currentCarColor = selected_car_color;
+
+        car_sprites = AllCarInfo.Instance.allCarInfo[selected_car].allColorSprite[selected_car_color].car_sprites;
+        UpdateSpriteAsPerRotation();
+    }
 
     private void Move()
     {
@@ -135,18 +182,3 @@ public class CarController : MonoBehaviour
     
 }
 
-
-[System.Serializable]
-public class CarInfo
-{
-    public float carSpeed;
-    public float carTurnTime;
-    public float maxFuelCapacity;
-    public List<CarSprites> allColorSprite = new List<CarSprites>();
-}
-
-[System.Serializable]
-public class CarSprites
-{
-    public List<Sprite> car_sprites=new List<Sprite>();
-}

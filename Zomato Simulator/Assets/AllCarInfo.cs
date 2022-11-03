@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class AllCarInfo : MonoBehaviour
 {
+    #region Singleton
+    public static AllCarInfo Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
+    #endregion
+
+
     public int carIndex;
     public string carFolder;
     public int subIndex;
@@ -45,3 +54,19 @@ public class AllCarInfo : MonoBehaviour
     }
 }
 
+
+
+[System.Serializable]
+public class CarInfo
+{
+    public float carSpeed;
+    public float carTurnTime;
+    public float maxFuelCapacity;
+    public List<CarSprites> allColorSprite = new List<CarSprites>();
+}
+
+[System.Serializable]
+public class CarSprites
+{
+    public List<Sprite> car_sprites = new List<Sprite>();
+}

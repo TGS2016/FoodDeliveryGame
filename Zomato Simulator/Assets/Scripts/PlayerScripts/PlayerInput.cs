@@ -33,4 +33,8 @@ public class PlayerInput : MonoBehaviour
     {
         return _PlayerInputAction.Player.Move.ReadValue<Vector2>().x;
     }
+    public bool GetInteractButton()
+    {
+        return _PlayerInputAction.Player.F.WasPressedThisFrame();
+    }
 }
