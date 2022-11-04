@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarController : MonoBehaviour
+public class CarController : MonoBehaviour,IPunObservable
 {
 
     //CAR THEME
@@ -172,13 +172,47 @@ public class CarController : MonoBehaviour
         UpdateSpriteAsPerRotation();
     }
 
+
+    public int currentSprite=0;
     private void UpdateSpriteAsPerRotation()
     {
         int spriteIndex =(int) Mathf.Abs((current_angle%360) / turnAmount);
-
+        currentSprite = spriteIndex;
         carSpriteRenderer.sprite = car_sprites[spriteIndex];
     }
 
-    
+    private void UpdateSpriteAsperReceive(int carSpriteIndex)
+    {  
+        carSpriteRenderer.sprite = car_sprites[carSpriteIndex];
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(currentCar);
+            stream.SendNext(currentCarColor);
+            stream.SendNext(currentSprite);
+        }
+        else if (stream.IsReading)
+        {
+            int c_car=(int) stream.ReceiveNext();
+            int c_carcolor= (int) stream.ReceiveNext();
+            int c_carsprite = (int) stream.ReceiveNext();
+
+            if(currentCar != c_car || currentCarColor != c_carcolor)
+            {
+                currentCar = c_car;
+                currentCarColor= c_carcolor;
+
+                car_sprites = AllCarInfo.Instance.allCarInfo[c_car].allColorSprite[c_carcolor].car_sprites;
+
+
+            }
+
+            UpdateSpriteAsperReceive(c_carsprite);
+
+        }
+    }
 }
 
