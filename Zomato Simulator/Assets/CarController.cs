@@ -27,7 +27,10 @@ public class CarController : MonoBehaviour,IPunObservable
     [SerializeField] List<Sprite> car_sprites;
 
     public SpriteRenderer carSpriteRenderer;
-
+    public SpriteRenderer carSpriteRendererTemporary;
+    [SerializeField] GameObject colliderObject;
+    
+    [SerializeField] PolygonCollider2D carCollider;
 
     [SerializeField] private Vector3 drive_offset;
     public Vector3 initial_offset;
@@ -181,11 +184,20 @@ public class CarController : MonoBehaviour,IPunObservable
         int spriteIndex =(int) Mathf.Abs((current_angle%360) / turnAmount);
         currentSpriteIndex = spriteIndex;
         carSpriteRenderer.sprite = car_sprites[spriteIndex];
+        carSpriteRendererTemporary.sprite= car_sprites[spriteIndex];
+
+        DestroyImmediate(colliderObject.GetComponent<PolygonCollider2D>());
+        colliderObject.AddComponent<PolygonCollider2D>();
     }
 
     private void UpdateSpriteAsperReceive(int carSpriteIndex)
     {  
         carSpriteRenderer.sprite = car_sprites[carSpriteIndex];
+
+        carSpriteRendererTemporary.sprite = car_sprites[carSpriteIndex];
+
+        DestroyImmediate(colliderObject.GetComponent<PolygonCollider2D>());
+        colliderObject.AddComponent<PolygonCollider2D>();
     }
 
 

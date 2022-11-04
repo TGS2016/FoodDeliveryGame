@@ -101,7 +101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8811507950281650807, guid: b236d442097d070459d946e99a2e599c, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
-      value: 2.8958335
+      value: 2.875
       objectReference: {fileID: 0}
     - target: {fileID: 8811507950281650807, guid: b236d442097d070459d946e99a2e599c, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
@@ -125,7 +125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8811507950281650807, guid: b236d442097d070459d946e99a2e599c, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
-      value: 2.9583335
+      value: 2.875
       objectReference: {fileID: 0}
     - target: {fileID: 8811507950281650807, guid: b236d442097d070459d946e99a2e599c, type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold

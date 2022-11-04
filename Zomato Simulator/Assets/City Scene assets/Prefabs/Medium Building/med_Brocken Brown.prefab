@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8811507950281650804, guid: be56f83a84637b847917eda4c772294a, type: 3}
       propertyPath: m_Name
-      value: Brocken Brown
+      value: med_Brocken Brown
       objectReference: {fileID: 0}
     - target: {fileID: 8811507950281650805, guid: be56f83a84637b847917eda4c772294a, type: 3}
       propertyPath: m_Sprite
@@ -66,6 +66,26 @@ PrefabInstance:
     - target: {fileID: 8811507950281650807, guid: be56f83a84637b847917eda4c772294a, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8811507950281650807, guid: be56f83a84637b847917eda4c772294a, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
+      value: 4.7708335
+      objectReference: {fileID: 0}
+    - target: {fileID: 8811507950281650807, guid: be56f83a84637b847917eda4c772294a, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8811507950281650807, guid: be56f83a84637b847917eda4c772294a, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
+      value: 0.020833334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8811507950281650807, guid: be56f83a84637b847917eda4c772294a, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8811507950281650807, guid: be56f83a84637b847917eda4c772294a, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
+      value: 4.8125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be56f83a84637b847917eda4c772294a, type: 3}

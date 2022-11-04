@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8811507950281650804, guid: be56f83a84637b847917eda4c772294a, type: 3}
       propertyPath: m_Name
-      value: Medium Building
+      value: med_Blue
       objectReference: {fileID: 0}
     - target: {fileID: 8811507950281650805, guid: be56f83a84637b847917eda4c772294a, type: 3}
       propertyPath: m_Sprite
