@@ -187,6 +187,7 @@ MonoBehaviour:
   selected_car_color: 0
   player_sr: {fileID: 2920100840446361828}
   playerCollider: {fileID: 2920100840446361827}
+  isPlayerenabled: 1
   canEnterCar: 0
 --- !u!114 &6825885953041686892
 MonoBehaviour:
@@ -207,6 +208,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 2920100840446361824}
   - {fileID: 1413392045183824487}
   sceneViewId: 0
   InstantiationId: 0

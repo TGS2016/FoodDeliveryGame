@@ -60,6 +60,8 @@ public class CarController : MonoBehaviour,IPunObservable
 
     private void Update()
     {
+        if (!pv.IsMine) return;
+
         if (canDrive && _input.GetInteractButton())
         {
 
@@ -194,9 +196,9 @@ public class CarController : MonoBehaviour,IPunObservable
     {
         if (stream.IsWriting)
         {
-            stream.SendNext(currentCar);
-            stream.SendNext(currentCarColor);
-            stream.SendNext(currentSpriteIndex);
+            stream.SendNext((int)currentCar);
+            stream.SendNext((int)currentCarColor);
+            stream.SendNext((int)currentSpriteIndex);
         }
         else if (stream.IsReading)
         {
@@ -204,7 +206,7 @@ public class CarController : MonoBehaviour,IPunObservable
             local_car_color = (int) stream.ReceiveNext();
             currentSpriteIndex = (int) stream.ReceiveNext();
 
-            if(currentCar != local_car_index || currentCarColor != local_car_color)
+           if(currentCar != local_car_index || currentCarColor != local_car_color)
             {
                 currentCar = local_car_index;
                 currentCarColor= local_car_color;
@@ -214,7 +216,7 @@ public class CarController : MonoBehaviour,IPunObservable
 
             }
 
-            UpdateSpriteAsperReceive(currentSpriteIndex);
+             UpdateSpriteAsperReceive(currentSpriteIndex);
 
         }
     }

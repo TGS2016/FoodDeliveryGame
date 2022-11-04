@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour,IPunObservable
 {
     private PlayerInput _input;
    
@@ -77,17 +77,28 @@ public class PlayerController : MonoBehaviour
         }
 #endif
     }
-    
+
+    public bool isPlayerenabled = true;
     public void TogglePlayer(bool enabled)
     {        
-        Debug.Log("player toggled" + enabled);
+        
+        //Debug.Log("player toggled" + enabled);
 
         /*this.gameObject.SetActive(enabled);*/
         player_sr.enabled = enabled;
         _rb2d.isKinematic = !enabled;
         playerCollider.enabled = enabled;
 
-        canMove = enabled;    
+
+        canMove = enabled;
+       
+       isPlayerenabled = enabled;
+        if (enabled)
+        {
+            //CHANGE PLAYER POSITION
+
+        }
+        
     }
 
     private void FixedUpdate()
@@ -116,6 +127,23 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("car") && collision.GetComponent<PhotonView>().IsMine)
         {
             canEnterCar = false;
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(isPlayerenabled);
+        }
+        else if (stream.IsReading)
+        {
+            bool playerEnabled = (bool)stream.ReceiveNext();
+            if(playerEnabled != isPlayerenabled)
+            {
+                Debug.Log("TOGGLEED");
+                TogglePlayer(playerEnabled);
+            }
         }
     }
 }
