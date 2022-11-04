@@ -186,6 +186,10 @@ public class CarController : MonoBehaviour,IPunObservable
         carSpriteRenderer.sprite = car_sprites[carSpriteIndex];
     }
 
+
+    int local_car_index=0;
+    int local_car_color=0;
+
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
@@ -196,16 +200,16 @@ public class CarController : MonoBehaviour,IPunObservable
         }
         else if (stream.IsReading)
         {
-            int c_car=(int) stream.ReceiveNext();
-            int c_carcolor= (int) stream.ReceiveNext();
+            local_car_index = (int) stream.ReceiveNext();
+            local_car_color = (int) stream.ReceiveNext();
             int c_carsprite = (int) stream.ReceiveNext();
 
-            if(currentCar != c_car || currentCarColor != c_carcolor)
+            if(currentCar != local_car_index || currentCarColor != local_car_color)
             {
-                currentCar = c_car;
-                currentCarColor= c_carcolor;
+                currentCar = local_car_index;
+                currentCarColor= local_car_color;
 
-                car_sprites = AllCarInfo.Instance.allCarInfo[c_car].allColorSprite[c_carcolor].car_sprites;
+                car_sprites = AllCarInfo.Instance.allCarInfo[currentCar].allColorSprite[currentCarColor].car_sprites;
 
 
             }
