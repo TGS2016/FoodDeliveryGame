@@ -170,7 +170,7 @@ MonoBehaviour:
   canMove: 0
   selected_car: 0
   selected_car_color: 0
-  playerCollider: {fileID: 0}
+  playerCollider: {fileID: 6392694944513996491}
   player_sr: {fileID: 2920100840446361828}
   isPlayerenabled: 1
   canEnterCar: 0

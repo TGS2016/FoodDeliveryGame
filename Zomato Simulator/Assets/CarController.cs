@@ -36,6 +36,11 @@ public class CarController : MonoBehaviour,IPunObservable
     [SerializeField] private Vector3 drive_offset;
     public Vector3 initial_offset;
     public float current_angle;
+
+
+
+    [Header("Car Fuel")]
+    [SerializeField] float currentFuel;
     // Start is called before the first frame update
     void Start()
     {
@@ -93,12 +98,20 @@ public class CarController : MonoBehaviour,IPunObservable
         currentCar = selected_car;
         currentCarColor = selected_car_color;
 
+        currentFuel = AllCarInfo.Instance.allCarInfo[selected_car].maxFuelCapacity;
+
         car_sprites = AllCarInfo.Instance.allCarInfo[selected_car].allColorSprite[selected_car_color].car_sprites;
         UpdateSpriteAsPerRotation();
     }
 
     private void Move()
     {
+        if (currentFuel <= 0)
+        {
+            _rb2d.drag = Mathf.Lerp(_rb2d.drag, 3f, Time.fixedDeltaTime * 3);
+            return;
+        }
+
         if (_input.GetVerticalInput() == 0)
         {
             _rb2d.drag = Mathf.Lerp(_rb2d.drag, 3f, Time.fixedDeltaTime * 3);
@@ -127,6 +140,12 @@ public class CarController : MonoBehaviour,IPunObservable
 
         Vector3 curr_velocity = _rb2d.velocity;
         Vector3 desiredVelocity = drive_offset.normalized;
+
+        if(_input.GetPlayerMovement() != Vector2.zero)
+        {
+            currentFuel -= Time.deltaTime * AllCarInfo.Instance.allCarInfo[currentCar].FuelBURNAmount;
+        }
+
 
         _rb2d.velocity = Vector3.Lerp(_rb2d.velocity,desiredVelocity * speed * _input.GetVerticalInput() ,Time.fixedDeltaTime);
 
