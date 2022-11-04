@@ -7,10 +7,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour,IPunObservable
 {
     private PlayerInput _input;
+    private Rigidbody2D _rb2d;
+    private Animator _animator;
+    private PhotonView PV;
+    private Direction _direction;
    
 
     public float speed;
-    private PhotonView PV;
     public bool canMove;
 
 
@@ -18,14 +21,14 @@ public class PlayerController : MonoBehaviour,IPunObservable
     public int selected_car;
     public int selected_car_color;
 
-    private Rigidbody2D _rb2d;
-    [SerializeField] SpriteRenderer player_sr;
     [SerializeField] Collider2D playerCollider;
+    [SerializeField] SpriteRenderer player_sr;
 
     private void Awake()
     {
         _input = GetComponent<PlayerInput>();
         _rb2d = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
         PV = GetComponent<PhotonView>();
         if (PV.IsMine)
         {
@@ -47,6 +50,7 @@ public class PlayerController : MonoBehaviour,IPunObservable
 
     private void Update()
     {
+        if (!PV.IsMine) return;
         if(canEnterCar && _input.GetInteractButton())
         {
             canEnterCar = false;
@@ -57,30 +61,49 @@ public class PlayerController : MonoBehaviour,IPunObservable
             CommonReferences.Instance.SwitchCamera(CAMERA_TYPE.CAR);
         }
 
-#if UNITY_EDITOR
-
-        if (Input.GetKeyDown(KeyCode.Tab))
+        Vector2 tempMov = _input.GetPlayerMovement();
+        int animatorStateValue = tempMov.magnitude > 0 ? 4 : 0;
+       
+        if(tempMov.y != 0)
         {
-            selected_car++;
-            if (selected_car >= AllCarInfo.Instance.allCarInfo.Count)
-            {
-                selected_car = 0;
-            }
-
-            CommonReferences.Instance.myCar.SetupCar(selected_car,selected_car_color);
+            _direction = tempMov.y > 0 ? Direction.back : Direction.front;
         }
-        if (Input.GetKeyDown(KeyCode.H))
+        else if (tempMov.x != 0)
         {
-            selected_car_color++;
-            if (selected_car_color >= 8)
+            _direction = tempMov.x > 0 ? Direction.right : Direction.left;
+        }
+
+        animatorStateValue += (int)_direction;
+        _animator.SetFloat("State", animatorStateValue);
+
+        
+
+#if UNITY_EDITOR
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
             {
-                selected_car_color = 0;
+                selected_car++;
+                if (selected_car >= AllCarInfo.Instance.allCarInfo.Count)
+                {
+                    selected_car = 0;
+                }
+
+                CommonReferences.Instance.myCar.SetupCar(selected_car, selected_car_color);
             }
-            CommonReferences.Instance.myCar.SetupCar(selected_car, selected_car_color);
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                selected_car_color++;
+                if (selected_car_color >= 8)
+                {
+                    selected_car_color = 0;
+                }
+                CommonReferences.Instance.myCar.SetupCar(selected_car, selected_car_color);
+            }
         }
 #endif
     }
 
+    
     public bool isPlayerenabled = true;
     public void TogglePlayer(bool enabled)
     {        
@@ -148,5 +171,13 @@ public class PlayerController : MonoBehaviour,IPunObservable
                 TogglePlayer(playerEnabled);
             }
         }
+    }
+
+    public enum Direction
+    {
+        back,
+        front,
+        left,
+        right
     }
 }

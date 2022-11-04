@@ -133,3 +133,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
+--- !u!1 &1442765841167751772 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8811507950281650804, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
+  m_PrefabInstance: {fileID: 7948141034076006440}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-4029088094936898318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442765841167751772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83fb003c319c8340b340c00c8b1e01c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FoodServed: []
+  Orders: []
+  AcceptingCapacity: 5
+  isInitialized: 0

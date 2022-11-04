@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2920100840446361829}
   - component: {fileID: 2920100840446361828}
-  - component: {fileID: 2920100840446361827}
   - component: {fileID: 2920100840446361838}
   - component: {fileID: 2920100840446361826}
   - component: {fileID: 2920100840446361825}
@@ -19,6 +18,7 @@ GameObject:
   - component: {fileID: 1413392045183824487}
   - component: {fileID: -7249627930467151215}
   - component: {fileID: -8312715795590890591}
+  - component: {fileID: 6392694944513996491}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -85,28 +85,12 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.96, y: 1.92}
+  m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!70 &2920100840446361827
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2920100840446361831}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.96}
-  m_Size: {x: 0.96, y: 1.92}
-  m_Direction: 0
 --- !u!50 &2920100840446361838
 Rigidbody2D:
   serializedVersion: 4
@@ -182,12 +166,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d680a8d1abea6c84fb4676b7a0db0175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 5
   canMove: 0
   selected_car: 0
   selected_car_color: 0
+  playerCollider: {fileID: 0}
   player_sr: {fileID: 2920100840446361828}
-  playerCollider: {fileID: 2920100840446361827}
   isPlayerenabled: 1
   canEnterCar: 0
 --- !u!114 &6825885953041686892
@@ -261,3 +245,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &6392694944513996491
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2920100840446361831}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.2}
+  serializedVersion: 2
+  m_Radius: 0.3
