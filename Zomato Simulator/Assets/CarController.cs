@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CarController : MonoBehaviour,IPunObservable
 {
 
@@ -71,7 +72,6 @@ public class CarController : MonoBehaviour,IPunObservable
             //EXIT CAR
             ToggleCar(false);            
             CommonReferences.Instance.myPlayer.TogglePlayer(true);
-            CommonReferences.Instance.SwitchCamera(CAMERA_TYPE.PLAYER);
         }
     }
 
@@ -95,8 +95,6 @@ public class CarController : MonoBehaviour,IPunObservable
 
         car_sprites = AllCarInfo.Instance.allCarInfo[selected_car].allColorSprite[selected_car_color].car_sprites;
         UpdateSpriteAsPerRotation();
-
-        
     }
 
     private void Move()
