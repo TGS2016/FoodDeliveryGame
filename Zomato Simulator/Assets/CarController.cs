@@ -173,11 +173,11 @@ public class CarController : MonoBehaviour,IPunObservable
     }
 
 
-    public int currentSprite=0;
+    public int currentSpriteIndex=0;
     private void UpdateSpriteAsPerRotation()
     {
         int spriteIndex =(int) Mathf.Abs((current_angle%360) / turnAmount);
-        currentSprite = spriteIndex;
+        currentSpriteIndex = spriteIndex;
         carSpriteRenderer.sprite = car_sprites[spriteIndex];
     }
 
@@ -196,13 +196,13 @@ public class CarController : MonoBehaviour,IPunObservable
         {
             stream.SendNext(currentCar);
             stream.SendNext(currentCarColor);
-            stream.SendNext(currentSprite);
+            stream.SendNext(currentSpriteIndex);
         }
         else if (stream.IsReading)
         {
             local_car_index = (int) stream.ReceiveNext();
             local_car_color = (int) stream.ReceiveNext();
-            int c_carsprite = (int) stream.ReceiveNext();
+            currentSpriteIndex = (int) stream.ReceiveNext();
 
             if(currentCar != local_car_index || currentCarColor != local_car_color)
             {
@@ -214,7 +214,7 @@ public class CarController : MonoBehaviour,IPunObservable
 
             }
 
-            UpdateSpriteAsperReceive(c_carsprite);
+            UpdateSpriteAsperReceive(currentSpriteIndex);
 
         }
     }
