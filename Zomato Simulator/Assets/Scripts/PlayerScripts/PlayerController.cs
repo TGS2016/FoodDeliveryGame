@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour,IPunObservable
                 CommonReferences.Instance.myPV = this.PV;
                 CommonReferences.Instance.myCar = car.GetComponent<CarController>();
                 CommonReferences.Instance.myCar.SetupCar(selected_car, selected_car_color);
+
+                CommonReferences.Instance.SetupCameras();
             }            
 
         }
@@ -52,6 +54,7 @@ public class PlayerController : MonoBehaviour,IPunObservable
             //Debug.Log(_input.GetInteractButton());
             TogglePlayer(false);
             CommonReferences.Instance.myCar.ToggleCar(true);
+            CommonReferences.Instance.SwitchCamera(CAMERA_TYPE.CAR);
         }
 
 #if UNITY_EDITOR

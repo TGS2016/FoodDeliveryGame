@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Photon.Pun;
+using Cinemachine;
 using Random = UnityEngine.Random;
 
 public class CommonReferences : MonoBehaviour
@@ -27,6 +28,42 @@ public class CommonReferences : MonoBehaviour
 
     public static Action OnOrderDispatched;
     public static Action<int> OnDisplayHouse;
+
+    public CinemachineVirtualCamera camera_player;
+    public CinemachineVirtualCamera camera_car;
+
+    
+    public void SwitchCamera(CAMERA_TYPE whichCamera)
+    {
+        switch (whichCamera)
+        {
+            case CAMERA_TYPE.CAR:
+                {
+                    camera_car.Priority = 10;
+                    camera_player.Priority = 0;
+                    break;
+                }
+               
+            case CAMERA_TYPE.PLAYER:
+                {
+                    camera_car.Priority = 0;
+                    camera_player.Priority = 10;
+                    break;
+                }
+        }
+    }
+
+    internal void SetupCameras()
+    {
+        camera_car.Follow = myCar.transform;
+        camera_car.LookAt = myCar.transform;
+
+
+        camera_player.Follow = myPlayer.transform;
+        camera_player.LookAt = myPlayer.transform;
+        Debug.Log("CA<ERA");
+
+    }
 
     private void Awake()
     {
@@ -112,4 +149,9 @@ public class CommonReferences : MonoBehaviour
         Houses[HouseID].HouseDelivered(foodID);
     }
     #endregion
+}
+
+public enum CAMERA_TYPE
+{
+    CAR,PLAYER
 }
