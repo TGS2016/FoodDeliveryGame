@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5110814424531799870}
   - component: {fileID: 5110814424531799871}
   m_Layer: 0
-  m_Name: Open Food Panel
+  m_Name: _Open Food Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8811507950281650806}
   - component: {fileID: 8811507950281650805}
-  - component: {fileID: 8811507950281650807}
+  - component: {fileID: -8435978869255844746}
+  - component: {fileID: -4179841604899422759}
   m_Layer: 0
   m_Name: Small Building
   m_TagString: Untagged
@@ -28,7 +29,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -30, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7688012436323717168}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -70,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1103086347
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -83,8 +85,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!60 &8811507950281650807
-PolygonCollider2D:
+--- !u!61 &-8435978869255844746
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -106,10 +108,82 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 1}
-      - {x: -0.95105654, y: 0.30901697}
-      - {x: -0.5877852, y: -0.80901706}
-      - {x: 0.58778536, y: -0.80901694}
-      - {x: 0.9510565, y: 0.30901712}
+  serializedVersion: 2
+  m_Size: {x: 0.0001, y: 0.0001}
+  m_EdgeRadius: 0
+--- !u!114 &-4179841604899422759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8811507950281650804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a886a6335e024a94a82b5364ea81d172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PendingFood: []
+  ClientPic: []
+--- !u!1001 &3196443270065774336
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8811507950281650806}
+    m_Modifications:
+    - target: {fileID: 5110814424531799856, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110814424531799856, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110814424531799856, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110814424531799856, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110814424531799856, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110814424531799856, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110814424531799856, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110814424531799856, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110814424531799856, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110814424531799856, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110814424531799856, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110814424531799857, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+      propertyPath: m_Name
+      value: _Open Food Panel
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+--- !u!4 &7688012436323717168 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5110814424531799856, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+  m_PrefabInstance: {fileID: 3196443270065774336}
+  m_PrefabAsset: {fileID: 0}

@@ -146,7 +146,7 @@ public class CarController : MonoBehaviour,IPunObservable
             _rb2d.drag = 0.2f;            
         }
 
-        if (Mathf.Abs(_rb2d.velocity.magnitude) > 0.05)
+        if (Mathf.Abs(_input.GetVerticalInput()) > 0)
         {
             Debug.Log("Change Rotation");
 
