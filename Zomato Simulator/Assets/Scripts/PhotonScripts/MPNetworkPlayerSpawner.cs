@@ -36,6 +36,16 @@ public class MPNetworkPlayerSpawner : MonoBehaviourPunCallbacks
 
     private void OnApplicationQuit()
     {
+        if (spawnedPlayerPrefab)
+        {
+            if(spawnedPlayerPrefab.GetComponent<PhotonView>().IsMine)
+            {
+                Debug.Log("still mine");
+                PhotonNetwork.Destroy(spawnedPlayerPrefab);
+
+                Debug.Log("Destroyed Prefab");
+            }
+        }
         if (PhotonNetwork.InRoom)
         {
             PhotonNetwork.LeaveRoom();

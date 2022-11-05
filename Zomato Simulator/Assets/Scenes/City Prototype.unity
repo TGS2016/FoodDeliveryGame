@@ -397,7 +397,8 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1190458691}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8415414490144454280, guid: cc58d77525b0bca468557d7e8051e744, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cc58d77525b0bca468557d7e8051e744, type: 3}
 --- !u!1 &278604896
 GameObject:
@@ -614,7 +615,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8171479496956404954, guid: 3dd6aacf851080f45825a2fe82a6d4d8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3dd6aacf851080f45825a2fe82a6d4d8, type: 3}
 --- !u!1 &492626796
 GameObject:
@@ -837,7 +839,8 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1190458691}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8415414490144454280, guid: cc58d77525b0bca468557d7e8051e744, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cc58d77525b0bca468557d7e8051e744, type: 3}
 --- !u!1 &600500315
 GameObject:
@@ -1189,6 +1192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa82c5b4be6e2a47958b1dc6c2ac9a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  orderList: {fileID: 1190458691}
   PendingOrdersParent: {fileID: 0}
   FoodUIPrefab: {fileID: 0}
   FuelRechargeBTN: {fileID: 0}
@@ -2991,7 +2995,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8171479496956404954, guid: 3dd6aacf851080f45825a2fe82a6d4d8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3dd6aacf851080f45825a2fe82a6d4d8, type: 3}
 --- !u!4 &843190798 stripped
 Transform:
@@ -3633,7 +3638,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8171479496956404954, guid: 3dd6aacf851080f45825a2fe82a6d4d8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3dd6aacf851080f45825a2fe82a6d4d8, type: 3}
 --- !u!4 &1625239946 stripped
 Transform:
@@ -4075,10 +4081,15 @@ PrefabInstance:
       value: Restaurant (2)
       objectReference: {fileID: 0}
     - target: {fileID: 8415414490144454280, guid: cc58d77525b0bca468557d7e8051e744, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415414490144454280, guid: cc58d77525b0bca468557d7e8051e744, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1190458691}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8415414490144454280, guid: cc58d77525b0bca468557d7e8051e744, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cc58d77525b0bca468557d7e8051e744, type: 3}
 --- !u!1 &1988109683
 GameObject:
@@ -4630,7 +4641,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8171479496956404954, guid: 3dd6aacf851080f45825a2fe82a6d4d8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3dd6aacf851080f45825a2fe82a6d4d8, type: 3}
 --- !u!1001 &8415414489342011630
 PrefabInstance:
@@ -4691,5 +4703,6 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1190458691}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8415414490144454280, guid: cc58d77525b0bca468557d7e8051e744, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cc58d77525b0bca468557d7e8051e744, type: 3}

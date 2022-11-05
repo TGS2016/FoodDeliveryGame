@@ -6,6 +6,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
+    public OrderList orderList;
     internal object usergender;
 
     private void Awake()

@@ -1,7 +1,7 @@
 using UnityEngine;
 using Photon.Pun;
 using System.Collections.Generic;
-
+using UnityEngine.EventSystems;
 
 public class House : MonoBehaviour
 {
@@ -17,6 +17,16 @@ public class House : MonoBehaviour
         icon = transform.GetChild(0).gameObject;
         iconCollider = icon.GetComponent<Collider2D>();
         HomeID = transform.GetSiblingIndex();
+
+        EventTrigger eventTrigger = this.transform.GetChild(0).gameObject.AddComponent<EventTrigger>();
+        EventTrigger.Entry entry = new EventTrigger.Entry { eventID = EventTriggerType.PointerClick };
+        entry.callback.AddListener((data) => { OnPointerClickDelegate((PointerEventData)data); });
+        eventTrigger.triggers.Add(entry);
+    }
+
+    private void OnPointerClickDelegate(PointerEventData data)
+    {
+        CommonReferences.Instance.myInventory.OpenBag(transform.GetSiblingIndex());
     }
 
     #region Trigger Interactions

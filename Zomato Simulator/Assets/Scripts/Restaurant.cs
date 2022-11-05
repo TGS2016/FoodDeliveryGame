@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.EventSystems;
 
 public class Restaurant : MonoBehaviour
 {
@@ -26,7 +27,15 @@ public class Restaurant : MonoBehaviour
     private void Awake()
     {
         PendingOrdersIcon = transform.GetChild(0).gameObject;
-        
+        EventTrigger eventTrigger = this.transform.GetChild(0).gameObject.AddComponent<EventTrigger>();
+        EventTrigger.Entry entry = new EventTrigger.Entry { eventID = EventTriggerType.PointerClick };
+        entry.callback.AddListener((data) => { OnPointerClickDelegate((PointerEventData)data); });
+        eventTrigger.triggers.Add(entry);
+    }
+
+    private void OnPointerClickDelegate(PointerEventData data)
+    {
+        UIManager.Instance.orderList.ShowOrders(this);
     }
     private void Start()
     {

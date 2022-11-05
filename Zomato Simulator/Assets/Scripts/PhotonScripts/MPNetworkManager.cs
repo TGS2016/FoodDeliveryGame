@@ -141,8 +141,10 @@ public class MPNetworkManager : MonoBehaviourPunCallbacks
         myRoom.CleanupCacheOnLeave = false;
         myRoom.CustomRoomProperties = expectedCustomRoomProperties;
         myRoom.CustomRoomPropertiesForLobby = CreateRoomPropertiesForLobby();
+        myRoom.PlayerTtl = 0;
         
-        
+
+
         PhotonNetwork.CreateRoom(null, myRoom, null);
     }
 
@@ -198,8 +200,30 @@ public class MPNetworkManager : MonoBehaviourPunCallbacks
         Debug.Log("OnPlayerLeftRoom");
         base.OnPlayerLeftRoom(otherPlayer);
         UIManager.Instance.UpdateStatus(otherPlayer.NickName + " Left");
+
+        PlayerController[] all_player = FindObjectsOfType<PlayerController>();
+        CarController[] all_cars = FindObjectsOfType<CarController>();
+        
+        for (int i = 0; i < all_player.Length; i++)
+        {
+            var PV = all_player[i].GetComponent<PhotonView>();
+
+            if (PV.ControllerActorNr != PV.CreatorActorNr && PV.IsMine)
+            {
+                PhotonNetwork.Destroy(all_player[i].gameObject);
+            }
+        }
+        for (int i = 0; i < all_cars.Length; i++)
+        {
+            var PV = all_cars[i].GetComponent<PhotonView>();
+            if (PV.ControllerActorNr != PV.CreatorActorNr && PV.IsMine)
+            {
+                PhotonNetwork.Destroy(all_cars[i].gameObject);
+            }
+        }
     }
     #endregion
+
 
 
 }
