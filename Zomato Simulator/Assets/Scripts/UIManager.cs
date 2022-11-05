@@ -39,4 +39,19 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject FoodUIPrefab;
 
 
+    [Header("FUEL AREA")]
+    [SerializeField] GameObject FuelRechargeBTN;
+
+    public void ToggleRechargeButton(bool enable)
+    {
+        FuelRechargeBTN.SetActive(enable);
+    }
+    public void RechargeFuel()
+    {
+        //COINS DEDUCT
+
+        CommonReferences.Instance.myCar.RechargeFuel();
+    }
+
+
 }

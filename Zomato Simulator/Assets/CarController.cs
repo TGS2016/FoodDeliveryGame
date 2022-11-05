@@ -41,6 +41,10 @@ public class CarController : MonoBehaviour,IPunObservable
 
     [Header("Car Fuel")]
     [SerializeField] float currentFuel;
+    [SerializeField] float maxFuel;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -99,6 +103,7 @@ public class CarController : MonoBehaviour,IPunObservable
         currentCarColor = selected_car_color;
 
         currentFuel = AllCarInfo.Instance.allCarInfo[selected_car].maxFuelCapacity;
+        maxFuel= AllCarInfo.Instance.allCarInfo[selected_car].maxFuelCapacity;
 
         car_sprites = AllCarInfo.Instance.allCarInfo[selected_car].allColorSprite[selected_car_color].car_sprites;
         UpdateSpriteAsPerRotation();
@@ -251,6 +256,39 @@ public class CarController : MonoBehaviour,IPunObservable
              UpdateSpriteAsperReceive(currentSpriteIndex);
 
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!pv.IsMine) return;
+
+        if (collision.CompareTag("gas_station"))
+        {
+            UIManager.Instance.ToggleRechargeButton(true);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!pv.IsMine) return;
+
+        if (collision.CompareTag("gas_station"))
+        {
+            UIManager.Instance.ToggleRechargeButton(false);
+        }
+    }
+
+    public void RechargeFuel()
+    {
+        float remainingFuel = maxFuel - currentFuel;
+        float gasPrice = remainingFuel * 10;
+        Debug.Log(gasPrice);
+
+        //CHECK USER COINS 
+
+        //DEDUCT COINS 
+
+
+        currentFuel = maxFuel;
     }
 }
 
