@@ -34,4 +34,13 @@ public class MPNetworkPlayerSpawner : MonoBehaviourPunCallbacks
         }
     }
 
+    private void OnApplicationQuit()
+    {
+        if (PhotonNetwork.InRoom)
+        {
+            PhotonNetwork.LeaveRoom();
+        }
+        Debug.Log("QUIT APPLICATION");
+    }
+
 }
