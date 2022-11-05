@@ -43,6 +43,42 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8740910622418304135, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
+      propertyPath: m_Size.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740910622418304135, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
+      propertyPath: m_Size.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740910622418304135, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
+      propertyPath: m_Offset.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740910622418304135, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740910622418304135, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740910622418304135, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740910622418304135, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740910622418304135, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740910622418304135, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8811507950281650804, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
       propertyPath: m_Name
       value: store_Brown_1.1

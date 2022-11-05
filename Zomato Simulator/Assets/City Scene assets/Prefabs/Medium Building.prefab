@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8811507950281650806}
   - component: {fileID: 8811507950281650805}
   - component: {fileID: 843121655556167606}
+  - component: {fileID: 3671848309527861433}
   - component: {fileID: -662823259772305416}
   m_Layer: 0
   m_Name: Medium Building
@@ -111,6 +112,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.0001, y: 0.0001}
   m_EdgeRadius: 0
+--- !u!61 &3671848309527861433
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8811507950281650804}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.0001, y: 0.0001}
+  m_EdgeRadius: 0
 --- !u!114 &-662823259772305416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +151,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PendingFood: []
-  ClientPic: []
+  ClientPic:
+  - {fileID: 1515553619330694445}
+  - {fileID: 81331256799371510}
+  - {fileID: 6354026305891058555}
+  - {fileID: 5723167188177592115}
 --- !u!1001 &4992558852768570935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -180,10 +211,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: _Open Food Panel
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5110814424531799871, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
 --- !u!4 &262444041661681927 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5110814424531799856, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+  m_PrefabInstance: {fileID: 4992558852768570935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1515553619330694445 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5783028944953664282, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+  m_PrefabInstance: {fileID: 4992558852768570935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &81331256799371510 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4929703865200754369, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+  m_PrefabInstance: {fileID: 4992558852768570935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6354026305891058555 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2118706755950042444, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+  m_PrefabInstance: {fileID: 4992558852768570935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &5723167188177592115 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 731245528251072772, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
   m_PrefabInstance: {fileID: 4992558852768570935}
   m_PrefabAsset: {fileID: 0}

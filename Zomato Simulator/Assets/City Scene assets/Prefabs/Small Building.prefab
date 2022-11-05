@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8811507950281650806}
   - component: {fileID: 8811507950281650805}
   - component: {fileID: -8435978869255844746}
+  - component: {fileID: -8211087322995812007}
   - component: {fileID: -4179841604899422759}
   m_Layer: 0
   m_Name: Small Building
@@ -111,6 +112,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.0001, y: 0.0001}
   m_EdgeRadius: 0
+--- !u!61 &-8211087322995812007
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8811507950281650804}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.0001, y: 0.0001}
+  m_EdgeRadius: 0
 --- !u!114 &-4179841604899422759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +151,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PendingFood: []
-  ClientPic: []
+  ClientPic:
+  - {fileID: 8943443078672727066}
+  - {fileID: 7509153952489562561}
+  - {fileID: 3547469428132807244}
+  - {fileID: 2772506362763730436}
 --- !u!1001 &3196443270065774336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -185,5 +216,25 @@ PrefabInstance:
 --- !u!4 &7688012436323717168 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5110814424531799856, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+  m_PrefabInstance: {fileID: 3196443270065774336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &8943443078672727066 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5783028944953664282, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+  m_PrefabInstance: {fileID: 3196443270065774336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &7509153952489562561 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4929703865200754369, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+  m_PrefabInstance: {fileID: 3196443270065774336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &3547469428132807244 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2118706755950042444, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
+  m_PrefabInstance: {fileID: 3196443270065774336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2772506362763730436 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 731245528251072772, guid: 67d8dd241a275454b829cc8c5bcc10eb, type: 3}
   m_PrefabInstance: {fileID: 3196443270065774336}
   m_PrefabAsset: {fileID: 0}

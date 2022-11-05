@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour,IPunObservable
     private Rigidbody2D _rb2d;
     private Animator _animator;
     private PhotonView PV;
+    private CarController myCar;
     private Direction _direction;
    
 
@@ -30,15 +31,18 @@ public class PlayerController : MonoBehaviour,IPunObservable
         _rb2d = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         PV = GetComponent<PhotonView>();
+        
+
         if (PV.IsMine)
         {
 
             GameObject car = PhotonNetwork.Instantiate("Car", this.transform.position + new Vector3(3, 0, 0), Quaternion.identity);
 
             if (CommonReferences.Instance) {
+                
                 CommonReferences.Instance.myPlayer = this;
                 CommonReferences.Instance.myPV = this.PV;
-                CommonReferences.Instance.myCar = car.GetComponent<CarController>();
+                CommonReferences.Instance.myCar= myCar = car.GetComponent<CarController>();
                 CommonReferences.Instance.myCar.SetupCar(selected_car, selected_car_color);
 
                 CommonReferences.Instance.SetupCameras();
@@ -57,7 +61,7 @@ public class PlayerController : MonoBehaviour,IPunObservable
             //Enter Car
             //Debug.Log(_input.GetInteractButton());
             TogglePlayer(false);
-            CommonReferences.Instance.myCar.ToggleCar(true);
+            myCar.ToggleCar(true);
             CommonReferences.Instance.SwitchCamera(CAMERA_TYPE.CAR);
         }
 
@@ -88,7 +92,7 @@ public class PlayerController : MonoBehaviour,IPunObservable
                     selected_car = 0;
                 }
 
-                CommonReferences.Instance.myCar.SetupCar(selected_car, selected_car_color);
+                myCar.SetupCar(selected_car, selected_car_color);
             }
             if (Input.GetKeyDown(KeyCode.H))
             {
@@ -97,7 +101,7 @@ public class PlayerController : MonoBehaviour,IPunObservable
                 {
                     selected_car_color = 0;
                 }
-                CommonReferences.Instance.myCar.SetupCar(selected_car, selected_car_color);
+                myCar.SetupCar(selected_car, selected_car_color);
             }
         }
 #endif
@@ -117,12 +121,16 @@ public class PlayerController : MonoBehaviour,IPunObservable
 
 
         canMove = enabled;
+        isPlayerenabled = enabled;
        
-       isPlayerenabled = enabled;
-        if (enabled)
+        if (!enabled)
         {
+            this.transform.parent = myCar.transform;
             //CHANGE PLAYER POSITION
-
+        }
+        else
+        {
+            this.transform.parent = null;
         }
         
     }
