@@ -172,11 +172,15 @@ public class OrderDetails : MonoBehaviour, IPunObservable
 
     public void TransferDataToNewOrder(OrderDetails NewOrder)
     {
+        Debug.LogWarning(NewOrder == null) ;
         NewOrder.HomeID = this.HomeID;
         NewOrder.DeliveryAddress = this.DeliveryAddress;
         NewOrder.ClientPic = this.ClientPic;
 
         NewOrder.myUIPrefab.GetComponent<FoodIconDetailsHolder>().orderDetails = NewOrder;
+
+        int originalHouseID = CommonReferences.Houses[HomeID].PendingFood.IndexOf(this);
+        CommonReferences.Houses[HomeID].PendingFood[originalHouseID] = NewOrder;
     }
 
     public void TransferOwnership()

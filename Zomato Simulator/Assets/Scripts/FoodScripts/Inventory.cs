@@ -109,23 +109,30 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
         int FoodID = foodDetails.transform.GetSiblingIndex();
         OrderDetails ClickedFood = myPickedUpFood[FoodID];
         House House = CommonReferences.Houses[HouseID_ofClickedHouse];
+
+        var foodtobedeleted = ClickedFood;
         if (DidTheyOrderThisFood(ClickedFood, House))
         {
             if (!IsOwnerSame(ClickedFood, House))
             {
                 var actualFood = myPickedUpFood.Find(x => x.HomeID == HouseID_ofClickedHouse);
-                ClickedFood.TransferDataToNewOrder(actualFood);
+               // if (actualFood != null)
+                {
+                    ClickedFood.TransferDataToNewOrder(actualFood);
+                    ClickedFood = actualFood;
+                }
+               
             }
-            Debug.Log("Item being delivered");
+            
 
 
             CommonReferences.Instance.HouseDelivered(ClickedFood,HouseID_ofClickedHouse);
 
-            Debug.Log("removed now");
+            
             myPickedUpFood.RemoveAt(FoodID);
 
-            DestroyImmediate(ClickedFood.gameObject);
-            DestroyImmediate(foodDetails.gameObject);
+            Destroy(foodtobedeleted.gameObject);
+            Destroy(foodDetails.gameObject);
 
         }
     }
