@@ -14,14 +14,14 @@ public class EnableIcon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.GetComponent<PhotonView>().IsMine)
+        if(collision.GetComponentInParent<PhotonView>().IsMine)
         {
             iconCollider.enabled = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<PhotonView>().IsMine)
+        if (collision.GetComponentInParent<PhotonView>().IsMine)
         {
             iconCollider.enabled = false;
         }

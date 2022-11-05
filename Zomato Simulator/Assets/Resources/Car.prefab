@@ -267,7 +267,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10000
   m_LinearDrag: 0.5
   m_AngularDrag: 0.5
   m_GravityScale: 0
@@ -354,7 +354,8 @@ MonoBehaviour:
   pv: {fileID: 7838320739669857311}
   speed: 5
   canDrive: 0
-  driftFactor: 1
+  driftFactor: 1.6
+  stoppingTime: 3
   turnAmount: 22.5
   car_sprites:
   - {fileID: 21300000, guid: 1b6acc042d602854c859cd3705ab6975, type: 3}

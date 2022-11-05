@@ -22,14 +22,16 @@ public class House : MonoBehaviour
     #region Trigger Interactions
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<PhotonView>().IsMine && PendingFood.Count >0)
+        Debug.Log("tis got called");
+        if (collision.GetComponentInParent<PhotonView>().IsMine && PendingFood.Count >0)
         {
+            Debug.Log("tis got called 2");
             iconCollider.enabled = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<PhotonView>().IsMine)
+        if (collision.GetComponentInParent<PhotonView>().IsMine)
         {
             iconCollider.enabled = false;
         }

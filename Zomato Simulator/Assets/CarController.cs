@@ -23,6 +23,7 @@ public class CarController : MonoBehaviour,IPunObservable
 
     [Header("Car Turn Properties")]
     [SerializeField] float driftFactor;
+    [SerializeField] float stoppingTime;
     [SerializeField] float turnAmount;
 
     [SerializeField] List<Sprite> car_sprites;
@@ -53,7 +54,7 @@ public class CarController : MonoBehaviour,IPunObservable
             _input = GetComponent<PlayerInput>();
             _rb2d = GetComponent<Rigidbody2D>();
 
-        _rb2d.isKinematic = true;
+        //_rb2d.isKinematic = true;
 
 
     }
@@ -67,8 +68,12 @@ public class CarController : MonoBehaviour,IPunObservable
         {
             Move();
         }
+        /*else
+        {
+            _rb2d.drag = 3f;
+        }*/
 
-       
+
     }
 
     private void Update()
@@ -81,7 +86,11 @@ public class CarController : MonoBehaviour,IPunObservable
             //EXIT CAR
             ToggleCar(false);            
             CommonReferences.Instance.myPlayer.TogglePlayer(true);
+
+            canDrive = false;
+            CommonReferences.Instance.SwitchCamera(CAMERA_TYPE.PLAYER);
         }
+       
     }
 
     internal void ToggleCar(bool enabled)
@@ -93,7 +102,17 @@ public class CarController : MonoBehaviour,IPunObservable
     {
         yield return new WaitForEndOfFrame();
         canDrive = enabled;
-        _rb2d.isKinematic = !enabled;
+       // _rb2d.isKinematic = !enabled;
+
+       /* if(enabled == false)
+        {
+            while (_rb2d.velocity != Vector2.zero)
+            {
+                //_rb2d.velocity = Vector2.Lerp(_rb2d.velocity, Vector2.zero, stoppingTime);
+                _rb2d.drag = Mathf.Lerp(_rb2d.drag, 3f, Time.fixedDeltaTime * 3);
+                yield return new WaitForEndOfFrame();
+            }
+        }*/
     }
 
 
@@ -133,7 +152,7 @@ public class CarController : MonoBehaviour,IPunObservable
 
             //_rb2d.AddForce((drive_offset).normalized *  _input.GetVerticalInput() * Time.fixedDeltaTime * speed, ForceMode2D.Impulse);
             //_rb2d.SetRotation(_rb2d.rotation +(turnAmount * _input.GetHorizontalInput()));
-            ChangeDriveOffset(-(_input.GetHorizontalInput()));
+            ChangeDriveOffset(_input.GetHorizontalInput() , _input.GetVerticalInput());
             
         }
         else
@@ -152,7 +171,7 @@ public class CarController : MonoBehaviour,IPunObservable
         }
 
 
-        _rb2d.velocity = Vector3.Lerp(_rb2d.velocity,desiredVelocity * speed * _input.GetVerticalInput() ,Time.fixedDeltaTime);
+        _rb2d.velocity = Vector3.Lerp(_rb2d.velocity,desiredVelocity * speed * _input.GetVerticalInput() ,Time.fixedDeltaTime * 5);
 
 
 
@@ -163,7 +182,7 @@ public class CarController : MonoBehaviour,IPunObservable
    
     [SerializeField] float turn_speed;
     [SerializeField] float currentTime;
-    private void ChangeDriveOffset(float inputvalue)
+    private void ChangeDriveOffset(float horizontalValue, float verticalValue)
     {
         if (current_angle == 0)
         {
@@ -175,21 +194,21 @@ public class CarController : MonoBehaviour,IPunObservable
 
 
 
-        if (inputvalue == 0) return;
+        if (horizontalValue == 0) return;
 
         currentTime = 0;
 
 
-        if (inputvalue > 0)
+        if (verticalValue > 0)
         {
-            inputvalue = 1;
+            current_angle -= turnAmount * Mathf.RoundToInt(horizontalValue);
         }
         else
         {
-            inputvalue = -1;
+            current_angle += turnAmount * Mathf.RoundToInt(horizontalValue);
         }
-        Debug.Log(inputvalue);
-        current_angle += turnAmount * inputvalue;
+        Debug.Log(horizontalValue);
+        
 
         if (current_angle == 0)
         {
@@ -207,22 +226,29 @@ public class CarController : MonoBehaviour,IPunObservable
     private void UpdateSpriteAsPerRotation()
     {
         int spriteIndex =(int) Mathf.Abs((current_angle%360) / turnAmount);
+        int tempSpriteIndex = currentSpriteIndex;
+       
+
         currentSpriteIndex = spriteIndex;
         carSpriteRenderer.sprite = car_sprites[spriteIndex];
         carSpriteRendererTemporary.sprite= car_sprites[spriteIndex];
-
-        DestroyImmediate(colliderObject.GetComponent<PolygonCollider2D>());
-        colliderObject.AddComponent<PolygonCollider2D>();
+        if (tempSpriteIndex != spriteIndex)
+        {
+            DestroyImmediate(colliderObject.GetComponent<PolygonCollider2D>());
+            colliderObject.AddComponent<PolygonCollider2D>();
+        }
     }
 
-    private void UpdateSpriteAsperReceive(int carSpriteIndex)
-    {  
-        carSpriteRenderer.sprite = car_sprites[carSpriteIndex];
+    private void UpdateSpriteAsperReceive( int oldSpriteIndex, int newSpriteIndex)
+    {
+        carSpriteRenderer.sprite = car_sprites[newSpriteIndex];
+        carSpriteRendererTemporary.sprite = car_sprites[newSpriteIndex];
 
-        carSpriteRendererTemporary.sprite = car_sprites[carSpriteIndex];
-
-        DestroyImmediate(colliderObject.GetComponent<PolygonCollider2D>());
-        colliderObject.AddComponent<PolygonCollider2D>();
+        if (oldSpriteIndex != newSpriteIndex)
+        {
+            DestroyImmediate(colliderObject.GetComponent<PolygonCollider2D>());
+            colliderObject.AddComponent<PolygonCollider2D>();
+        }
     }
 
 
@@ -241,7 +267,11 @@ public class CarController : MonoBehaviour,IPunObservable
         {
             local_car_index = (int) stream.ReceiveNext();
             local_car_color = (int) stream.ReceiveNext();
+            int oldSpriteIndex = currentSpriteIndex;
             currentSpriteIndex = (int) stream.ReceiveNext();
+
+
+           
 
            if(currentCar != local_car_index || currentCarColor != local_car_color)
             {
@@ -253,7 +283,7 @@ public class CarController : MonoBehaviour,IPunObservable
 
             }
 
-             UpdateSpriteAsperReceive(currentSpriteIndex);
+             UpdateSpriteAsperReceive(oldSpriteIndex, currentSpriteIndex);
 
         }
     }

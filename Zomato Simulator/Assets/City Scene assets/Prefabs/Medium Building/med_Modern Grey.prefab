@@ -83,27 +83,14 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
       value: 4.0208335
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8811507950281650807, guid: be56f83a84637b847917eda4c772294a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: be56f83a84637b847917eda4c772294a, type: 3}
 --- !u!1 &5733057885774329921 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8811507950281650804, guid: be56f83a84637b847917eda4c772294a, type: 3}
   m_PrefabInstance: {fileID: 3875112244098746933}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-416683111045321921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5733057885774329921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a886a6335e024a94a82b5364ea81d172, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PendingFood: []
-  ClientPic: []
 --- !u!61 &5583807667426885243
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -130,3 +117,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6, y: 4.5}
   m_EdgeRadius: 0
+--- !u!114 &-416683111045321921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5733057885774329921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a886a6335e024a94a82b5364ea81d172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PendingFood: []
+  ClientPic: []
