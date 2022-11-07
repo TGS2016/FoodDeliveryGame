@@ -7,12 +7,14 @@ using Photon.Realtime;
 
 public class OrderDetails : MonoBehaviour, IPunObservable
 {
+    #region data
     public int DriverID = -1;
     public int FoodPicID = -1;
     public int HomeID = -1;
     public int RestaurantID = -1;
 
     public float HotPlateTimer= 60;
+    public float window= 60;
     public float RatingTimer = 60;
 
     public bool FreeForAll = false;
@@ -45,6 +47,14 @@ public class OrderDetails : MonoBehaviour, IPunObservable
 
     public GameObject myUIPrefab;
     private PhotonView myPV;
+
+    private Stars _rating = Stars.five;
+    public Stars rating { get { return _rating; } set
+        {
+            _rating = value;
+            myUIPrefab.GetComponent<FoodIconDetailsHolder>().CheckState();
+        }
+    }
 
     public static System.Action<OrderDetails> onOtherPlayerPickedUP;
     private void OnEnable()
@@ -80,7 +90,8 @@ public class OrderDetails : MonoBehaviour, IPunObservable
         FoodHasBeenAdded = true;
         
     }
-
+    #endregion
+    #region sync data
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
 
@@ -137,12 +148,22 @@ public class OrderDetails : MonoBehaviour, IPunObservable
             }
         }
     }
+    #endregion
 
     private void Update()
     {
+        if (rating == Stars.one) return;
         if (HotPlateTimer > 0)
         {
             HotPlateTimer -= Time.deltaTime;
+        }
+        else
+        {
+            rating++;
+            Debug.Log(rating);
+            if (rating == Stars.one) return;
+            HotPlateTimer += RatingTimer;
+            window = RatingTimer;
         }
     }
 
@@ -185,8 +206,15 @@ public class OrderDetails : MonoBehaviour, IPunObservable
     public void TransferOwnership()
     {
         myPV.RequestOwnership();
-    }
+    }    
+}
 
-    
+public enum Stars
+{
+    five,
+    four,
+    three,
+    two,
+    one
 }
 

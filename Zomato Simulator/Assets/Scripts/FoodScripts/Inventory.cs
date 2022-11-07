@@ -11,7 +11,8 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
     public Transform BagUIPanel;
     public Transform BagParent;
     public GameObject FoodIcon;
-    public int MaxFoodCapacity = 3;
+    public int MaxDispatchFoodCount = 5;
+    public int BagSize = 3;
     public List<OrderDetails> MyDispatchedOrders = new List<OrderDetails>();
     public List<OrderDetails> myPickedUpFood = new List<OrderDetails>();
 
@@ -96,6 +97,7 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
             foodDetails.ClientFeatures[0].transform.parent.gameObject.SetActive(false);
 
             foodDetails.orderDetails = myPickedUpFood[temp];
+            foodDetails.CheckState();
             food.SetParent(BagParent.GetChild(0));
 
             foodButton.onClick.AddListener(() =>

@@ -101,7 +101,7 @@ public class OrderList : MonoBehaviour
             RS.Orders[orderID].InstantiateInUI();
         }
         Debug.Log("Trying to Pick up order num : " + orderID);
-        if (CommonReferences.Instance.myInventory.myPickedUpFood.Count < CommonReferences.Instance.myInventory.MaxFoodCapacity)
+        if (CommonReferences.Instance.myInventory.myPickedUpFood.Count < CommonReferences.Instance.myInventory.BagSize)
         {
             RS.OrderPickedUpByMyself(orderID);
         }
