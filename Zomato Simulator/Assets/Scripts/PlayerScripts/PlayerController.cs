@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour,IPunObservable
     [SerializeField] Collider2D playerCollider;
     [SerializeField] SpriteRenderer player_sr;
 
+    public PlayerState _pState = PlayerState.WORLD;
+
     private void Awake()
     {
         _input = GetComponent<PlayerInput>();
@@ -55,16 +57,22 @@ public class PlayerController : MonoBehaviour,IPunObservable
     private void Update()
     {
         if (!PV.IsMine) return;
-        if(canEnterCar && _input.GetInteractButton())
+        if (canEnterCar && _input.GetInteractButton())
         {
             canEnterCar = false;
             //Enter Car
             //Debug.Log(_input.GetInteractButton());
             TogglePlayer(false);
             myCar.ToggleCar(true);
+            
             CommonReferences.Instance.SwitchCamera(CAMERA_TYPE.CAR);
         }
 
+
+        if (_input.GetMapKey())
+        {
+            CommonReferences.Instance.ToggleMap();
+        }
         Vector2 tempMov = _input.GetPlayerMovement();
         int animatorStateValue = tempMov.magnitude > 0 ? 4 : 0;
        
@@ -119,6 +127,13 @@ public class PlayerController : MonoBehaviour,IPunObservable
         _rb2d.isKinematic = !enabled;
         playerCollider.enabled = enabled;
 
+        if (enabled)
+        {
+            _pState = PlayerState.WORLD;
+        }
+        else{
+            _pState = PlayerState.DRIVE;
+        }
 
         canMove = enabled;
         isPlayerenabled = enabled;
@@ -189,3 +204,8 @@ public class PlayerController : MonoBehaviour,IPunObservable
         right
     }
 }
+public enum PlayerState
+{
+    WORLD,DRIVE
+}
+

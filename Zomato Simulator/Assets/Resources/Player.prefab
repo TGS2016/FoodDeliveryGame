@@ -173,6 +173,7 @@ MonoBehaviour:
   selected_car_color: 0
   playerCollider: {fileID: 6392694944513996491}
   player_sr: {fileID: 2920100840446361828}
+  _pState: 0
   isPlayerenabled: 1
   canEnterCar: 0
 --- !u!114 &6825885953041686892

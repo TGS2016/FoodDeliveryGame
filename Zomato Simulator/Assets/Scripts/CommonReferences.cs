@@ -8,6 +8,8 @@ using Random = UnityEngine.Random;
 
 public class CommonReferences : MonoBehaviour
 {
+
+    
     public static CommonReferences Instance;
     public Transform HouseParent;
     public Transform RestaurantParent;
@@ -31,27 +33,95 @@ public class CommonReferences : MonoBehaviour
 
     public CinemachineVirtualCamera camera_player;
     public CinemachineVirtualCamera camera_car;
+    public CinemachineVirtualCamera camera_map;
 
-    
+    [SerializeField] List<Transform> toScaleObjectsOn = new List<Transform>();
+
+    public Transform[] playerPoz;
+
+    [SerializeField] CAMERA_TYPE lastCamera;
     public void SwitchCamera(CAMERA_TYPE whichCamera)
     {
         switch (whichCamera)
         {
             case CAMERA_TYPE.CAR:
                 {
+                    lastCamera = whichCamera;
                     camera_car.Priority = 10;
                     camera_player.Priority = 0;
+                    camera_map.Priority = 0;
                     break;
                 }
                
             case CAMERA_TYPE.PLAYER:
                 {
+                    lastCamera = whichCamera;
                     camera_car.Priority = 0;
                     camera_player.Priority = 10;
+                    camera_map.Priority = 0;
+                    break;
+                }
+            case CAMERA_TYPE.MAP:
+                {
+                    camera_car.Priority = 0;
+                    camera_player.Priority = 0;
+                    camera_map.Priority = 10;                  
+                     
                     break;
                 }
         }
     }
+
+    bool isMapOpen = false;
+    public void ToggleMap()
+    {
+        if (!isMapOpen)
+        {
+            isMapOpen = true;
+
+            if(myPlayer._pState == PlayerState.WORLD)
+            {
+                myPlayer.canMove = false;
+            }
+            else
+            {
+                myCar.canDrive=false;
+            }
+
+            MouseMover.drag = true;
+            SwitchCamera(CAMERA_TYPE.MAP);
+            for (int i = 0; i < toScaleObjectsOn.Count; i++)
+            {
+                LeanTween.cancel(toScaleObjectsOn[i].gameObject);
+                LeanTween.scale(toScaleObjectsOn[i].gameObject, Vector3.one *2, 0.8f);
+            }
+        }
+        else
+        {
+
+            isMapOpen = false;
+
+            if (myPlayer._pState == PlayerState.WORLD)
+            {
+                myPlayer.canMove = true;
+            }
+            else
+            {
+                myCar.canDrive = true;
+            }
+
+
+            MouseMover.drag = false;
+            myPlayer.canMove = true;
+            SwitchCamera(lastCamera);
+
+            for (int i = 0; i < toScaleObjectsOn.Count; i++)
+            {
+                LeanTween.cancel(toScaleObjectsOn[i].gameObject);
+                LeanTween.scale(toScaleObjectsOn[i].gameObject, Vector3.one,0.8f);
+            }
+        }
+    }   
 
     internal void SetupCameras()
     {
@@ -70,6 +140,7 @@ public class CommonReferences : MonoBehaviour
         {
             Instance = this;
         }
+
         PhotonNetwork.SendRate = 10;
 
         #region populate houses
@@ -98,6 +169,10 @@ public class CommonReferences : MonoBehaviour
         ClientGenerator = GetComponent<RandomSample>();
         #endregion
     }
+
+    #region Map Management
+  
+    #endregion
 
     private void OnEnable()
     {
@@ -153,5 +228,5 @@ public class CommonReferences : MonoBehaviour
 
 public enum CAMERA_TYPE
 {
-    CAR,PLAYER
+    CAR,PLAYER,MAP
 }

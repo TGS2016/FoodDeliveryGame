@@ -11,10 +11,14 @@ public class MPNetworkPlayerSpawner : MonoBehaviourPunCallbacks
 
     public void GeneratePlayer(int _no = 0, bool _custmer = false)
     {
-        //var randomNo = Random.Range(0, MetaManager.insta.playerPoz.Length);
+         
         var randomNo = PhotonNetwork.PlayerList.Length - 1;
+        if (randomNo >= CommonReferences.Instance.playerPoz.Length)
+        {
+            randomNo = Random.Range(0, CommonReferences.Instance.playerPoz.Length);
+        }
         Debug.Log("GeneratePlayer " + _no);
-        spawnedPlayerPrefab = PhotonNetwork.Instantiate("Player", Vector2.zero /*MetaManager.Instance.playerPoz[randomNo].position*/, Quaternion.identity /*MetaManager.Instance.playerPoz[randomNo].rotation*/);
+        spawnedPlayerPrefab = PhotonNetwork.Instantiate("Player", CommonReferences.Instance.playerPoz[randomNo].position, Quaternion.identity /*MetaManager.Instance.playerPoz[randomNo].rotation*/);
        
 
         // if (_custmer) spawnedPlayerPrefab.GetComponent<NetworkPlayer>().myNoIs = _no;
