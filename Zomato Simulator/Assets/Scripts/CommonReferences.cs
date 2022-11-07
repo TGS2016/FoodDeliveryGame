@@ -61,7 +61,6 @@ public class CommonReferences : MonoBehaviour
 
         camera_player.Follow = myPlayer.transform;
         camera_player.LookAt = myPlayer.transform;
-        Debug.Log("CA<ERA");
 
     }
 
@@ -139,6 +138,7 @@ public class CommonReferences : MonoBehaviour
         if (HouseID != -1)
         {
             Houses[HouseID].ToggleHouseIcon();
+            UIManager.Instance.pointer.ShowDirection(Houses[HouseID].transform);
         }
     }
     #endregion

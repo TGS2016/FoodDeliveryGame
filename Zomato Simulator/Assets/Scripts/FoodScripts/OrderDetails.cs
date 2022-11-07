@@ -23,10 +23,8 @@ public class OrderDetails : MonoBehaviour, IPunObservable
          set
          {
              _isPickedUp = value;
-            Debug.Log("food has been picked up" + isPickedUp);
             if (isPickedUp)
             {
-                Debug.Log("this");
                 var myInv = CommonReferences.Instance.myInventory;
                 if (myInv.MyDispatchedOrders.Contains(this) && !myInv.myPickedUpFood.Contains(this))
                 {
@@ -45,7 +43,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
 
     public GameObject OrderPrefab;
 
-    private GameObject myUIPrefab;
+    public GameObject myUIPrefab;
     private PhotonView myPV;
 
     public static System.Action<OrderDetails> onOtherPlayerPickedUP;
@@ -157,7 +155,8 @@ public class OrderDetails : MonoBehaviour, IPunObservable
 
 
         myIconDetails.orderDetails = this;
-        myUIButton.enabled = false;
+        /*if (!myIconDetails.CircularTimer)
+        { myUIButton.enabled = false; }*/
         myUIPrefab.transform.SetParent(CommonReferences.Instance.OrderUIParent);
         myUIPrefab.transform.SetAsLastSibling();
 

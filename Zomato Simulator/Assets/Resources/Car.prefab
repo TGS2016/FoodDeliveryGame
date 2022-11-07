@@ -352,7 +352,7 @@ MonoBehaviour:
   currentCar: 0
   currentCarColor: 0
   pv: {fileID: 7838320739669857311}
-  speed: 5
+  speed: 10
   canDrive: 0
   driftFactor: 1.6
   stoppingTime: 3

@@ -65,7 +65,8 @@ MonoBehaviour:
   Client: {fileID: 0}
   DeliveryAddress: {fileID: 0}
   isInitialized: 0
-  OrderPrefab: {fileID: 7389736183931128785, guid: ce9946f949e90f645a8708c2787d49af, type: 3}
+  OrderPrefab: {fileID: 7389736183931128785, guid: 260689f6800201f4a8bf4efa6ab51506, type: 3}
+  myUIPrefab: {fileID: 0}
   ClientPic: []
 --- !u!114 &8039407981955478255
 MonoBehaviour:

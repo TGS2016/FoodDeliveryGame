@@ -148,7 +148,6 @@ public class CarController : MonoBehaviour,IPunObservable
 
         if (Mathf.Abs(_input.GetVerticalInput()) > 0)
         {
-            Debug.Log("Change Rotation");
 
             //_rb2d.AddForce((drive_offset).normalized *  _input.GetVerticalInput() * Time.fixedDeltaTime * speed, ForceMode2D.Impulse);
             //_rb2d.SetRotation(_rb2d.rotation +(turnAmount * _input.GetHorizontalInput()));
@@ -207,7 +206,6 @@ public class CarController : MonoBehaviour,IPunObservable
         {
             current_angle += turnAmount * Mathf.RoundToInt(horizontalValue);
         }
-        Debug.Log(horizontalValue);
         
 
         if (current_angle == 0)

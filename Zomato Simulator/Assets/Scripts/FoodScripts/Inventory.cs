@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
 {
     public Transform ItemDataHolder;
+    public Transform BagUIPanel;
     public Transform BagParent;
     public GameObject FoodIcon;
     public int MaxFoodCapacity = 3;
@@ -52,7 +53,6 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
     OrderDetails TempClickedFood;
     public void PickUpFood(OrderDetails pickedUpFood)
     {
-        Debug.Log("ive been summoned");
         TempClickedFood = pickedUpFood;
         var foodPV = pickedUpFood.GetComponent<PhotonView>();
         if (!foodPV.IsMine)
@@ -73,6 +73,8 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
 
         CommonReferences.Houses[pickedUpFood.HomeID].PendingFood.Add(pickedUpFood);
         CommonReferences.OnDisplayHouse?.Invoke(pickedUpFood.HomeID);
+
+        pickedUpFood.myUIPrefab.transform.SetParent(BagUIPanel);
     }
 
     public void OpenBag(int HouseID_ofClickedHouse)

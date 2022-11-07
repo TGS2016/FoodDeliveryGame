@@ -59,6 +59,13 @@ public class House : MonoBehaviour
         {
             SetClientPic(PendingFood[0].ClientPic);
         }
+        else
+        {
+            if (UIManager.Instance.pointer.Target == this.transform)
+            {
+                UIManager.Instance.pointer.Target = null;
+            }
+        }
 
     }
     #endregion

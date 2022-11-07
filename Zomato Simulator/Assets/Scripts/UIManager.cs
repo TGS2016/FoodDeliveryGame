@@ -7,7 +7,9 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
     public OrderList orderList;
+    public UIPointer pointer;
     internal object usergender;
+
 
     private void Awake()
     {
