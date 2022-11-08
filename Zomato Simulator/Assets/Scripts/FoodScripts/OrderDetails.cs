@@ -174,7 +174,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
     public void InstantiateInUI()
     {
         
-        myUIPrefab = Instantiate(OrderPrefab);
+        myUIPrefab = Instantiate(OrderPrefab, CommonReferences.Instance.OrderUIParent);
         var myIconDetails = myUIPrefab.GetComponent<FoodIconDetailsHolder>();
         var myUIButton = myUIPrefab.GetComponent<Button>();
 

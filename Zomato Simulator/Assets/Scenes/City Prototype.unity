@@ -212,7 +212,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &239520446 stripped
 Transform:
@@ -560,7 +560,7 @@ Transform:
   - {fileID: 90337875}
   - {fileID: 1988109685}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &621699453
 MonoBehaviour:
@@ -697,7 +697,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &751477567
 GameObject:
@@ -2433,7 +2433,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &762913340
 PrefabInstance:
@@ -2610,7 +2610,7 @@ Transform:
   m_Children:
   - {fileID: 1998910609}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1388895539
 GameObject:
@@ -2677,7 +2677,7 @@ Transform:
   m_Children:
   - {fileID: 485420158}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1420348603
 GameObject:
@@ -2752,7 +2752,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1453132803
 GameObject:
@@ -2814,7 +2814,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1453132807
 MonoBehaviour:
@@ -2928,7 +2928,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1625239946 stripped
 Transform:
@@ -3023,7 +3023,7 @@ Transform:
   m_Children:
   - {fileID: 1826180031}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1826180030
 GameObject:
@@ -3434,7 +3434,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2131043540 stripped
 Transform:
@@ -3448,6 +3448,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 874465702, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1000953956089087761, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -3462,7 +3466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000953956089087765, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1000953956089087765, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3534,6 +3538,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000953956089087765, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
+      propertyPath: Step.Array.size
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
+      propertyPath: Step.Array.data[0].PopUpDuration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
+      propertyPath: Step.Array.data[15].TutorialText
+      value: You Can Click On Shop Or Visit Garages Around The City To Buy And Customize
+        Cars
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
+      propertyPath: Step.Array.data[16].TutorialText
+      value: Oh No! Looks Like You Are Short On Fuel! Click On Fuel Button To See
+        Where The Nearest Gas Station is!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
+      propertyPath: Step.Array.data[17].TutorialText
+      value: Looks Like This Restaurant Has some Undelivered Food Inside. Let's Go
+        Check It Out!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
+      propertyPath: Step.Array.data[18].TutorialText
+      value: Use WASD or Arrow Keys To Move Around in Your Lovely City
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
+      propertyPath: Step.Array.data[19].TutorialText
+      value: See That Beautiful Car That Your Dad Bought You? Press F Near It And
+        Lets Put It To Good Use
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
+      propertyPath: Step.Array.data[1].PopUpDuration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
+      propertyPath: Step.Array.data[20].TutorialText
+      value: If You Cant Find Your Car You Can Click On This Icon To Locate it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
+      propertyPath: Step.Array.data[0].HasFollowUpPopUp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
+      propertyPath: Step.Array.data[1].HasFollowUpPopUp
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
