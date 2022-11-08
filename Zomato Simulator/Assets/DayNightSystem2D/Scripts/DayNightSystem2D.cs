@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
@@ -39,13 +40,13 @@ public class DayNightSystem2D : MonoBehaviour
     [Header("Cycle Colors")]
     
     [Tooltip("Sunrise color, you can adjust based on best color for this cycle")]
-    public Color sunrise; // Eg: 6:00 at 10:00
+    public Gradient sunrise; // Eg: 6:00 at 10:00
     
     [Tooltip("(Mid) Day color, you can adjust based on best color for this cycle")]
     public Color day; // Eg: 10:00 at 16:00
     
     [Tooltip("Sunset color, you can adjust based on best color for this cycle")]
-    public Color sunset; // Eg: 16:00 20:00
+    public Gradient sunset; // Eg: 16:00 20:00
     
     [Tooltip("Night color, you can adjust based on best color for this cycle")]
     public Color night; // Eg: 20:00 at 00:00
@@ -57,12 +58,15 @@ public class DayNightSystem2D : MonoBehaviour
     [Tooltip("Objects to turn on and off based on day night cycles, you can use this example for create some custom stuffs")]
     public Light2D[] mapLights; // enable/disable in day/night states
 
+
+    public static Action<float> OnBloomChanged;
+
     void Start() 
     {
         dayCycle = DayCycles.Sunrise; // start with sunrise state
-        globalLight.color = sunrise; // start global color at sunrise
+        globalLight.color = sunrise.Evaluate(1); // start global color at sunrise
     }
-
+    bool hasToChangeBloom=true;
      void Update()
      {
         // Update cycle time
@@ -85,23 +89,48 @@ public class DayNightSystem2D : MonoBehaviour
         // Sunrise state (you can do a lot of stuff based on every cycle state, like enable animals only in sunrise )
         if(dayCycle == DayCycles.Sunrise)
         {
-           
-            globalLight.color = Color.Lerp(sunrise, day, percent);
+            if (percent > 0.8f) {
+                if (hasToChangeBloom)
+                {
+                    hasToChangeBloom = false;
+                    OnBloomChanged?.Invoke(0f);
+                }
+            }
+            else
+            {
+                hasToChangeBloom = true;
+            }
+            globalLight.color = Color.Lerp(sunrise.Evaluate(1), day, percent);
         }
 
         // Mid Day state
-        if(dayCycle == DayCycles.Day)
-            globalLight.color = Color.Lerp(day, sunset, percent);
+        if (dayCycle == DayCycles.Day)
+        {
+            globalLight.color = Color.Lerp(day, sunset.Evaluate(percent), percent);            
+        }
 
         // Sunset state
         if (dayCycle == DayCycles.Sunset)
         {
-            globalLight.color = Color.Lerp(sunset, night, percent);
+            globalLight.color = Color.Lerp(sunset.Evaluate(1), night, percent);
 
             if (currentStatus != true)
             {
-                if(percent>0.7f)
-                ControlLightMaps(true); // disable map light (keep enable only at night)
+                if (percent > 0.55f)
+                {
+                    ControlLightMaps(true); // disable map light (keep enable only at night)
+                    if (hasToChangeBloom)
+                    {
+                        hasToChangeBloom = false;
+                        OnBloomChanged?.Invoke(7f);
+                    }
+
+                }
+                else
+                {
+                    hasToChangeBloom = true;
+
+                }
             }
         }
         // Night state
@@ -118,11 +147,13 @@ public class DayNightSystem2D : MonoBehaviour
 
             if (currentStatus != false )
             {
-                if (percent > 0.7f)
-                ControlLightMaps(false); // disable map light (keep enable only at night)
+                if (percent > 0.75f)
+                {
+                    ControlLightMaps(false); // disable map light (keep enable only at night)                    
+                }
             }
 
-            globalLight.color = Color.Lerp(midnight, day, percent);
+            globalLight.color = Color.Lerp(midnight, sunrise.Evaluate(percent), percent);
         }
      }
 
@@ -135,7 +166,7 @@ public class DayNightSystem2D : MonoBehaviour
 
             if (status)
             {
-                LeanTween.value(0, 0.5f, 0.5f).setOnUpdate((value) => {
+                LeanTween.value(0, 0.5f, 1f).setOnUpdate((value) => {
                     foreach (Light2D _light in mapLights)
                     {
                         _light.intensity = value;
@@ -146,7 +177,7 @@ public class DayNightSystem2D : MonoBehaviour
             }
             else
             {
-                LeanTween.value(0.5f, 0f, 0.5f).setOnUpdate((value) => {
+                LeanTween.value(0.5f, 0f, 1f).setOnUpdate((value) => {
                     foreach (Light2D _light in mapLights)
                     {
                         _light.intensity = value;
