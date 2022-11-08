@@ -4,13 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
-/*
-- Creator:    Two TV Games (@gallighanmaker)
-- Script:     Day And Night 2D System
-- Unity:      2019 LTS Version
-- Email:      leandrovieira92@gmail.com
-- Github:     https://github.com/leandrovieiraa
-*/
+
 
 public enum DayCycles // Enum with day and night cycles, you can change or modify with whatever you want
 {
@@ -20,6 +14,7 @@ public enum DayCycles // Enum with day and night cycles, you can change or modif
     Night = 3,
     Midnight = 4
 }
+
 
 public class DayNightSystem2D : MonoBehaviour
 {
@@ -57,7 +52,9 @@ public class DayNightSystem2D : MonoBehaviour
     [Header("Objects")]
     [Tooltip("Objects to turn on and off based on day night cycles, you can use this example for create some custom stuffs")]
     public Light2D[] mapLights; // enable/disable in day/night states
-
+    public Light2D[] normalPoleLights; // enable/disable in day/night states
+    public Light2D[] diffPoleLights_Circle; // enable/disable in day/night states
+    public Light2D[] diffPoleLights_Freeform;
 
     public static Action<float> OnBloomChanged;
 
@@ -173,7 +170,28 @@ public class DayNightSystem2D : MonoBehaviour
 
                     }
                 });
-                
+
+                LeanTween.value(0, 0.4f, 1f).setOnUpdate((value) => {
+                    foreach (Light2D _light in normalPoleLights)
+                    {
+                        _light.intensity = value;
+                    }
+                });
+
+                LeanTween.value(0, 0.18f, 1f).setOnUpdate((value) => {
+                    foreach (Light2D _light in diffPoleLights_Freeform)
+                    {
+                        _light.intensity = value;
+                    }
+                });
+
+                LeanTween.value(0, 0.6f, 1f).setOnUpdate((value) => {
+                    foreach (Light2D _light in diffPoleLights_Circle)
+                    {
+                        _light.intensity = value;
+                    }
+                });
+
             }
             else
             {
@@ -181,9 +199,97 @@ public class DayNightSystem2D : MonoBehaviour
                     foreach (Light2D _light in mapLights)
                     {
                         _light.intensity = value;
+                    }
+                });
 
+                LeanTween.value(0.4f, 0f, 1f).setOnUpdate((value) => {
+                    foreach (Light2D _light in normalPoleLights)
+                    {
+                        _light.intensity = value;
+                    }
+                });
+
+                LeanTween.value(0.18f, 0f, 1f).setOnUpdate((value) => {
+                    foreach (Light2D _light in diffPoleLights_Freeform)
+                    {
+                        _light.intensity = value;
+                    }
+                });
+
+                LeanTween.value(0.6f, 0, 1f).setOnUpdate((value) => {
+                    foreach (Light2D _light in diffPoleLights_Circle)
+                    {
+                        _light.intensity = value;
                     }
                 });
             }
      }
+
+    /*void Test_ControlLightMaps(bool status)
+     {
+        currentStatus = status;
+        // loop in light array of objects to enable/disable
+        if (mapLights.Length > 0)
+
+            if (status)
+            {
+               
+                    foreach (Light2D _light in mapLights)
+                    {
+                        _light.intensity = 0.5f;
+
+                    }
+              
+
+                
+                    foreach (Light2D _light in normalPoleLights)
+                    {
+                        _light.intensity = 0.4f;
+                    }
+             
+
+            
+                    foreach (Light2D _light in diffPoleLights_Freeform)
+                    {
+                        _light.intensity = 0.26f;
+                    }
+               
+                
+                    foreach (Light2D _light in diffPoleLights_Circle)
+                    {
+                        _light.intensity = 0.5f;
+                    }
+            
+
+            }
+            else
+            {
+               
+                    foreach (Light2D _light in mapLights)
+                    {
+                        _light.intensity = 0;
+                    }
+                    foreach (Light2D _light in normalPoleLights)
+                    {
+                        _light.intensity = 0;
+                    }
+                    foreach (Light2D _light in diffPoleLights_Freeform)
+                    {
+                        _light.intensity = 0;
+                    }
+                    foreach (Light2D _light in diffPoleLights_Circle)
+                    {
+                        _light.intensity = 0;
+                    }
+               
+            }
+     }*/
+
+  /*  [ContextMenu("Turn On Lights")]
+    private void TurnOnLights()
+    {
+        Test_ControlLightMaps(false);
+        globalLight.color = sunrise.Evaluate(1);
+    }*/
 }
+
