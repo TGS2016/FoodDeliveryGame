@@ -28,11 +28,15 @@ public class OrderDetails : MonoBehaviour, IPunObservable
             if (isPickedUp)
             {
                 var myInv = CommonReferences.Instance.myInventory;
-                if (myInv.MyDispatchedOrders.Contains(this) && !myInv.myPickedUpFood.Contains(this))
+                if (myInv.MyDispatchedOrders.Contains(this) )
                 {
                     myInv.MyDispatchedOrders.Remove(this);
-                    Destroy(this.gameObject);
+                    /*if (!myInv.myPickedUpFood.Contains(this))
+                    {
+                        myInv.myPickedUpFood.Add(this);
+                    }*/
                 }
+                
             }
         }
      }
@@ -52,6 +56,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
     public Stars rating { get { return _rating; } set
         {
             _rating = value;
+            if(myUIPrefab!=null)
             myUIPrefab.GetComponent<FoodIconDetailsHolder>().CheckState();
         }
     }

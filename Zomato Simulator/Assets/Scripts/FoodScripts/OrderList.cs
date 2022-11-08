@@ -94,16 +94,19 @@ public class OrderList : MonoBehaviour
     }
     private void OnTryPickOrder(Restaurant RS, GameObject FoodDetails, bool isMyOrder = true)
     {
-        int orderID = FoodDetails.transform.GetSiblingIndex();
-        if(!isMyOrder)
-        {
-            Debug.Log("Not My order");
-            RS.Orders[orderID].InstantiateInUI();
-        }
-        Debug.Log("Trying to Pick up order num : " + orderID);
         if (CommonReferences.Instance.myInventory.myPickedUpFood.Count < CommonReferences.Instance.myInventory.BagSize)
         {
+            int orderID = FoodDetails.transform.GetSiblingIndex();
+            if (!isMyOrder)
+            {
+                Debug.Log("Not My order");
+                RS.Orders[orderID].InstantiateInUI();
+            }
+            Debug.Log("Trying to Pick up order num : " + orderID);
+
+
             RS.OrderPickedUpByMyself(orderID);
+
         }
 
     }

@@ -140,11 +140,13 @@ public class PlayerController : MonoBehaviour,IPunObservable
        
         if (!enabled)
         {
+            if(PV.IsMine)
             this.transform.parent = myCar.transform;
             //CHANGE PLAYER POSITION
         }
         else
         {
+            if(PV.IsMine)
             this.transform.parent = null;
         }
         
