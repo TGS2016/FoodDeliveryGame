@@ -67,6 +67,7 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
     public void AddToBag(OrderDetails pickedUpFood)
     {
         pickedUpFood.isPickedUp = true;
+        Debug.Log(3);
         myPickedUpFood.Add(pickedUpFood);
 
         Debug.Log("CHANGE STATE to " + pickedUpFood.isPickedUp + pickedUpFood.name);

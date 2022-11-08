@@ -92,6 +92,7 @@ public class Restaurant : MonoBehaviour
             if (Orders[orderID].DriverID == CommonReferences.Instance.myPV.ViewID)
             {
                 Debug.Log("SOMEONE STOLE MY ORDER");
+                Destroy(Orders[orderID].myUIPrefab);
             }
 
             Orders.RemoveAt(orderID);

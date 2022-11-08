@@ -19,7 +19,10 @@ public class PlayerZomatoApp : MonoBehaviour
     }
     private void Start()
     {
-        StartCoroutine(StartGettingOrders());
+        if (PV.IsMine)
+        {
+            StartCoroutine(StartGettingOrders());
+        }
     }
 
     IEnumerator StartGettingOrders()

@@ -28,13 +28,11 @@ public class OrderDetails : MonoBehaviour, IPunObservable
             if (isPickedUp)
             {
                 var myInv = CommonReferences.Instance.myInventory;
+                Debug.Log(1);
                 if (myInv.MyDispatchedOrders.Contains(this) )
                 {
+                    Debug.Log(2);
                     myInv.MyDispatchedOrders.Remove(this);
-                    /*if (!myInv.myPickedUpFood.Contains(this))
-                    {
-                        myInv.myPickedUpFood.Add(this);
-                    }*/
                 }
                 
             }
@@ -110,6 +108,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
 
             stream.SendNext(HotPlateTimer);
             stream.SendNext(RatingTimer);
+            stream.SendNext((int)rating);
 
         }
         else
@@ -117,7 +116,6 @@ public class OrderDetails : MonoBehaviour, IPunObservable
             if (!myPV.IsMine)
             {
                 isPickedUp = (bool)stream.ReceiveNext();
-                Debug.Log(isPickedUp);
                 if (!isPickedUp)
                 {
 
@@ -129,6 +127,8 @@ public class OrderDetails : MonoBehaviour, IPunObservable
                         RestaurantID = (int)stream.ReceiveNext();
                         HotPlateTimer = (float)stream.ReceiveNext();
                         RatingTimer = (float)stream.ReceiveNext();
+                        rating = (Stars)stream.ReceiveNext();
+
 
                         //FoodHasBeenAdded = false;
                         if (DriverID != -1)
@@ -165,7 +165,6 @@ public class OrderDetails : MonoBehaviour, IPunObservable
         else
         {
             rating++;
-            Debug.Log(rating);
             if (rating == Stars.one) return;
             HotPlateTimer += RatingTimer;
             window = RatingTimer;
