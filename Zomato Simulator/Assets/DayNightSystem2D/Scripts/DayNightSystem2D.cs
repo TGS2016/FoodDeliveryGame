@@ -94,16 +94,20 @@ public class DayNightSystem2D : MonoBehaviour
             globalLight.color = Color.Lerp(day, sunset, percent);
 
         // Sunset state
-        if(dayCycle == DayCycles.Sunset)
+        if (dayCycle == DayCycles.Sunset)
+        {
             globalLight.color = Color.Lerp(sunset, night, percent);
 
-        // Night state
-        if(dayCycle == DayCycles.Night)
-        {
             if (currentStatus != true)
             {
+                if(percent>0.7f)
                 ControlLightMaps(true); // disable map light (keep enable only at night)
-            }    
+            }
+        }
+        // Night state
+        if (dayCycle == DayCycles.Night)
+        {
+              
             
             globalLight.color = Color.Lerp(night, midnight, percent);        
         }
