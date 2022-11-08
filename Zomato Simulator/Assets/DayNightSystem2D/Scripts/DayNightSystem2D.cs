@@ -15,7 +15,6 @@ public enum DayCycles // Enum with day and night cycles, you can change or modif
     Midnight = 4
 }
 
-
 public class DayNightSystem2D : MonoBehaviour
 {
     [Header("Controllers")]
@@ -55,6 +54,7 @@ public class DayNightSystem2D : MonoBehaviour
     public Light2D[] normalPoleLights; // enable/disable in day/night states
     public Light2D[] diffPoleLights_Circle; // enable/disable in day/night states
     public Light2D[] diffPoleLights_Freeform;
+    public Light2D[] areaLights;
 
     public static Action<float> OnBloomChanged;
 
@@ -157,6 +157,7 @@ public class DayNightSystem2D : MonoBehaviour
     bool currentStatus;
      void ControlLightMaps(bool status)
      {
+
         currentStatus = status;
         // loop in light array of objects to enable/disable
         if (mapLights.Length > 0)
@@ -192,6 +193,13 @@ public class DayNightSystem2D : MonoBehaviour
                     }
                 });
 
+                LeanTween.value(0, 0.22f, 1f).setOnUpdate((value) => {
+                    foreach (Light2D _light in areaLights)
+                    {
+                        _light.intensity = value;
+                    }
+                });
+
             }
             else
             {
@@ -222,10 +230,16 @@ public class DayNightSystem2D : MonoBehaviour
                         _light.intensity = value;
                     }
                 });
+                LeanTween.value(0.22f, 0, 1f).setOnUpdate((value) => {
+                    foreach (Light2D _light in areaLights)
+                    {
+                        _light.intensity = value;
+                    }
+                });
             }
      }
 
-    /*void Test_ControlLightMaps(bool status)
+   /* void Test_ControlLightMaps(bool status)
      {
         currentStatus = status;
         // loop in light array of objects to enable/disable
@@ -283,9 +297,8 @@ public class DayNightSystem2D : MonoBehaviour
                     }
                
             }
-     }*/
-
-  /*  [ContextMenu("Turn On Lights")]
+     }
+    [ContextMenu("Turn On Lights")]
     private void TurnOnLights()
     {
         Test_ControlLightMaps(false);
