@@ -50,9 +50,10 @@ public class CarController : MonoBehaviour,IPunObservable
     void Start()
     {
         if (!pv.IsMine) return;
-        
-            _input = GetComponent<PlayerInput>();
-            _rb2d = GetComponent<Rigidbody2D>();
+
+        _input = GetComponent<PlayerInput>();
+        _rb2d = GetComponent<Rigidbody2D>();
+        UIManager.Instance.Step[2].ObjectToPoint = this.transform;
 
         //_rb2d.isKinematic = true;
 
@@ -124,6 +125,7 @@ public class CarController : MonoBehaviour,IPunObservable
         currentFuel = AllCarInfo.Instance.allCarInfo[selected_car].maxFuelCapacity;
         maxFuel= AllCarInfo.Instance.allCarInfo[selected_car].maxFuelCapacity;
 
+        
         car_sprites = AllCarInfo.Instance.allCarInfo[selected_car].allColorSprite[selected_car_color].car_sprites;
         UpdateSpriteAsPerRotation();
     }
@@ -167,6 +169,20 @@ public class CarController : MonoBehaviour,IPunObservable
         if(_input.GetPlayerMovement() != Vector2.zero)
         {
             currentFuel -= Time.deltaTime * AllCarInfo.Instance.allCarInfo[currentCar].FuelBURNAmount;
+
+            if (currentFuel < maxFuel / 2)
+            {
+                StartCoroutine(UIManager.Instance.tutorialCO("low gas"));
+
+            }
+            if (currentFuel < maxFuel / 4)
+            {
+                StartCoroutine(UIManager.Instance.tutorialCO("find gas"));
+            }
+            if (currentFuel <= 0)
+            {
+                StartCoroutine(UIManager.Instance.tutorialCO("no gas"));
+            }
         }
 
 
@@ -292,6 +308,7 @@ public class CarController : MonoBehaviour,IPunObservable
 
         if (collision.CompareTag("gas_station"))
         {
+            StartCoroutine(UIManager.Instance.tutorialCO("fill gas"));
             UIManager.Instance.ToggleRechargeButton(true);
         }
     }

@@ -15,17 +15,22 @@ public class UIManager : MonoBehaviour
     #region Tutorial Section
     [Header("Tutorial")]
     [SerializeField] float ReadDuration = 10;
-    [SerializeField] List<TutorialSteps> Step = new List<TutorialSteps>();
+    [SerializeField] public List<TutorialSteps> Step = new List<TutorialSteps>();
     [SerializeField] GameObject TutorialPanel;
-    [SerializeField] GameObject TutorialHand;
+    //[SerializeField] GameObject TutorialHand;
     [SerializeField] Vector3 Tut_Init_Pos;
     [SerializeField] TMP_Text tutorialText;
-    private bool _enableTutorial;
-    public bool EnableTutorial { get {return _enableTutorial; } set
+    public bool PlayingTutorial;
+    public bool tutStepInProgress;
+
+    public void EnableSteps()
+    {
+        PlayingTutorial = true;
+        for (int i = 0; i < Step.Count; i++)
         {
-            _enableTutorial = value;
-            OpenTutorialPanel(0);
+            Step[i].SkipThisStep = false;
         }
+        OpenTutorialPanel(0);
     }
     public void OpenTutorialPanel(int TutID)
     {
@@ -34,10 +39,19 @@ public class UIManager : MonoBehaviour
 
         if (Step[TutID].SkipThisStep)
         {
-            TutID++;
-            OpenTutorialPanel(TutID);
+            /*TutID++;
+            OpenTutorialPanel(TutID);*/
             return;
         }
+        else
+        {
+            Step[TutID].SkipThisStep = true;
+        }
+
+        tutStepInProgress = true;
+        if (closingTweenID != -1) LeanTween.cancel(closingTweenID);
+        CancelInvoke(nameof(CloseTutorialPanel));
+        
         tutorialText.text = Step[TutID].TutorialText;
         TutorialPanel.SetActive(true);
         LeanTween.move(TutorialPanel.GetComponent<RectTransform>(), Tut_Init_Pos + new Vector3(0, -180, 0), 1.25f).setEaseOutQuad();
@@ -55,6 +69,8 @@ public class UIManager : MonoBehaviour
                 LeanTween.alpha(Object.gameObject, 0, 0.5f).setLoopPingPong(3);
             }
         }
+
+
         if (Step[TutID].HasFollowUpPopUp)
         {
             
@@ -66,15 +82,22 @@ public class UIManager : MonoBehaviour
             });
             return;
         }
+
         Invoke(nameof(CloseTutorialPanel), Step[TutID].PopUpDuration);
     }
 
 
-
+    private int closingTweenID = -1;
+    private LTDescr closingTween;
     public void CloseTutorialPanel()
     {
 
-        LeanTween.move(TutorialPanel.GetComponent<RectTransform>(), Tut_Init_Pos, 1.25f).setEaseOutQuad().setOnComplete(()=> TutorialPanel.SetActive(false));
+        closingTween = LeanTween.move(TutorialPanel.GetComponent<RectTransform>(), Tut_Init_Pos, 1.25f).setEaseOutQuad().setOnComplete(() =>
+             {
+                 TutorialPanel.SetActive(false);
+                 tutStepInProgress = false;
+             });
+        closingTweenID = closingTween.id;
     }
 
 
@@ -87,8 +110,12 @@ public class UIManager : MonoBehaviour
             Instance = this;
         }
 
-        EnableTutorial = PlayerPrefs.GetInt("TutDone", 0) == 0;
-        LeanTween.alpha(TutorialHand, 0, 0.01f);
+        PlayingTutorial = PlayerPrefs.GetInt("TutDone", 0) == 0;
+        if(PlayingTutorial)
+        {
+            EnableSteps();
+        }
+        //LeanTween.alpha(TutorialHand, 0, 0.01f);
     }
 
     internal void UpdateUserName(string name)
@@ -133,17 +160,45 @@ public class UIManager : MonoBehaviour
         var rect = panel.GetComponent<RectTransform>();
         
         LeanTween.move(rect, Vector3.zero, 0.5f).setEaseOutQuad();
-        //LeanTween.moveLocalY(panel, 250, 0.5f).setEaseOutQuad();
+        StartCoroutine(tutorialCO("close pending orders"));
     }
 
     public void CloseFoodPanel(GameObject panel)
     {
         var rect = panel.GetComponent<RectTransform>();
         LeanTween.move(rect, new Vector3(0, -500), 0.5f).setEaseOutQuad();
-        //LeanTween.moveLocalY(panel, -250, 0.5f).setEaseOutQuad();
     }
 
-   
+    public void OpenBagPanel(GameObject panel)
+    {
+        var rect = panel.GetComponent<RectTransform>();
+
+        LeanTween.move(rect, Vector3.zero, 0.5f).setEaseOutQuad();
+        if (CommonReferences.Instance.myInventory.myPickedUpFood.Count == 0) return;
+        int ID = Step.FindIndex(x => x.Code == "find house");
+        Step[ID].ObjectToPoint = CommonReferences.Instance.myInventory.myPickedUpFood[0].myUIPrefab.transform;
+        StartCoroutine(tutorialCO("find house"));
+    }
+
+    public void CloseBagPanel(GameObject panel)
+    {
+        var rect = panel.GetComponent<RectTransform>();
+        LeanTween.move(rect, new Vector3(0, -500), 0.5f).setEaseOutQuad();
+    }
+
+    public IEnumerator tutorialCO(String StepCode)
+    {
+        int ID = Step.FindIndex(x => x.Code == StepCode);
+        while (tutStepInProgress)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
+        if (PlayingTutorial && !Step[ID].SkipThisStep)
+        {
+            OpenTutorialPanel(ID);
+        }
+    }
 
 
 }

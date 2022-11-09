@@ -45,6 +45,31 @@ public class OrderList : MonoBehaviour
             OnAddItem(temp, RestaurantID);
         }
         #endregion
+        if (MenuCard.childCount == 0) return;
+
+        if (UIManager.Instance.PlayingTutorial)
+        {
+            var target = RS.Orders.FindIndex(x => x.DriverID == CommonReferences.Instance.myPV.ViewID);
+            if(target != -1)
+            {
+                int ID = UIManager.Instance.Step.FindIndex(x => x.Code == "pick up my order");
+                UIManager.Instance.Step[ID].ObjectToPoint = MenuCard.GetChild(target);
+                StartCoroutine(UIManager.Instance.tutorialCO("pick up my order"));
+            }
+        }
+
+        if (UIManager.Instance.PlayingTutorial)
+        {
+            var target = RS.Orders.FindIndex(x => x.DriverID != CommonReferences.Instance.myPV.ViewID);
+            if (target != -1)
+            {
+                int ID = UIManager.Instance.Step.FindIndex(x => x.Code == "pick up other order");
+                UIManager.Instance.Step[ID].ObjectToPoint = MenuCard.GetChild(target);
+                StartCoroutine(UIManager.Instance.tutorialCO("pick up other order"));
+            }
+        }
+
+
     }
     private void OnAddItem(int OrderID, int RestaurantID)
     {
@@ -92,6 +117,7 @@ public class OrderList : MonoBehaviour
             OnTryPickOrder(RS, FoodDetails.gameObject,true);
         }
     }
+
     private void OnTryPickOrder(Restaurant RS, GameObject FoodDetails, bool isMyOrder = true)
     {
         if (CommonReferences.Instance.myInventory.myPickedUpFood.Count < CommonReferences.Instance.myInventory.BagSize)

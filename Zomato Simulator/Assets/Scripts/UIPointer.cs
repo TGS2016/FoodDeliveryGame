@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class UIPointer : MonoBehaviour
 {
     public Image img;
-    public Transform Target;
+    public Transform Target { get; set; }
     private Camera mainCam;
 
     private void Awake()
@@ -17,16 +17,21 @@ public class UIPointer : MonoBehaviour
 
     private void Update()
     {
-        if(Target == null)
+        showDirection();
+    }
+
+    public void showDirection()
+    {
+        if (Target == null)
         {
-            if(img.gameObject.activeSelf)
+            if (img.gameObject.activeSelf)
                 img.gameObject.SetActive(false);
             return;
         }
         img.gameObject.SetActive(isOffScreen());
         float minx = img.GetPixelAdjustedRect().width / 2;
-        float maxx = Screen.width - minx; 
-        
+        float maxx = Screen.width - minx;
+
         float miny = img.GetPixelAdjustedRect().height / 2;
         float maxy = Screen.height - miny;
 
@@ -38,6 +43,34 @@ public class UIPointer : MonoBehaviour
 
         img.transform.position = pos;
 
+        if(!isOffScreen())
+        {
+            if (UIManager.Instance.PlayingTutorial && !UIManager.Instance.tutStepInProgress)
+            {
+                if (Target.CompareTag("Restaurant") )
+                {
+                    int ID = UIManager.Instance.Step.FindIndex(x => x.Code == "found restaurant");
+                    if (!UIManager.Instance.Step[ID].SkipThisStep)
+                    {
+                        UIManager.Instance.Step[ID].ObjectToPoint = Target;
+                        StartCoroutine(UIManager.Instance.tutorialCO("found restaurant"));
+                    }
+                }
+
+
+
+                if (Target.CompareTag("House"))
+                {
+                    int ID = UIManager.Instance.Step.FindIndex(x => x.Code == "found house");
+                    if (!UIManager.Instance.Step[ID].SkipThisStep)
+                    {
+                        UIManager.Instance.Step[ID].ObjectToPoint = Target;
+                        StartCoroutine(UIManager.Instance.tutorialCO("found house"));
+                    }
+                    
+                }
+            }
+        }
     }
 
     private bool isOffScreen()
@@ -46,10 +79,5 @@ public class UIPointer : MonoBehaviour
         float borderSize = 100;
         bool isOffScreen = targetPositionScreenPoint.x <= borderSize || targetPositionScreenPoint.x >= Screen.width - borderSize || targetPositionScreenPoint.y <= borderSize || targetPositionScreenPoint.y >= Screen.height - borderSize;
         return isOffScreen;
-    }
-
-    public void ShowDirection(Transform Target)
-    {
-        this.Target = Target;
     }
 }

@@ -76,6 +76,7 @@ public class House : MonoBehaviour
         if (PendingFood[0].FoodPicID == (food.FoodPicID))
         {
             PendingFood.Remove(food);
+            StartCoroutine(UIManager.Instance.tutorialCO("gave food"));
         }
         if (PendingFood.Count > 0)
         {

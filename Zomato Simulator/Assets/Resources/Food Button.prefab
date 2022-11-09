@@ -740,6 +740,7 @@ GameObject:
   - component: {fileID: 7389736183931128782}
   - component: {fileID: 7389736183931128783}
   - component: {fileID: 6832353912539176370}
+  - component: {fileID: 7593724948859576992}
   m_Layer: 5
   m_Name: Food Button
   m_TagString: Untagged
@@ -878,6 +879,18 @@ MonoBehaviour:
   foodImage: {fileID: 3839721725648260686}
   currentTimer: {fileID: 2405380075801479584}
   CircularTimer: 0
+--- !u!225 &7593724948859576992
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7389736183931128785}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8576385419870936377
 GameObject:
   m_ObjectHideFlags: 0

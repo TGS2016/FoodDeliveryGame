@@ -3448,8 +3448,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 874465702, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 560147916, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 815882447, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1000953956089087761, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
@@ -3538,54 +3542,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000953956089087765, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
-      propertyPath: Step.Array.size
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
-      propertyPath: Step.Array.data[0].PopUpDuration
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
-      propertyPath: Step.Array.data[15].TutorialText
-      value: You Can Click On Shop Or Visit Garages Around The City To Buy And Customize
-        Cars
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
-      propertyPath: Step.Array.data[16].TutorialText
-      value: Oh No! Looks Like You Are Short On Fuel! Click On Fuel Button To See
-        Where The Nearest Gas Station is!
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
-      propertyPath: Step.Array.data[17].TutorialText
-      value: Looks Like This Restaurant Has some Undelivered Food Inside. Let's Go
-        Check It Out!
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
-      propertyPath: Step.Array.data[18].TutorialText
-      value: Use WASD or Arrow Keys To Move Around in Your Lovely City
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
-      propertyPath: Step.Array.data[19].TutorialText
-      value: See That Beautiful Car That Your Dad Bought You? Press F Near It And
-        Lets Put It To Good Use
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
-      propertyPath: Step.Array.data[1].PopUpDuration
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
-      propertyPath: Step.Array.data[20].TutorialText
-      value: If You Cant Find Your Car You Can Click On This Icon To Locate it.
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
-      propertyPath: Step.Array.data[0].HasFollowUpPopUp
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000953956089087786, guid: 4e316013c1347984db062e5ec7df02ee, type: 3}
-      propertyPath: Step.Array.data[1].HasFollowUpPopUp
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

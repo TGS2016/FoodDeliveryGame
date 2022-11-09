@@ -117,6 +117,6 @@ public class FoodIconDetailsHolder : MonoBehaviour
             locationToShow = CommonReferences.Restaurants[orderDetails.RestaurantID].transform;
         }
 
-        UIManager.Instance.pointer.ShowDirection(locationToShow);
+        UIManager.Instance.pointer.Target = (locationToShow);
     }
 }

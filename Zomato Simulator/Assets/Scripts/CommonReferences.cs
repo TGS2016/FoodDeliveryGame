@@ -78,8 +78,8 @@ public class CommonReferences : MonoBehaviour
         if (!isMapOpen)
         {
             isMapOpen = true;
-
-            if(myPlayer._pState == PlayerState.WORLD)
+            StartCoroutine(UIManager.Instance.tutorialCO("map in"));
+            if (myPlayer._pState == PlayerState.WORLD)
             {
                 myPlayer.canMove = false;
             }
@@ -213,7 +213,7 @@ public class CommonReferences : MonoBehaviour
         if (HouseID != -1)
         {
             Houses[HouseID].ToggleHouseIcon();
-            UIManager.Instance.pointer.ShowDirection(Houses[HouseID].transform);
+            //UIManager.Instance.pointer.Target = (Houses[HouseID].transform);
         }
     }
     #endregion

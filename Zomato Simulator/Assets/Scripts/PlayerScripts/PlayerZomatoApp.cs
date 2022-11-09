@@ -29,13 +29,33 @@ public class PlayerZomatoApp : MonoBehaviour
     {
         float initialDelay = Random.Range(10, 20);
         yield return new WaitForSeconds(initialDelay);
-        while(true)
+        while (true)
         {
+            while(UIManager.Instance.tutStepInProgress)
+            {
+                yield return new WaitForEndOfFrame();
+            }
             var inventory = CommonReferences.Instance.myInventory;
             if (inventory.MyDispatchedOrders.Count < inventory.MaxDispatchFoodCount)
             {
                 GetAnOrder();
-
+            }
+            #region tutorialStep
+            if (UIManager.Instance.PlayingTutorial)
+            {
+                int ID = UIManager.Instance.Step.FindIndex(x => x.Code == "found restaurant");
+                if (!UIManager.Instance.Step[ID].SkipThisStep)
+                {
+                    if (CommonReferences.Instance.myInventory.MyDispatchedOrders.Count > 0)
+                    {
+                        UIManager.Instance.Step[ID].ObjectToPoint = CommonReferences.Instance.myInventory.MyDispatchedOrders[0].transform;
+                    }
+                    StartCoroutine(UIManager.Instance.tutorialCO("find restaurant"));
+                }
+            }
+            #endregion
+            if (inventory.MyDispatchedOrders.Count < inventory.MaxDispatchFoodCount)
+            {
                 float randomWait = Random.Range(TimeTillNextOrder - 15, TimeTillNextOrder + 15);
                 yield return new WaitForSeconds(randomWait);
             }

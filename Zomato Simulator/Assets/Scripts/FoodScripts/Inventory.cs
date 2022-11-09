@@ -1,5 +1,6 @@
 using Photon.Pun;
 using Photon.Realtime;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -105,8 +106,8 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
             {
                 foodButtonOnClickMethod(HouseID_ofClickedHouse, foodDetails.gameObject);
             });
-
         }
+        StartCoroutine(UIManager.Instance.tutorialCO("giving food"));
     }
 
     public void foodButtonOnClickMethod(int HouseID_ofClickedHouse, GameObject foodDetails)
@@ -168,10 +169,15 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
         CommonReferences.Instance.myPlayer.canMove = true;
     }
 
+    public void PlayBagTutorial()
+    {
+        if (myPickedUpFood.Count == 0) return;
+        StartCoroutine(UIManager.Instance.tutorialCO("open bag panel"));
+    }
+    #region misc not implemented
     
 
 
-    #region misc not implemented
     /*public override void OnLeftRoom()
     {
         base.OnLeftRoom();
