@@ -56,9 +56,6 @@ public class UIPointer : MonoBehaviour
                         StartCoroutine(UIManager.Instance.tutorialCO("found restaurant"));
                     }
                 }
-
-
-
                 if (Target.CompareTag("House"))
                 {
                     int ID = UIManager.Instance.Step.FindIndex(x => x.Code == "found house");

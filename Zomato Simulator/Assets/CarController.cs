@@ -41,8 +41,8 @@ public class CarController : MonoBehaviour,IPunObservable
 
 
     [Header("Car Fuel")]
-    [SerializeField] float currentFuel;
-    [SerializeField] float maxFuel;
+    [SerializeField] public float currentFuel;
+    [SerializeField] public float maxFuel;
 
 
 
@@ -169,6 +169,7 @@ public class CarController : MonoBehaviour,IPunObservable
         if(_input.GetPlayerMovement() != Vector2.zero)
         {
             currentFuel -= Time.deltaTime * AllCarInfo.Instance.allCarInfo[currentCar].FuelBURNAmount;
+            UIManager.Instance.fuelSlider.value = currentFuel / maxFuel;
 
             if (currentFuel < maxFuel / 2)
             {

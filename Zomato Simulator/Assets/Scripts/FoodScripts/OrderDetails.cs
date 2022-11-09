@@ -8,6 +8,9 @@ using Photon.Realtime;
 public class OrderDetails : MonoBehaviour, IPunObservable
 {
     #region data
+    public int Reward = 1;
+    public int RewardMultiplier = 1;
+
     public int DriverID = -1;
     public int FoodPicID = -1;
     public int HomeID = -1;
@@ -18,8 +21,8 @@ public class OrderDetails : MonoBehaviour, IPunObservable
     public float RatingTimer = 60;
 
     public bool FreeForAll = false;
-    [SerializeField]private bool _isPickedUp;
-     public bool isPickedUp
+    private bool _isPickedUp;
+    public bool isPickedUp
      {
          get { return _isPickedUp; }
          set
@@ -83,7 +86,11 @@ public class OrderDetails : MonoBehaviour, IPunObservable
         this.DeliveryAddress = CommonReferences.Houses[HomeID].transform;
         this.foodPic = CommonReferences.Instance.foodTypes[foodPicIndex];
 
-        //this.HotPlateTimer = Vector2.Distance(DeliveryAddress.position, Vector2.zero) * 10;
+        var pickupPos = CommonReferences.Houses[HomeID].transform.position;
+        var deliverPos = CommonReferences.Restaurants[RestaurantID].transform.position;
+
+        Reward = (int)Vector2.Distance(pickupPos, deliverPos) * RewardMultiplier;
+        this.gameObject.name = Reward.ToString();
 
         GetRandomPerson();
         InstantiateInUI();
@@ -196,10 +203,14 @@ public class OrderDetails : MonoBehaviour, IPunObservable
 
     public void TransferDataToNewOrder(OrderDetails NewOrder)
     {
-        Debug.LogWarning(NewOrder == null) ;
+
         NewOrder.HomeID = this.HomeID;
         NewOrder.DeliveryAddress = this.DeliveryAddress;
         NewOrder.ClientPic = this.ClientPic;
+
+        int temp = this.Reward;
+        this.Reward = NewOrder.Reward;
+        NewOrder.Reward = temp;
 
         NewOrder.myUIPrefab.GetComponent<FoodIconDetailsHolder>().orderDetails = NewOrder;
 

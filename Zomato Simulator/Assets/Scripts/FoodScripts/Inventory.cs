@@ -117,21 +117,24 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
         House House = CommonReferences.Houses[HouseID_ofClickedHouse];
 
         var foodtobedeleted = ClickedFood;
+        var actualFood = myPickedUpFood.Find(x => x.HomeID == HouseID_ofClickedHouse);
         if (DidTheyOrderThisFood(ClickedFood, House))
         {
+            int reward = ClickedFood.Reward;
             if (!IsOwnerSame(ClickedFood, House))
             {
-                var actualFood = myPickedUpFood.Find(x => x.HomeID == HouseID_ofClickedHouse);
-               // if (actualFood != null)
+                if (actualFood != null)
                 {
+
+                    reward = actualFood.Reward;
                     ClickedFood.TransferDataToNewOrder(actualFood);
                     ClickedFood = actualFood;
                 }
                
             }
-            
 
 
+            DataHolder.Instance.CoinCount += reward;
             CommonReferences.Instance.HouseDelivered(ClickedFood,HouseID_ofClickedHouse);
 
             
@@ -141,6 +144,11 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
             Destroy(foodDetails.gameObject);
 
         }
+        /*else
+        {
+            actualFood.Reward -= 5;
+            actualFood.Reward = Mathf.Clamp(actualFood.Reward ,0, actualFood.Reward);
+        }*/
     }
 
     private bool DidTheyOrderThisFood(OrderDetails Order ,House House)

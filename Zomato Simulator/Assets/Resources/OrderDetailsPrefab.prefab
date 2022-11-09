@@ -53,15 +53,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dbe9515e5300eb4ab1eaa93352ecd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Reward: 1
+  RewardMultiplier: 1
   DriverID: -1
   FoodPicID: -1
   HomeID: -1
   RestaurantID: -1
-  HotPlateTimer: 5
-  window: 5
-  RatingTimer: 3
+  HotPlateTimer: 120
+  window: 120
+  RatingTimer: 30
   FreeForAll: 0
-  _isPickedUp: 0
   foodPic: {fileID: 0}
   Client: {fileID: 0}
   DeliveryAddress: {fileID: 0}

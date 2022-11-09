@@ -3,25 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
     public OrderList orderList;
     public UIPointer pointer;
+    public Slider fuelSlider;
     internal object usergender;
 
+    public TMP_Text CoinCountText;
 
     #region Tutorial Section
     [Header("Tutorial")]
-    [SerializeField] float ReadDuration = 10;
     [SerializeField] public List<TutorialSteps> Step = new List<TutorialSteps>();
     [SerializeField] GameObject TutorialPanel;
     //[SerializeField] GameObject TutorialHand;
     [SerializeField] Vector3 Tut_Init_Pos;
     [SerializeField] TMP_Text tutorialText;
-    public bool PlayingTutorial;
-    public bool tutStepInProgress;
+    public bool PlayingTutorial { get; set; }
+    public bool tutStepInProgress { get; set; }
 
     public void EnableSteps()
     {
@@ -99,6 +101,19 @@ public class UIManager : MonoBehaviour
              });
         closingTweenID = closingTween.id;
     }
+    public IEnumerator tutorialCO(String StepCode)
+    {
+        int ID = Step.FindIndex(x => x.Code == StepCode);
+        while (tutStepInProgress)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+
+        if (PlayingTutorial && !Step[ID].SkipThisStep)
+        {
+            OpenTutorialPanel(ID);
+        }
+    }
 
 
     #endregion
@@ -110,7 +125,7 @@ public class UIManager : MonoBehaviour
             Instance = this;
         }
 
-        PlayingTutorial = PlayerPrefs.GetInt("TutDone", 0) == 0;
+        PlayingTutorial = PlayerPrefs.GetInt("TutDone", 0) == 1;
         if(PlayingTutorial)
         {
             EnableSteps();
@@ -135,10 +150,6 @@ public class UIManager : MonoBehaviour
         Debug.Log(status);
         //throw new NotImplementedException();
     }
-
-
-    [SerializeField] Transform PendingOrdersParent;
-    [SerializeField] GameObject FoodUIPrefab;
 
     #region fuel Area
     [Header("FUEL AREA")]
@@ -186,19 +197,49 @@ public class UIManager : MonoBehaviour
         LeanTween.move(rect, new Vector3(0, -500), 0.5f).setEaseOutQuad();
     }
 
-    public IEnumerator tutorialCO(String StepCode)
+
+    #region Button Helper
+
+    public void ShowNearestFuel()
     {
-        int ID = Step.FindIndex(x => x.Code == StepCode);
-        while (tutStepInProgress)
+        var nearest = Mathf.Infinity;
+        var GS = CommonReferences.GasStations;
+        var MC = CommonReferences.Instance.myCar;
+        Transform nearestStation = null;
+        foreach (var item in GS)
         {
-            yield return new WaitForEndOfFrame();
+            var distance = Vector2.Distance(item.position, MC.transform.position);
+
+            if(distance < nearest)
+            {
+                nearestStation = item;
+            }
         }
 
-        if (PlayingTutorial && !Step[ID].SkipThisStep)
+        if (nearestStation != null)
         {
-            OpenTutorialPanel(ID);
+            pointer.Target = nearestStation;
         }
     }
 
+    public void ShowMyCar()
+    {
+        pointer.Target = CommonReferences.Instance.myCar.transform;
+    }
+
+    public void EmergencyFuel()
+    {
+        var mycar = CommonReferences.Instance.myCar;
+        var rechargeCost = 50;
+
+#if UNITY_EDITOR
+        rechargeCost = 0;
+#endif
+        if(DataHolder.Instance.CoinCount >= rechargeCost && mycar.currentFuel/mycar.maxFuel < 0.75f)
+        {
+            mycar.currentFuel += mycar.maxFuel * 0.25f;
+        }
+    }
+    #endregion
 
 }

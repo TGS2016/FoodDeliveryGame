@@ -13,10 +13,12 @@ public class CommonReferences : MonoBehaviour
     public static CommonReferences Instance;
     public Transform HouseParent;
     public Transform RestaurantParent;
+    public Transform GasStationparent;
     public List<Sprite> foodTypes = new List<Sprite>();
 
     public static List<House> Houses = new List<House>();
     public static List<Restaurant> Restaurants = new List<Restaurant>();
+    public static List<Transform> GasStations = new List<Transform>();
     public static RandomSample ClientGenerator;
 
     public Transform OrderUIParent;
@@ -162,6 +164,18 @@ public class CommonReferences : MonoBehaviour
                 int temp = i;
                 var r = RestaurantParent.GetChild(temp).GetComponent<Restaurant>();
                 Restaurants.Add(r);
+            }
+        }
+        #endregion
+        #region populate GasStations
+        int GasStationCount = GasStationparent.childCount;
+        if (GasStationCount > 0)
+        {
+            for (int i = 0; i < GasStationCount; i++)
+            {
+                int temp = i;
+                var G = GasStationparent.GetChild(temp);
+                GasStations.Add(G);
             }
         }
         #endregion
