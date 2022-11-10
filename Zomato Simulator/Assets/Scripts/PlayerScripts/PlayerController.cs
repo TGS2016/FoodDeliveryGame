@@ -48,7 +48,10 @@ public class PlayerController : MonoBehaviour,IPunObservable
                 CommonReferences.Instance.myCar.SetupCar(selected_car, selected_car_color);
 
                 CommonReferences.Instance.SetupCameras();
-            }            
+            }
+
+            _animator.SetFloat("GenderID", DatabaseManager.Instance.GetLocalData().char_id);
+            UIManager.Instance.SetCoinText();
 
         }
         canMove = true;

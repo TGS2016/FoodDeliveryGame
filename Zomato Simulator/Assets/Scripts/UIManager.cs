@@ -10,8 +10,11 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
     public OrderList orderList;
     public UIPointer pointer;
-    public Slider fuelSlider;
-    internal object usergender;
+    public Slider fuelSlider;    
+
+    public string username;
+    public int user_char;
+
 
     public TMP_Text CoinCountText;
 
@@ -133,23 +136,71 @@ public class UIManager : MonoBehaviour
         //LeanTween.alpha(TutorialHand, 0, 0.01f);
     }
 
-    internal void UpdateUserName(string name)
-    {
-        Debug.Log(name);
-        //throw new NotImplementedException();
-    }
+  
 
-    internal void ToggleGameplayUI(bool state)
+    public void ToggleGameplayUI(bool enabled)
     {
-        
-        //throw new NotImplementedException();
+        gameplay_ui.SetActive(enabled);
     }
-
+    public void ToggleStartUI(bool enabled)
+    {
+        start_ui.SetActive(enabled);
+    }
+    public void UpdateUserName(string _name, string _ethad = null)
+    {
+        if (_ethad != null)
+        {
+            usernameText.text = "Hi, " + _name + "\n  Your crypto address is : " + _ethad;
+            username = _name;
+        }
+        else usernameText.text = _name;
+    }
     internal void UpdateStatus(string status)
     {
         Debug.Log(status);
         //throw new NotImplementedException();
     }
+
+
+    #region VoiceChat
+    [Header("VoiceChat")]
+    [SerializeField] FrostweepGames.WebGLPUNVoice.Recorder recorder;
+    [SerializeField] FrostweepGames.WebGLPUNVoice.Listener lister;
+    [SerializeField] Image recorderImg;
+    [SerializeField] Image listenerImg;
+    [SerializeField] Sprite[] recorderSprites; //0 on 1 off
+    [SerializeField] Sprite[] listenerSprites; //0 on 1 off
+    public void MuteUnmute()
+    {
+        if (recorder.recording)
+        {
+            recorder.recording = false;
+            recorderImg.sprite = recorderSprites[1];
+            recorder.StopRecord();
+        }
+        else
+        {
+            recorder.RefreshMicrophones();
+            recorder.recording = true;
+            recorder.StartRecord();
+            recorderImg.sprite = recorderSprites[0];
+        }
+    }
+
+    public void MuteUnmuteListner()
+    {
+        if (lister._listening)
+        {
+            lister._listening = false;
+            listenerImg.sprite = listenerSprites[1];
+        }
+        else
+        {
+            lister._listening = true;
+            listenerImg.sprite = listenerSprites[0];
+        }
+    }
+    #endregion
 
     #region fuel Area
     [Header("FUEL AREA")]
@@ -242,4 +293,145 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
+
+    #region Data Refresh UI SHOW
+    public void UpdatePlayerUIData(bool _show, LocalData data, bool _init = false)
+    {
+        if (_show)
+        {
+            //scoreTxt.text = data.coins.ToString();
+            // if (PhotonNetwork.LocalPlayer.CustomProperties["health"] != null) healthSlider.value = float.Parse(PhotonNetwork.LocalPlayer.CustomProperties["health"].ToString());
+        }
+    }
+    #endregion
+
+    #region Panel Management
+    [Space(20f)]
+    [Header("Panels")]
+    [SerializeField] GameObject login_ui;
+    [SerializeField] GameObject start_ui;
+    [SerializeField] GameObject gameplay_ui;
+    [SerializeField] GameObject start_ui_btns;
+    [SerializeField] GameObject editprofile_ui;
+
+    [Header("Buttons")]
+    [SerializeField] GameObject loginui_btns;
+
+    public void StartGame()
+    {
+        //start_ui.SetActive(false);
+        //StartUI.SetActive(false);
+       
+       
+        MPNetworkManager.insta.OnConnectedToServer();
+       
+        //MPNetworkManager.insta.OnConnectedToServer();
+    }
+    #endregion
+
+    #region Edit Profile Section
+    [SerializeField] Toggle[] char_toggles;
+    [SerializeField] TMP_InputField name_input;
+    public void OpenEditProfile()
+    {
+        LocalData data = DatabaseManager.Instance.GetLocalData();
+
+        name_input.text = data.name;
+        for (int i = 0; i < char_toggles.Length; i++)
+        {
+            if (i == data.char_id)
+            {
+                char_toggles[data.char_id].isOn = true;
+                break;
+            }
+        }
+
+        start_ui_btns.SetActive(false);
+        editprofile_ui.SetActive(true);
+    }
+    public void SetProfile()
+    {
+        if (string.IsNullOrEmpty(name_input.text)) return;
+
+        LocalData data = DatabaseManager.Instance.GetLocalData();
+
+        data.name = name_input.text;
+        for (int i = 0; i < char_toggles.Length; i++)
+        {
+            if (char_toggles[i].isOn)
+            {
+                data.char_id = i;
+                break;
+            }
+        }
+        DatabaseManager.Instance.UpdateData(data);
+
+
+        start_ui_btns.SetActive(true);
+        editprofile_ui.SetActive(false);
+        UpdateUserName(data.name, SingletonDataManager.userethAdd);
+    }
+    #endregion
+
+    [Space(20f)]
+    [Header("Informaion (Login)")]
+    [SerializeField] TMP_Text usernameText;
+    [SerializeField] TMP_Text statusText;
+
+    [Header("Informaion (InGame)")]
+    [SerializeField] GameObject information_box;
+    [SerializeField] TMP_Text information_text;
+    [SerializeField] Image information_image;
+    Coroutine info_coroutine;
+
+   
+
+    public void ShowInformationMsg(string msg, float time, Sprite image = null)
+    {
+        if (image != null)
+        {
+            information_image.sprite = image;
+            information_image.gameObject.SetActive(true);
+        }
+        else
+        {
+            information_image.gameObject.SetActive(false);
+        }
+
+        information_text.text = msg;
+
+        if (info_coroutine != null)
+        {
+            StopCoroutine(info_coroutine);
+        }
+        info_coroutine = StartCoroutine(disableInformationMsg(time));
+    }
+    IEnumerator disableInformationMsg(float time)
+    {
+        LeanTween.cancel(information_box);
+
+        information_box.SetActive(true);
+        LeanTween.scaleY(information_box, 1, 0.15f).setFrom(0);
+       // AudioManager.Instance.playSound(0);
+
+        yield return new WaitForSeconds(time);
+
+        LeanTween.scaleY(information_box, 0, 0.15f).setOnComplete(() => {
+            information_box.SetActive(false);
+        });
+
+
+    }
+
+    #region Coin Texts
+    [SerializeField] TMP_Text[] coin_texts;
+    public void SetCoinText()
+    {
+        int coins = DatabaseManager.Instance.GetLocalData().coins;
+        for (int i = 0; i < coin_texts.Length; i++)
+        {
+            coin_texts[i].text = coins.ToString();
+        }
+    }
+    #endregion
 }

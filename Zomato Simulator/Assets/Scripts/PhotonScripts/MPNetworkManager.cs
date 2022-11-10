@@ -15,6 +15,9 @@ public class MPNetworkManager : MonoBehaviourPunCallbacks
     //[SerializeField] FrostweepGames.WebGLPUNVoice.Recorder rec;
     //[SerializeField] GameObject VoiceObj;
 
+    [SerializeField] FrostweepGames.WebGLPUNVoice.Recorder rec;
+    [SerializeField] GameObject VoiceObj;
+
     private void Awake()
     {
         insta = this;
@@ -24,10 +27,10 @@ public class MPNetworkManager : MonoBehaviourPunCallbacks
     {
 
 
-         OnConnectedToServer();
-       // VoiceObj.SetActive(true);
-        //rec.RefreshMicrophones();
-        //rec.reliableTransmission = false;
+         //OnConnectedToServer();
+        VoiceObj.SetActive(true);
+        rec.RefreshMicrophones();
+        rec.reliableTransmission = false;
     }
 
     #region CommonStuff
@@ -98,8 +101,8 @@ public class MPNetworkManager : MonoBehaviourPunCallbacks
         //int temoNo = Random.Range(0, 2);
         //Debug.Log("PlayerNo " + temoNo);
         Hashtable hash = new Hashtable();
-        hash.Add("char_no", UIManager.Instance.usergender);
-        hash.Add("isRacing", false);        
+        hash.Add("char_no", UIManager.Instance.user_char);
+        //hash.Add("isRacing", false);        
         PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
 
         //roomIndex = PlayerPrefs.GetInt("musePoz", 0); //room index on network
@@ -171,8 +174,9 @@ public class MPNetworkManager : MonoBehaviourPunCallbacks
     void StartGameCall()
     {
         NPSpawner.GeneratePlayer();
-        //rec.RefreshMicrophones();
-       // rec.StartRecord();
+        rec.RefreshMicrophones();
+        UIManager.Instance.ToggleStartUI(false);
+        // rec.StartRecord();
         //UIManager.insta.MuteUnmute();
         //MetaManager.Instance.UpdatePlayerWorldProperties();
         UIManager.Instance.ToggleGameplayUI(true);

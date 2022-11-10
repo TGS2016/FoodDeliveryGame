@@ -116,18 +116,25 @@ public class CarController : MonoBehaviour,IPunObservable
         }*/
     }
 
-
-    internal void SetupCar(int selected_car, int selected_car_color)
+    int lastSetupCar = -1;
+    internal void SetupCar(int selected_car, int selected_car_color, bool rechageFuel = true)
     {
+
         currentCar = selected_car;
         currentCarColor = selected_car_color;
 
-        currentFuel = AllCarInfo.Instance.allCarInfo[selected_car].maxFuelCapacity;
+
+        if (rechageFuel)
+        {
+            currentFuel = AllCarInfo.Instance.allCarInfo[selected_car].maxFuelCapacity;
+        }
         maxFuel= AllCarInfo.Instance.allCarInfo[selected_car].maxFuelCapacity;
 
         
         car_sprites = AllCarInfo.Instance.allCarInfo[selected_car].allColorSprite[selected_car_color].car_sprites;
         UpdateSpriteAsPerRotation();
+
+        lastSetupCar = selected_car;
     }
 
     private void Move()
@@ -166,10 +173,12 @@ public class CarController : MonoBehaviour,IPunObservable
         Vector3 curr_velocity = _rb2d.velocity;
         Vector3 desiredVelocity = drive_offset.normalized;
 
-        if(_input.GetPlayerMovement() != Vector2.zero)
+        UIManager.Instance.fuelSlider.value = currentFuel / maxFuel;
+
+        if (_input.GetPlayerMovement() != Vector2.zero)
         {
             currentFuel -= Time.deltaTime * AllCarInfo.Instance.allCarInfo[currentCar].FuelBURNAmount;
-            UIManager.Instance.fuelSlider.value = currentFuel / maxFuel;
+          
 
             if (currentFuel < maxFuel / 2)
             {
