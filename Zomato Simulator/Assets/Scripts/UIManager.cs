@@ -30,6 +30,9 @@ public class UIManager : MonoBehaviour
 
     public void EnableSteps()
     {
+
+       // PlayerPrefs.SetInt("TutDone", 1);
+
         PlayingTutorial = true;
         for (int i = 0; i < Step.Count; i++)
         {
@@ -59,7 +62,7 @@ public class UIManager : MonoBehaviour
         
         tutorialText.text = Step[TutID].TutorialText;
         TutorialPanel.SetActive(true);
-        LeanTween.move(TutorialPanel.GetComponent<RectTransform>(), Tut_Init_Pos + new Vector3(0, -180, 0), 1.25f).setEaseOutQuad();
+        LeanTween.move(TutorialPanel.GetComponent<RectTransform>(), Tut_Init_Pos + new Vector3(0, -280, 0), 1.25f).setEaseOutQuad();
        
         if (Step[TutID].ObjectToPoint != null)
         {
@@ -165,6 +168,8 @@ public class UIManager : MonoBehaviour
     #region VoiceChat
     [Header("VoiceChat")]
     [SerializeField] FrostweepGames.WebGLPUNVoice.Recorder recorder;
+
+  
     [SerializeField] FrostweepGames.WebGLPUNVoice.Listener lister;
     [SerializeField] Image recorderImg;
     [SerializeField] Image listenerImg;
@@ -286,9 +291,21 @@ public class UIManager : MonoBehaviour
 #if UNITY_EDITOR
         rechargeCost = 0;
 #endif
-        if(DataHolder.Instance.CoinCount >= rechargeCost && mycar.currentFuel/mycar.maxFuel < 0.75f)
+
+        if(DatabaseManager.Instance.GetLocalData().coins >= rechargeCost)
         {
-            mycar.currentFuel += mycar.maxFuel * 0.25f;
+            if (mycar.currentFuel / mycar.maxFuel < 0.75f)
+            {
+                mycar.currentFuel += mycar.maxFuel * 0.25f;
+                LocalData data = DatabaseManager.Instance.GetLocalData();
+                data.coins -= rechargeCost;
+                DatabaseManager.Instance.UpdateData(data);
+               
+            }
+        }
+        else
+        {
+            MessageBox.insta.showMsg("Not Enough Coins!", true);
         }
     }
     #endregion
@@ -433,5 +450,35 @@ public class UIManager : MonoBehaviour
             coin_texts[i].text = coins.ToString();
         }
     }
+    #endregion
+
+    #region Food Delivered UI
+    public GameObject delivered_ui;
+    int reward;
+    [SerializeField] TMP_Text reward_coins_text;
+    public void ShowOrderDeliveredPanel(int coinsReward)
+    {
+        reward = coinsReward;
+        reward_coins_text.text = reward.ToString();
+        delivered_ui.SetActive(true);
+        
+    }
+    public void ClaimCoins()
+    {
+        LocalData data = DatabaseManager.Instance.GetLocalData();
+        data.coins += reward;
+        DatabaseManager.Instance.UpdateData(data);
+        delivered_ui.SetActive(false);
+        SetCoinText();
+
+    }
+    public void ClaimExtraCoins()
+    {
+        Debug.LogWarning("IMPLEMENT TOKEN HERE");
+
+        delivered_ui.SetActive(false);
+    }
+
+
     #endregion
 }

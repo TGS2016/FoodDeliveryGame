@@ -97,7 +97,7 @@ public class MPNetworkManager : MonoBehaviourPunCallbacks
     #region RandomRoom
     private void JoinRandomRoom()
     {
-        UIManager.Instance.UpdateUserName("Entering to Meta Race");
+        UIManager.Instance.UpdateUserName("Entering to World");
         //int temoNo = Random.Range(0, 2);
         //Debug.Log("PlayerNo " + temoNo);
         Hashtable hash = new Hashtable();

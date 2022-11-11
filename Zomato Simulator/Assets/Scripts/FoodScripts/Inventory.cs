@@ -110,6 +110,8 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
         StartCoroutine(UIManager.Instance.tutorialCO("giving food"));
     }
 
+
+    public int coinsReward=0;
     public void foodButtonOnClickMethod(int HouseID_ofClickedHouse, GameObject foodDetails)
     {
         int FoodID = foodDetails.transform.GetSiblingIndex();
@@ -134,7 +136,17 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
             }
 
 
-            DataHolder.Instance.CoinCount += reward;
+            coinsReward = reward;
+
+          /*  LocalData data=DatabaseManager.Instance.GetLocalData();
+            data.coins += reward;
+            DatabaseManager.Instance.UpdateData(data);*/
+            UIManager.Instance.ShowOrderDeliveredPanel(coinsReward);
+
+
+
+            //DataHolder.Instance.CoinCount += reward;
+
             CommonReferences.Instance.HouseDelivered(ClickedFood,HouseID_ofClickedHouse);
 
             

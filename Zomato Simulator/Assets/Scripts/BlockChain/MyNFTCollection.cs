@@ -66,6 +66,7 @@ public class MyNFTCollection : MonoBehaviour
         }
 
         prev_BTN.SetActive(false);
+        next_BTN.SetActive(true);
            
         LoadingMyCollection.SetActive(false);
         MyCollectionObject.SetActive(true);
@@ -87,7 +88,7 @@ public class MyNFTCollection : MonoBehaviour
         {
             for (int i = 0; i < temp_list.Count; i++)
             {
-                if (temp_list[i].StartsWith("50") && temp_list[i].Length == 3)
+                if (temp_list[i].StartsWith("5") && temp_list[i].Length == 3)
                 {
                     available_cars.Add(Int32.Parse(temp_list[i]) - 499);
                     //MyNFTCollection.insta.GenerateItem(Int32.Parse(temp_list[i]));
@@ -101,6 +102,9 @@ public class MyNFTCollection : MonoBehaviour
            Debug.Log("Available : " + available_cars[i]);
         }
 
+        prev_BTN.SetActive(false);
+        next_BTN.SetActive(true);
+
         SetCarInfo(0);
     }
 
@@ -113,7 +117,7 @@ public class MyNFTCollection : MonoBehaviour
         {
             available_cars.Add(lastSelectedButton);
                     
-        }
+        }        
     }
     private void OnDisable()
     {
@@ -235,7 +239,7 @@ public class MyNFTCollection : MonoBehaviour
 
         carSpeed_txt.text ="Car Speed : " +  AllCarInfo.Instance.allCarInfo[carIndex].carSpeed.ToString();
         carMaxFuel_txt.text = "Max Fuel Capacity : " +  AllCarInfo.Instance.allCarInfo[carIndex].maxFuelCapacity.ToString();
-        carAvg_txt.text = "Car Average :" +  AllCarInfo.Instance.allCarInfo[carIndex].FuelBURNAmount.ToString();
+        carAvg_txt.text = "Fuel Efficiency :" + (1.5f - AllCarInfo.Instance.allCarInfo[carIndex].FuelBURNAmount).ToString();
         carTurnSpeed_txt.text= "Car Turn Speed :" + AllCarInfo.Instance.allCarInfo[carIndex].carTurnTime.ToString();
 
         /*if (carIndex == 0)
@@ -261,6 +265,8 @@ public class MyNFTCollection : MonoBehaviour
             return;
         }
 
+       /* data.coins -= DatabaseManager.Instance.allMetaDataServer[carIndex].cost;
+        DatabaseManager.Instance*/
         lastSelectedButton = carIndex;
         //car Index Starts from 0 and 0-is default car. So Buy index-1
         EvmosManager.Instance.purchaseItem(carIndex-1,false);

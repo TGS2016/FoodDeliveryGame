@@ -81,15 +81,19 @@ public class CarController : MonoBehaviour,IPunObservable
     {
         if (!pv.IsMine) return;
 
-        if (canDrive && _input.GetInteractButton())
+        if (canDrive && _input.GetInteractButton() )
         {
 
-            //EXIT CAR
-            ToggleCar(false);            
-            CommonReferences.Instance.myPlayer.TogglePlayer(true);
+            if (_rb2d.velocity.magnitude < 0.1f)
+            {
+                //EXIT CAR
+                ToggleCar(false);
+                CommonReferences.Instance.myPlayer.TogglePlayer(true);
 
-            canDrive = false;
-            CommonReferences.Instance.SwitchCamera(CAMERA_TYPE.PLAYER);
+                canDrive = false;
+                CommonReferences.Instance.SwitchCamera(CAMERA_TYPE.PLAYER);
+
+            }
         }
        
     }
@@ -128,9 +132,13 @@ public class CarController : MonoBehaviour,IPunObservable
         {
             currentFuel = AllCarInfo.Instance.allCarInfo[selected_car].maxFuelCapacity;
         }
-        maxFuel= AllCarInfo.Instance.allCarInfo[selected_car].maxFuelCapacity;
 
-        
+        speed = AllCarInfo.Instance.allCarInfo[selected_car].carSpeed;
+        maxFuel = AllCarInfo.Instance.allCarInfo[selected_car].maxFuelCapacity;
+        turn_speed=  AllCarInfo.Instance.allCarInfo[selected_car].carTurnTime;
+        fuelBurnAmount = AllCarInfo.Instance.allCarInfo[selected_car].FuelBURNAmount;
+
+
         car_sprites = AllCarInfo.Instance.allCarInfo[selected_car].allColorSprite[selected_car_color].car_sprites;
         UpdateSpriteAsPerRotation();
 
@@ -139,11 +147,15 @@ public class CarController : MonoBehaviour,IPunObservable
 
     private void Move()
     {
+       
+
         if (currentFuel <= 0)
         {
             _rb2d.drag = Mathf.Lerp(_rb2d.drag, 3f, Time.fixedDeltaTime * 3);
             return;
         }
+
+        UIManager.Instance.fuelSlider.value = currentFuel / maxFuel;
 
         if (_input.GetVerticalInput() == 0)
         {
@@ -173,11 +185,11 @@ public class CarController : MonoBehaviour,IPunObservable
         Vector3 curr_velocity = _rb2d.velocity;
         Vector3 desiredVelocity = drive_offset.normalized;
 
-        UIManager.Instance.fuelSlider.value = currentFuel / maxFuel;
+       
 
         if (_input.GetPlayerMovement() != Vector2.zero)
         {
-            currentFuel -= Time.deltaTime * AllCarInfo.Instance.allCarInfo[currentCar].FuelBURNAmount;
+            currentFuel -= Time.deltaTime * fuelBurnAmount;
           
 
             if (currentFuel < maxFuel / 2)
@@ -206,6 +218,7 @@ public class CarController : MonoBehaviour,IPunObservable
 
    
     [SerializeField] float turn_speed;
+    [SerializeField] float fuelBurnAmount;
     [SerializeField] float currentTime;
     private void ChangeDriveOffset(float horizontalValue, float verticalValue)
     {
@@ -251,7 +264,6 @@ public class CarController : MonoBehaviour,IPunObservable
     {
         int spriteIndex =(int) Mathf.Abs((current_angle%360) / turnAmount);
         int tempSpriteIndex = currentSpriteIndex;
-       
 
         currentSpriteIndex = spriteIndex;
         carSpriteRenderer.sprite = car_sprites[spriteIndex];
@@ -274,7 +286,6 @@ public class CarController : MonoBehaviour,IPunObservable
             colliderObject.AddComponent<PolygonCollider2D>();
         }
     }
-
 
     int local_car_index=0;
     int local_car_color=0;

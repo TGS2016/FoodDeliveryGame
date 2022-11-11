@@ -365,6 +365,7 @@ MonoBehaviour:
   currentFuel: 0
   maxFuel: 0
   turn_speed: 0.2
+  fuelBurnAmount: 0
   currentTime: 0
   currentSpriteIndex: 0
 --- !u!61 &5885564120101645533

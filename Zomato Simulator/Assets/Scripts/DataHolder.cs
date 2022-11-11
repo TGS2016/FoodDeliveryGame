@@ -17,8 +17,9 @@ public class DataHolder : MonoBehaviour
     public int CoinCount { get { return _coinCount; } 
         set
         {
+                       
             _coinCount = value;
-            UIManager.Instance.CoinCountText.text = CoinCount.ToString();
+            UIManager.Instance.SetCoinText();
         }
     }
 }

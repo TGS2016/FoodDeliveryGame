@@ -45,6 +45,10 @@ public class PlayerController : MonoBehaviour,IPunObservable
                 CommonReferences.Instance.myPlayer = this;
                 CommonReferences.Instance.myPV = this.PV;
                 CommonReferences.Instance.myCar= myCar = car.GetComponent<CarController>();
+
+                selected_car = DatabaseManager.Instance.GetLocalData().selected_car;
+                selected_car_color= DatabaseManager.Instance.GetLocalData().selected_car_color;
+
                 CommonReferences.Instance.myCar.SetupCar(selected_car, selected_car_color);
 
                 CommonReferences.Instance.SetupCameras();
@@ -121,22 +125,40 @@ public class PlayerController : MonoBehaviour,IPunObservable
     
     public bool isPlayerenabled = true;
     public void TogglePlayer(bool enabled)
-    {        
-        
+    {
+
         //Debug.Log("player toggled" + enabled);
 
         /*this.gameObject.SetActive(enabled);*/
+
+        if (enabled)
+        {
+            if (PV.IsMine)
+            {
+                Vector3 randomPos = UnityEngine.Random.insideUnitSphere;
+                randomPos.z = 0;
+
+                Vector3 position = myCar.transform.position + randomPos;
+
+                while (Physics2D.OverlapBox(position, new Vector2(0.05f, 0.05f),0) !=null ){
+                    randomPos = UnityEngine.Random.insideUnitSphere;
+                    randomPos.z = 0;
+                    position= myCar.transform.position + randomPos;
+                }
+                this.transform.position = position;
+            }
+            _pState = PlayerState.WORLD;
+        }
+        else
+        {
+            _pState = PlayerState.DRIVE;
+        }
+
         player_sr.enabled = enabled;
         _rb2d.isKinematic = !enabled;
         playerCollider.enabled = enabled;
 
-        if (enabled)
-        {
-            _pState = PlayerState.WORLD;
-        }
-        else{
-            _pState = PlayerState.DRIVE;
-        }
+       
 
         canMove = enabled;
         isPlayerenabled = enabled;

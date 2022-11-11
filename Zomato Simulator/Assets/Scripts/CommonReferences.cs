@@ -38,6 +38,7 @@ public class CommonReferences : MonoBehaviour
     public CinemachineVirtualCamera camera_map;
 
     [SerializeField] List<Transform> toScaleObjectsOn = new List<Transform>();
+    [SerializeField] List<Transform> toScaleObjectsOn_RestarentIcons = new List<Transform>();
 
     public Transform[] playerPoz;
 
@@ -97,6 +98,11 @@ public class CommonReferences : MonoBehaviour
                 LeanTween.cancel(toScaleObjectsOn[i].gameObject);
                 LeanTween.scale(toScaleObjectsOn[i].gameObject, Vector3.one *2, 0.8f);
             }
+            for (int i = 0; i < toScaleObjectsOn_RestarentIcons.Count; i++)
+            {
+                LeanTween.cancel(toScaleObjectsOn_RestarentIcons[i].gameObject);
+                LeanTween.scale(toScaleObjectsOn_RestarentIcons[i].gameObject, Vector3.one * 6, 0.8f);
+            }
         }
         else
         {
@@ -121,6 +127,11 @@ public class CommonReferences : MonoBehaviour
             {
                 LeanTween.cancel(toScaleObjectsOn[i].gameObject);
                 LeanTween.scale(toScaleObjectsOn[i].gameObject, Vector3.one,0.8f);
+            }
+            for (int i = 0; i < toScaleObjectsOn_RestarentIcons.Count; i++)
+            {
+                LeanTween.cancel(toScaleObjectsOn_RestarentIcons[i].gameObject);
+                LeanTween.scale(toScaleObjectsOn_RestarentIcons[i].gameObject, Vector3.one * 4, 0.8f);
             }
         }
     }   
