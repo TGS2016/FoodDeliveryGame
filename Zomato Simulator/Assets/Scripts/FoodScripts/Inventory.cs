@@ -142,7 +142,7 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
             data.coins += reward;
             DatabaseManager.Instance.UpdateData(data);*/
             UIManager.Instance.ShowOrderDeliveredPanel(coinsReward);
-
+            
 
 
             //DataHolder.Instance.CoinCount += reward;
@@ -155,6 +155,7 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
             Destroy(foodtobedeleted.gameObject);
             Destroy(foodDetails.gameObject);
 
+            CloseBag();
         }
         /*else
         {

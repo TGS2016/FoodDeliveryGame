@@ -57,6 +57,12 @@ public class PlayerController : MonoBehaviour,IPunObservable
             _animator.SetFloat("GenderID", DatabaseManager.Instance.GetLocalData().char_id);
             UIManager.Instance.SetCoinText();
 
+
+            bool tutorialDone = PlayerPrefs.GetInt("TutDone", 0) == 1;
+            if (!tutorialDone)
+            {
+                UIManager.Instance.EnableSteps();
+            }
         }
         canMove = true;
     }
@@ -131,20 +137,38 @@ public class PlayerController : MonoBehaviour,IPunObservable
 
         /*this.gameObject.SetActive(enabled);*/
 
+        if (!enabled)
+        {
+            if (PV.IsMine)
+                this.transform.parent = myCar.transform;
+            //CHANGE PLAYER POSITION
+        }
+        else
+        {
+            if (PV.IsMine)
+                this.transform.parent = null;
+        }
+
+
         if (enabled)
         {
             if (PV.IsMine)
             {
-                Vector3 randomPos = UnityEngine.Random.insideUnitSphere;
+                Vector3 randomPos = UnityEngine.Random.insideUnitSphere * 2 + Vector3.one;
                 randomPos.z = 0;
 
                 Vector3 position = myCar.transform.position + randomPos;
-
-                while (Physics2D.OverlapBox(position, new Vector2(0.05f, 0.05f),0) !=null ){
-                    randomPos = UnityEngine.Random.insideUnitSphere;
-                    randomPos.z = 0;
-                    position= myCar.transform.position + randomPos;
+                for (int i = 0; i < 10; i++)
+                {
+                    if (Physics2D.OverlapBox(position, new Vector2(0.05f, 0.05f), 0) != null)
+                    {
+                        randomPos = UnityEngine.Random.insideUnitSphere * 2 + Vector3.one;
+                        randomPos.z = 0;
+                        position = myCar.transform.position + randomPos;
+                    }
+                    else break;
                 }
+
                 this.transform.position = position;
             }
             _pState = PlayerState.WORLD;
@@ -163,18 +187,7 @@ public class PlayerController : MonoBehaviour,IPunObservable
         canMove = enabled;
         isPlayerenabled = enabled;
        
-        if (!enabled)
-        {
-            if(PV.IsMine)
-            this.transform.parent = myCar.transform;
-            //CHANGE PLAYER POSITION
-        }
-        else
-        {
-            if(PV.IsMine)
-            this.transform.parent = null;
-        }
-        
+       
     }
 
     private void FixedUpdate()

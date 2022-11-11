@@ -9,8 +9,10 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] AudioSource bgSource;    
     [SerializeField] AudioSource soundSource;
+    [SerializeField] AudioSource tutorialSource;
 
     [SerializeField] AudioClip[] audioClips;
+    
 
     private void Awake()
     {
@@ -29,5 +31,15 @@ public class AudioManager : MonoBehaviour
         //if (soundSource.isPlaying) soundSource.Stop();
         soundSource.PlayOneShot(audioClips[_no], _vol);
     }
-  
+
+    public void playTutorialSound(AudioClip audio)
+    {
+        if (audio != null)
+        {
+            //if (soundSource.isPlaying) soundSource.Stop();
+            tutorialSource.clip = audio;
+            tutorialSource.Play();
+        }
+    }
+
 }

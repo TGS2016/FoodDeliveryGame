@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
     public void EnableSteps()
     {
 
-       // PlayerPrefs.SetInt("TutDone", 1);
+        PlayerPrefs.SetInt("TutDone", 1);
 
         PlayingTutorial = true;
         for (int i = 0; i < Step.Count; i++)
@@ -60,8 +60,10 @@ public class UIManager : MonoBehaviour
         if (closingTweenID != -1) LeanTween.cancel(closingTweenID);
         CancelInvoke(nameof(CloseTutorialPanel));
         
+
         tutorialText.text = Step[TutID].TutorialText;
         TutorialPanel.SetActive(true);
+        AudioManager.Instance.playTutorialSound(Step[TutID].clip);
         LeanTween.move(TutorialPanel.GetComponent<RectTransform>(), Tut_Init_Pos + new Vector3(0, -280, 0), 1.25f).setEaseOutQuad();
        
         if (Step[TutID].ObjectToPoint != null)
@@ -131,11 +133,7 @@ public class UIManager : MonoBehaviour
             Instance = this;
         }
 
-        PlayingTutorial = PlayerPrefs.GetInt("TutDone", 0) == 1;
-        if(PlayingTutorial)
-        {
-            EnableSteps();
-        }
+       
         //LeanTween.alpha(TutorialHand, 0, 0.01f);
     }
 

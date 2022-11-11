@@ -15,4 +15,5 @@ public class TutorialSteps
     public bool HasFollowUpPopUp = false;
     public bool SkipThisStep = false;
     public string Code;
+    public AudioClip clip;
 }
