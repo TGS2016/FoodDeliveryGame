@@ -21,6 +21,10 @@ public class CarController : MonoBehaviour,IPunObservable
     public bool canDrive;
 
 
+    [SerializeField] AudioSource engineSound;
+    [SerializeField] float minPitch=0.3f;
+
+
     [Header("Car Turn Properties")]
     [SerializeField] float driftFactor;
     [SerializeField] float stoppingTime;
@@ -83,18 +87,18 @@ public class CarController : MonoBehaviour,IPunObservable
 
         if (canDrive && _input.GetInteractButton() )
         {
-
             if (_rb2d.velocity.magnitude < 0.1f)
             {
-                //EXIT CAR
                 ToggleCar(false);
                 CommonReferences.Instance.myPlayer.TogglePlayer(true);
 
                 canDrive = false;
                 CommonReferences.Instance.SwitchCamera(CAMERA_TYPE.PLAYER);
-
             }
         }
+
+        engineSound.pitch = minPitch + _rb2d.velocity.magnitude / speed;
+
        
     }
 
@@ -107,6 +111,15 @@ public class CarController : MonoBehaviour,IPunObservable
     {
         yield return new WaitForEndOfFrame();
         canDrive = enabled;
+
+        if (canDrive)
+        {
+            engineSound.Play();
+        }
+        else
+        {
+            engineSound.Stop();
+        }
        // _rb2d.isKinematic = !enabled;
 
        /* if(enabled == false)

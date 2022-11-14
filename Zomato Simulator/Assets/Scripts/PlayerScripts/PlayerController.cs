@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour,IPunObservable
 
     public PlayerState _pState = PlayerState.WORLD;
 
+    [SerializeField] TextMesh username_txt;
+
     private void Awake()
     {
         _input = GetComponent<PlayerInput>();
@@ -37,7 +39,7 @@ public class PlayerController : MonoBehaviour,IPunObservable
 
         if (PV.IsMine)
         {
-
+            username_txt.gameObject.SetActive(false);
             GameObject car = PhotonNetwork.Instantiate("Car", this.transform.position + new Vector3(3, 0, 0), Quaternion.identity);
 
             if (CommonReferences.Instance) {
@@ -63,6 +65,10 @@ public class PlayerController : MonoBehaviour,IPunObservable
             {
                 UIManager.Instance.EnableSteps();
             }
+        }
+        else
+        {
+            username_txt.text = PV.Owner.NickName;
         }
         canMove = true;
     }

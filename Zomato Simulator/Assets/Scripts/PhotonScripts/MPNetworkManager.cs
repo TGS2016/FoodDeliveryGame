@@ -68,7 +68,7 @@ public class MPNetworkManager : MonoBehaviourPunCallbacks
 
 
         //PhotonNetwork.JoinOrCreateRoom("private", myRoom, TypedLobby.Default);
-        //PhotonNetwork.NickName = DatabaseManager.Instance.GetLocalData().name;
+        PhotonNetwork.NickName = DatabaseManager.Instance.GetLocalData().name;
         JoinRandomRoom();
     }
 

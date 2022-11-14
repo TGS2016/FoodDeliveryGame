@@ -85,9 +85,9 @@ public class OrderList : MonoBehaviour
 
                 FoodDetails.orderDetails = CommonReferences.Restaurants[RestaurantID].Orders[OrderID];
                 //FoodDetails.foodSprite = RS.Orders[OrderID].foodPic;
-                food.SetParent(MenuCard);
-                Debug.Log("sprite should be assigned here : " + RS.Orders[OrderID].foodPic.name);
-                Debug.Log("food should be assigned here : " + food.name);
+                food.SetParent(MenuCard,false);
+               /* Debug.Log("sprite should be assigned here : " + RS.Orders[OrderID].foodPic.name);
+                Debug.Log("food should be assigned here : " + food.name);*/
 
 
                 button.onClick.AddListener(() =>
@@ -133,14 +133,21 @@ public class OrderList : MonoBehaviour
 
             RS.OrderPickedUpByMyself(orderID);
 
+            UIManager.Instance.pointer.Target = null;
+        }
+        else
+        {
+            UIManager.Instance.ShowInformationMsg("Bag Is Full! Deliver some food items",2f);
         }
 
     }
+
     /*public void OnOthersOrderClicked(Restaurant RS, GameObject FoodDetails)
     {
         Debug.Log("Not My order");
         OnTryPickOrder(RS, FoodDetails.gameObject, false);
     }*/
+
     #endregion
 
     #region Order Remove

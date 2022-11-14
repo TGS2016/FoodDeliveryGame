@@ -96,11 +96,11 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
             var food = Instantiate(this.FoodIcon).transform;
             var foodButton = food.GetComponent<Button>();
             var foodDetails = food.GetComponent<FoodIconDetailsHolder>();
-            foodDetails.ClientFeatures[0].transform.parent.gameObject.SetActive(false);
+           // foodDetails.ClientFeatures[0].transform.parent.gameObject.SetActive(false);
 
             foodDetails.orderDetails = myPickedUpFood[temp];
             foodDetails.CheckState();
-            food.SetParent(BagParent.GetChild(0));
+            food.SetParent(BagParent.GetChild(0),false);
 
             foodButton.onClick.AddListener(() =>
             {
@@ -142,7 +142,7 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
             data.coins += reward;
             DatabaseManager.Instance.UpdateData(data);*/
             UIManager.Instance.ShowOrderDeliveredPanel(coinsReward);
-            
+            AudioManager.Instance.playSound(0);
 
 
             //DataHolder.Instance.CoinCount += reward;
@@ -157,11 +157,12 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
 
             CloseBag();
         }
-        /*else
+        else
         {
-            actualFood.Reward -= 5;
-            actualFood.Reward = Mathf.Clamp(actualFood.Reward ,0, actualFood.Reward);
-        }*/
+            AudioManager.Instance.playSound(3);
+            /*actualFood.Reward -= 5;
+            actualFood.Reward = Mathf.Clamp(actualFood.Reward ,0, actualFood.Reward);*/
+        }
     }
 
     private bool DidTheyOrderThisFood(OrderDetails Order ,House House)

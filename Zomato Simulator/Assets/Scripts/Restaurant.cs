@@ -63,6 +63,8 @@ public class Restaurant : MonoBehaviour
         Debug.Log("spawning a : " + FoodServed[localfoodID].name);
         order.InitializeOrder(DriverID, foodID, RestaurantID);
 
+        AudioManager.Instance.playSound(4);
+        
         //UIManager.Instance.pointer.ShowDirection(this.transform);
     }
     internal void AddThisInList(OrderDetails orderDetails)

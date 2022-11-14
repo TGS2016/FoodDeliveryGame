@@ -113,13 +113,13 @@ public class DayNightSystem2D : MonoBehaviour
 
             if (currentStatus != true)
             {
-                if (percent > 0.55f)
+                if (percent > 0.75f)
                 {
                     ControlLightMaps(true); // disable map light (keep enable only at night)
                     if (hasToChangeBloom)
                     {
                         hasToChangeBloom = false;
-                        OnBloomChanged?.Invoke(7f);
+                        OnBloomChanged?.Invoke(3f);
                     }
 
                 }
@@ -144,7 +144,7 @@ public class DayNightSystem2D : MonoBehaviour
 
             if (currentStatus != false )
             {
-                if (percent > 0.75f)
+                if (percent > 0.9f)
                 {
                     ControlLightMaps(false); // disable map light (keep enable only at night)                    
                 }
@@ -164,7 +164,7 @@ public class DayNightSystem2D : MonoBehaviour
 
             if (status)
             {
-                LeanTween.value(0, 0.5f, 1f).setOnUpdate((value) => {
+                LeanTween.value(0, 0.35f, 1f).setOnUpdate((value) => {
                     foreach (Light2D _light in mapLights)
                     {
                         _light.intensity = value;
@@ -172,7 +172,7 @@ public class DayNightSystem2D : MonoBehaviour
                     }
                 });
 
-                LeanTween.value(0, 0.4f, 1f).setOnUpdate((value) => {
+                LeanTween.value(0, 0.35f, 1f).setOnUpdate((value) => {
                     foreach (Light2D _light in normalPoleLights)
                     {
                         _light.intensity = value;
@@ -186,7 +186,7 @@ public class DayNightSystem2D : MonoBehaviour
                     }
                 });
 
-                LeanTween.value(0, 0.6f, 1f).setOnUpdate((value) => {
+                LeanTween.value(0, 0.45f, 1f).setOnUpdate((value) => {
                     foreach (Light2D _light in diffPoleLights_Circle)
                     {
                         _light.intensity = value;
@@ -203,14 +203,14 @@ public class DayNightSystem2D : MonoBehaviour
             }
             else
             {
-                LeanTween.value(0.5f, 0f, 1f).setOnUpdate((value) => {
+                LeanTween.value(0.35f, 0f, 1f).setOnUpdate((value) => {
                     foreach (Light2D _light in mapLights)
                     {
                         _light.intensity = value;
                     }
                 });
 
-                LeanTween.value(0.4f, 0f, 1f).setOnUpdate((value) => {
+                LeanTween.value(0.35f, 0f, 1f).setOnUpdate((value) => {
                     foreach (Light2D _light in normalPoleLights)
                     {
                         _light.intensity = value;
@@ -224,7 +224,7 @@ public class DayNightSystem2D : MonoBehaviour
                     }
                 });
 
-                LeanTween.value(0.6f, 0, 1f).setOnUpdate((value) => {
+                LeanTween.value(0.45f, 0, 1f).setOnUpdate((value) => {
                     foreach (Light2D _light in diffPoleLights_Circle)
                     {
                         _light.intensity = value;

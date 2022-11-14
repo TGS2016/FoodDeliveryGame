@@ -27,7 +27,7 @@ public class PlayerZomatoApp : MonoBehaviour
 
     IEnumerator StartGettingOrders()
     {
-        float initialDelay = Random.Range(10, 20);
+        float initialDelay = Random.Range(25, 70);
         yield return new WaitForSeconds(initialDelay);
         while (true)
         {
