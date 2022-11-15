@@ -8,7 +8,24 @@ public class UIPointer : MonoBehaviour
 {
     public Image img;
     public GameObject rotator;
-    public Transform Target { get; set; }
+    public Sprite[] sprites;
+    private Transform target;
+    public Transform Target { get { return target; } 
+        set
+        {
+            target = value;
+            if (target.name.Equals("gas"))
+            {
+                //GAS ICON
+                ChangeIcon(0);
+            }
+
+            else if (target== CommonReferences.Instance.myCar.transform) {
+                //CAR ICON
+                ChangeIcon(1);
+            }
+        }
+    }
     private Camera mainCam;
     public float zRotateOffset;
 
@@ -22,6 +39,11 @@ public class UIPointer : MonoBehaviour
         showDirection();
     }
 
+    public void ChangeIcon(int spriteIndex)
+    {
+        img.color = new Color(1, 1, 1, 1);
+        img.sprite = sprites[spriteIndex];
+    }
     public void showDirection()
     {
         if (Target == null)

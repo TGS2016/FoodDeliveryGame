@@ -120,6 +120,11 @@ public class CarController : MonoBehaviour,IPunObservable
         {
             engineSound.Stop();
         }
+
+        if (pv.IsMine)
+        {
+            UIManager.Instance.ToggleCarPointerBTN(!enabled);
+        }
        // _rb2d.isKinematic = !enabled;
 
        /* if(enabled == false)

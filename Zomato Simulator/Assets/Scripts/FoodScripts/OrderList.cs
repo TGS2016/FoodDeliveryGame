@@ -133,7 +133,9 @@ public class OrderList : MonoBehaviour
 
             RS.OrderPickedUpByMyself(orderID);
 
-            UIManager.Instance.pointer.Target = null;
+            //UIManager.Instance.pointer.Target = null;
+
+
         }
         else
         {

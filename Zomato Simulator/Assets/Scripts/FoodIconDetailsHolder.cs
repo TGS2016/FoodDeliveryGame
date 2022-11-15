@@ -111,10 +111,13 @@ public class FoodIconDetailsHolder : MonoBehaviour
         if(orderDetails.isPickedUp)
         {
             locationToShow = CommonReferences.Houses[orderDetails.HomeID].transform;
+            UIManager.Instance.pointer.ChangeIcon(2);
+
         }
         else
         {
             locationToShow = CommonReferences.Restaurants[orderDetails.RestaurantID].transform;
+            UIManager.Instance.pointer.ChangeIcon(3);
         }
 
         UIManager.Instance.pointer.Target = (locationToShow);

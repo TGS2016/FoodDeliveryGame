@@ -78,6 +78,9 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
         CommonReferences.OnDisplayHouse?.Invoke(pickedUpFood.HomeID);
 
         pickedUpFood.myUIPrefab.transform.SetParent(BagUIPanel);
+
+        UIManager.Instance.pointer.ChangeIcon(2);
+        UIManager.Instance.pointer.Target = CommonReferences.Houses[pickedUpFood.HomeID].transform;
     }
 
     public void OpenBag(int HouseID_ofClickedHouse)

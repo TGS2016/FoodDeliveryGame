@@ -18,6 +18,13 @@ public class UIManager : MonoBehaviour
 
     public TMP_Text CoinCountText;
 
+    [SerializeField] GameObject carPointerBTN;
+
+    public void ToggleCarPointerBTN(bool enabled)
+    {
+        carPointerBTN.SetActive(enabled);
+    }
+
     #region Tutorial Section
     [Header("Tutorial")]
     [SerializeField] public List<TutorialSteps> Step = new List<TutorialSteps>();
@@ -30,9 +37,7 @@ public class UIManager : MonoBehaviour
 
     public void EnableSteps()
     {
-
         PlayerPrefs.SetInt("TutDone", 1);
-
         PlayingTutorial = true;
         for (int i = 0; i < Step.Count; i++)
         {
