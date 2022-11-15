@@ -29,10 +29,14 @@ public class EvmosManager : MonoBehaviour
 
     public const string abi = "[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"}],\"name\":\"ApprovalForAll\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256[]\",\"name\":\"ids\",\"type\":\"uint256[]\"},{\"indexed\":false,\"internalType\":\"uint256[]\",\"name\":\"values\",\"type\":\"uint256[]\"}],\"name\":\"TransferBatch\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"TransferSingle\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"value\",\"type\":\"string\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"URI\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_add\",\"type\":\"address\"}],\"name\":\"GetAllUserToken\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"accounts\",\"type\":\"address[]\"},{\"internalType\":\"uint256[]\",\"name\":\"ids\",\"type\":\"uint256[]\"}],\"name\":\"balanceOfBatch\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_itemId\",\"type\":\"uint256\"}],\"name\":\"buyCoins\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_tokenUrl\",\"type\":\"string\"}],\"name\":\"buyNonBurnItem\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCurrentTime\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"_result\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"}],\"name\":\"isApprovedForAll\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256[]\",\"name\":\"ids\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"amounts\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"safeBatchTransferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"safeTransferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"}],\"name\":\"setApprovalForAll\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"uri\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_recipient\",\"type\":\"address\"}],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}]";
 
+    public const string abiToken = "[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"ExchangeToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"GetCurrentTime\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"_result\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"GetGameToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"GetSmartContractBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_account\",\"type\":\"address\"}],\"name\":\"GetuserBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subtractedValue\",\"type\":\"uint256\"}],\"name\":\"decreaseAllowance\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"addedValue\",\"type\":\"uint256\"}],\"name\":\"increaseAllowance\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"mint\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]";
+    public const string abiRandom = "[{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"subscriptionId\",\"type\":\"uint64\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"have\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"want\",\"type\":\"address\"}],\"name\":\"OnlyCoordinatorCanFulfill\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"player\",\"type\":\"address\"}],\"name\":\"GetRandomNo\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"SendRandomNoRequest\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"requestId\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"requestId\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"randomWords\",\"type\":\"uint256[]\"}],\"name\":\"rawFulfillRandomWords\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"s_requestIdToAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"s_result\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]";
 
 
     // address of contract
-    public const string contract = "0x890b88997A32191Da8978f96a193547f0351DFF1";
+    public const string contract = "0x66255c09a539E1dAC2cB9601b5288C68C5eAfa65";
+    public const string contractToken = "0xE8E8f06877E92cc77d16506868ff7F0bC35c6f94";
+    public const string contractRandom = "0xff20a0C553B4cd371f7011B4e1432A24Ee04D620";
 
     const string chain = "polygon";
     // set network mainnet, testnet
@@ -45,7 +49,8 @@ public class EvmosManager : MonoBehaviour
 
     public float[] coinCost = { 0.025f, 0.050f, 0.075f, 0.1f, 0.050f };
 
-    public static float userBalance = 0;
+    public static string userBalance = "0";
+    public static string userTokenBalance = "0";
 
     [DllImport("__Internal")]
     private static extern void Web3Connect();
@@ -461,7 +466,7 @@ public class EvmosManager : MonoBehaviour
                 float eth = wei / decimals;
                 // print(Convert.ToDecimal(eth).ToString());
                 Debug.Log(Convert.ToDecimal(eth).ToString());
-                userBalance = float.Parse(Convert.ToDecimal(eth).ToString());
+                userBalance = Convert.ToDecimal(eth).ToString();
                 if (InAppManager.Instance)
                 {
                     InAppManager.Instance.SetBalanceText();                    
@@ -666,6 +671,230 @@ public class EvmosManager : MonoBehaviour
     #endregion
 
 
+    #region Token
 
-    
+    async public void ExchangeToken(int _pack)
+    {
+
+        //if (MessaeBox.insta) MessaeBox.insta.showMsg("Exchange token process started", false);
+
+        float decimals = 1000000000000000000; // 18 decimals
+        float wei = (_pack) * decimals;
+
+        object[] inputParams = { contractToken, Convert.ToDecimal(wei).ToString() };
+
+
+        // smart contract method to call
+        string method = "transfer";
+
+        // array of arguments for contract
+        string args = Newtonsoft.Json.JsonConvert.SerializeObject(inputParams);
+        // value in wei
+        string value = "0";
+        // gas limit OPTIONAL
+        string gasLimit = "";
+        // gas price OPTIONAL
+        string gasPrice = "";
+        // connects to user's browser wallet (metamask) to update contract state
+        try
+        {
+
+
+#if !UNITY_EDITOR
+            string response = await Web3GL.SendContract(method, abiToken, contractToken, args, value, gasLimit, gasPrice);
+            Debug.Log(response);
+#else
+            // string response = await EVM.c(method, abi, contract, args, value, gasLimit, gasPrice);
+            // Debug.Log(response);
+            string data = await EVM.CreateContractData(abiToken, method, args);
+            string response = await Web3Wallet.SendTransaction(chainId, contractToken, value, data, gasLimit, gasPrice);
+
+
+            Debug.Log(response);
+#endif
+
+            if (!string.IsNullOrEmpty(response))
+            {
+                // InvokeRepeating("CheckTransactionStatus", 1*Time.timeScale, 5*Time.timeScale);
+
+
+                //if (MessaeBox.insta) MessaeBox.insta.showMsg("Coin exchanged successfully", true);
+
+
+
+            }
+
+        }
+        catch (Exception e)
+        {
+            //if (MessaeBox.insta) MessaeBox.insta.showMsg("Transaction Has Been Failed", true);
+            Debug.Log(e, this);
+        }
+    }
+    public async UniTaskVoid getTokenBalance()
+    {
+        HERE:
+        // smart contract method to call
+        string method = "balanceOf";
+        // array of arguments for contract
+        object[] inputParams = { PlayerPrefs.GetString("Account") };
+        string args = Newtonsoft.Json.JsonConvert.SerializeObject(inputParams);
+        try
+        {
+            string response = await EVM.Call(chain, network, contractToken, abiToken, method, args, networkRPC);
+            Debug.Log(response);
+            try
+            {
+                float wei = float.Parse(response);
+                float decimals = 1000000000000000000; // 18 decimals
+                float eth = wei / decimals;
+                // print(Convert.ToDecimal(eth).ToString());
+                var tokenBalance = Convert.ToDecimal(eth).ToString();
+                userTokenBalance = tokenBalance;
+                Debug.Log("Token Bal : " + Convert.ToDecimal(eth).ToString() + " | " + response);
+
+                //if (StoreManager.insta) StoreManager.insta.UpdateBalance();
+            }
+            catch (Exception)
+            {
+            }
+
+
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+        }
+        await UniTask.Delay(6000, true);
+        goto HERE;
+
+    }
+
+    async public void getDailyToken()
+    {
+
+        object[] inputParams = { };
+        string method = "GetGameToken"; // buyBurnItem";// "buyCoins";
+
+        // array of arguments for contract
+        string args = Newtonsoft.Json.JsonConvert.SerializeObject(inputParams);
+        // value in wei
+        string value = "";// Convert.ToDecimal(wei).ToString();
+        // gas limit OPTIONAL
+        string gasLimit = "";
+        // gas price OPTIONAL
+        string gasPrice = "";
+        string response = "";
+        // connects to user's browser wallet (metamask) to update contract state
+        try
+        {
+
+#if !UNITY_EDITOR
+                response = await Web3GL.SendContract(method, abiToken, contractToken, args, value, gasLimit, gasPrice);
+                Debug.Log(response);
+#else
+            string data = await EVM.CreateContractData(abiToken, method, args);
+            response = await Web3Wallet.SendTransaction(chainId, contractToken, "0", data, gasLimit, gasPrice);
+            Debug.Log(response);
+#endif
+
+        }
+        catch (Exception e)
+        {
+            Debug.Log("error" + e);
+            //if (MessaeBox.insta) MessaeBox.insta.showMsg("Server Error", true);
+            return;
+        }
+
+        if (!string.IsNullOrEmpty(response))
+        {
+           // MessaeBox.insta.showMsg("Token will be credited soon", true);
+            // CheckTransactionStatusWithTransID(response, 1);
+
+        }
+        else
+        {
+           // if (MessaeBox.insta) MessaeBox.insta.showMsg("Server Error", true);
+            Debug.Log("In check blank");
+        }
+
+    }
+
+    #endregion
+
+    #region Random Number Generator
+
+    async public UniTask<int> GetRandomNumber()
+    {
+
+
+        string response = "";
+
+        object[] inputParams = { };
+
+        string method = "SendRandomNoRequest"; // buyBurnItem";// "buyCoins";
+
+        // array of arguments for contract
+        string args = Newtonsoft.Json.JsonConvert.SerializeObject(inputParams);
+        // value in wei
+        string value = "";// Convert.ToDecimal(wei).ToString();
+        // gas limit OPTIONAL
+        string gasLimit = "";
+        // gas price OPTIONAL
+        string gasPrice = "";
+        // connects to user's browser wallet (metamask) to update contract state
+        try
+        {
+
+#if !UNITY_EDITOR
+                 response = "";//await Web3GL.SendContract(method, abiRandom, contractRandom, args, value, gasLimit, gasPrice);
+                Debug.Log(response);
+#else
+            //string response = await EVM.Call(chain, network, contract, abi, args, method, args);
+            //Debug.Log(response);
+            string data = await EVM.CreateContractData(abiRandom, method, args);
+            response = await Web3Wallet.SendTransaction(chainId, contractRandom, "0", data, gasLimit, gasPrice);
+            Debug.Log(response);
+
+#endif
+
+            if (!string.IsNullOrEmpty(response))
+            {
+                var result = await GetRandomNoFromContract();
+                if (!string.IsNullOrEmpty(result)) return int.Parse(result);
+            }
+
+            return -1;
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e, this);
+            return -1;
+        }
+    }
+
+    public async UniTask<string> GetRandomNoFromContract()
+    {
+        // smart contract method to call
+        string method = "GetRandomNo";
+        // array of arguments for contract
+        object[] inputParams = { SingletonDataManager.userethAdd };
+        string args = Newtonsoft.Json.JsonConvert.SerializeObject(inputParams);
+        try
+        {
+            string response = await EVM.Call(chain, network, contractRandom, abiRandom, method, args);
+            Debug.Log(response);
+            return response;
+
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e, this);
+            return "";
+        }
+
+
+    }
+    #endregion
+
 }
