@@ -359,15 +359,22 @@ public class CarController : MonoBehaviour,IPunObservable
     public void RechargeFuel()
     {
         float remainingFuel = maxFuel - currentFuel;
-        float gasPrice = remainingFuel * 10;
+        int gasPrice =(int) remainingFuel;
         Debug.Log(gasPrice);
 
-        //CHECK USER COINS 
+        LocalData data = DatabaseManager.Instance.GetLocalData();
+        if (data.coins >= gasPrice)
+        {
+            data.coins -= gasPrice;
+            DatabaseManager.Instance.UpdateData(data);
+            UIManager.Instance.SetCoinText();
 
-        //DEDUCT COINS 
-
-
-        currentFuel = maxFuel;
+            currentFuel = maxFuel;
+        }
+        else
+        {
+            MessageBox.insta.showMsg("Not Enough Moeny to buy fuel!", true);
+        }
     }
 }
 
