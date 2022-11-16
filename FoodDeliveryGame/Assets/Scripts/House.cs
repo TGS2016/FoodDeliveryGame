@@ -36,34 +36,24 @@ public class House : MonoBehaviour
 
         if (collision.GetComponentInParent<PhotonView>().IsMine && PendingFood.Count >0)
         {
-
+            StayingNear = true;
             //iconCollider.enabled = true;
 
             //
             
-            for (int i = 0; i < PendingFood.Count; i++)
-            {
-                int temp = i;
-                if (PendingFood.Count > temp)
-                {
-                    if (CommonReferences.Instance.myInventory.myPickedUpFood.Contains(PendingFood[temp]))
-                    {
-                        CommonReferences.Instance.myInventory.foodButtonOnClickMethod(this.HomeID,PendingFood[temp]);
-                        break;
-                    }
-                }
-            }
+            
 
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-      /*  if (collision.GetComponentInParent<PhotonView>() == null) return;
+        if (collision.GetComponentInParent<PhotonView>() == null) return;
 
         if (collision.GetComponentInParent<PhotonView>().IsMine)
         {
-           // iconCollider.enabled = false;
-        }*/
+            StayingNear = false;
+            // iconCollider.enabled = false;
+        }
     }
     #endregion
 
@@ -102,7 +92,28 @@ public class House : MonoBehaviour
     }
     #endregion
 
+    bool StayingNear = false;
+    float DeliveryTimer;
+    private void Update()
+    {
+        if(StayingNear)
+        {
+            DeliveryTimer+= Time.deltaTime;
 
+            if (DeliveryTimer > 1)
+            {
+                if (CommonReferences.Instance.myInventory.myPickedUpFood.Contains(PendingFood[0]))
+                {
+                    DeliveryTimer = 0;
+                    CommonReferences.Instance.myInventory.foodButtonOnClickMethod(this.HomeID, PendingFood[0]);
+                }
+            }
+        }
+        else
+        {
+            DeliveryTimer = 0;
+        }
+    }
     public void SetClientPic(List<Sprite> ClientFeatures)
     {
         for (int i = 0; i < ClientFeatures.Count; i++)

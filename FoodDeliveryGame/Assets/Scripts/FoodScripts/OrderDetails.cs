@@ -53,6 +53,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
     public GameObject OrderPrefab;
 
     public GameObject myUIPrefab;
+    public GameObject myOrderListPrefab;
     private PhotonView myPV;
 
     private Stars _rating = Stars.five;
@@ -61,6 +62,8 @@ public class OrderDetails : MonoBehaviour, IPunObservable
             _rating = value;
             if(myUIPrefab!=null)
             myUIPrefab.GetComponent<FoodIconDetailsHolder>().CheckState();
+            if(myOrderListPrefab!=null)
+            myOrderListPrefab.GetComponent<FoodIconDetailsHolder>().CheckState();
         }
     }
 
@@ -166,7 +169,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
 
     private void Update()
     {
-        //if (rating == Stars.one + 1) return;
+        if (rating == Stars.one && isPickedUp) return;
         if (HotPlateTimer > 0)
         {
             HotPlateTimer -= Time.deltaTime;
@@ -174,8 +177,6 @@ public class OrderDetails : MonoBehaviour, IPunObservable
         else
         {
             rating++;
-            if (rating == Stars.one && isPickedUp)
-                return;
             if (rating == (Stars.one + 1) && !isPickedUp)
             {
                 rating = Stars.five;

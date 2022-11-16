@@ -84,6 +84,7 @@ public class OrderList : MonoBehaviour
                 var button = food.GetComponent<Button>();
 
                 FoodDetails.orderDetails = CommonReferences.Restaurants[RestaurantID].Orders[OrderID];
+                FoodDetails.orderDetails.myOrderListPrefab = food.gameObject;
                 //FoodDetails.foodSprite = RS.Orders[OrderID].foodPic;
                 food.SetParent(MenuCard,false);
                /* Debug.Log("sprite should be assigned here : " + RS.Orders[OrderID].foodPic.name);

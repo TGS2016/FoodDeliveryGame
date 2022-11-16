@@ -46,8 +46,8 @@ public class FoodIconDetailsHolder : MonoBehaviour
         {
             currentTimer.fillAmount = orderDetails.HotPlateTimer / orderDetails.window;
 
-            if (!CircularTimer)
-                CheckState();
+            /*if (!CircularTimer)
+                CheckState();*/
         }
     }
 
@@ -63,6 +63,8 @@ public class FoodIconDetailsHolder : MonoBehaviour
                  Timer[2].fillAmount = 1;
                  Timer[3].fillAmount = 1;
                  Timer[4].fillAmount = 1;
+
+
                 currentTimer = Timer[0];
                 break;
             case 1:
