@@ -378,7 +378,19 @@ public class CarController : MonoBehaviour,IPunObservable
         }
         else
         {
-            MessageBox.insta.showMsg("Not Enough Moeny to buy fuel!", true);
+            if (data.coins == 0)
+            {
+                MessageBox.insta.showMsg("Not Enough Money to buy fuel!", true);
+            }
+            else
+            {
+                currentFuel += data.coins;
+                data.coins = 0;
+                currentFuel = Mathf.Clamp(currentFuel, 0, maxFuel);
+
+                DatabaseManager.Instance.UpdateData(data);
+                UIManager.Instance.SetCoinText();
+            }
         }
     }
 }

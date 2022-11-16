@@ -36,6 +36,7 @@ public class Restaurant : MonoBehaviour
     private void OnPointerClickDelegate(PointerEventData data)
     {
         UIManager.Instance.orderList.ShowOrders(this);
+        UIManager.Instance.CloseFoodPanels();
     }
     private void Start()
     {

@@ -54,14 +54,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Reward: 1
-  RewardMultiplier: 1
+  RewardMultiplier: 0.2
   DriverID: -1
   FoodPicID: -1
   HomeID: -1
   RestaurantID: -1
-  HotPlateTimer: 120
-  window: 120
-  RatingTimer: 30
+  HotPlateTimer: 300
+  window: 300
+  RatingTimer: 75
   FreeForAll: 0
   foodPic: {fileID: 0}
   Client: {fileID: 0}

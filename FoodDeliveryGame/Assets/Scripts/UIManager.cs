@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -50,7 +51,7 @@ public class UIManager : MonoBehaviour
         
         if (TutID >= Step.Count) return;
 
-        if (Step[TutID].SkipThisStep)
+        if (Step[TutID].SkipThisStep || Step[TutID].AdminSkip)
         {
             /*TutID++;
             OpenTutorialPanel(TutID);*/
@@ -122,7 +123,7 @@ public class UIManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        if (PlayingTutorial && !Step[ID].SkipThisStep)
+        if (PlayingTutorial && !Step[ID].SkipThisStep && !Step[ID].AdminSkip)
         {
             OpenTutorialPanel(ID);
         }
@@ -141,8 +142,36 @@ public class UIManager : MonoBehaviour
        
         //LeanTween.alpha(TutorialHand, 0, 0.01f);
     }
+    [SerializeField] Button PendingPanelClosebutton;
+    [SerializeField] Button BagPanelCloseButton;
+    private void Update()
+    {
 
-  
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            Debug.Log("Its over UI elements");
+        }
+        else
+        {
+            Debug.Log("Its NOT over UI elements");
+            if (Input.GetMouseButtonDown(0))
+            {
+                CloseFoodPanels();
+            }
+        }        
+    }
+
+    public void CloseFoodPanels()
+    {
+        if (PendingPanelClosebutton.gameObject.activeSelf)
+        {
+            PendingPanelClosebutton.onClick.Invoke();
+        }
+        if (BagPanelCloseButton.gameObject.activeSelf)
+        {
+            BagPanelCloseButton.onClick.Invoke();
+        }
+    }
 
     public void ToggleGameplayUI(bool enabled)
     {
@@ -296,13 +325,16 @@ public class UIManager : MonoBehaviour
 
         if(DatabaseManager.Instance.GetLocalData().coins >= rechargeCost)
         {
-            if (mycar.currentFuel / mycar.maxFuel < 0.75f)
+            if (mycar.currentFuel / mycar.maxFuel < 0.15f)
             {
                 mycar.currentFuel += mycar.maxFuel * 0.25f;
                 LocalData data = DatabaseManager.Instance.GetLocalData();
                 data.coins -= rechargeCost;
                 DatabaseManager.Instance.UpdateData(data);
-               
+            }
+            else
+            {
+                MessageBox.insta.showMsg("You have Enough Fuel!\nCan't user emergency fuel now.", true);
             }
         }
         else

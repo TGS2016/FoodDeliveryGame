@@ -9,7 +9,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
 {
     #region data
     public int Reward = 1;
-    public int RewardMultiplier = 1;
+    public float RewardMultiplier = 0.2f;
 
     public int DriverID = -1;
     public int FoodPicID = -1;
@@ -89,7 +89,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
         var pickupPos = CommonReferences.Houses[HomeID].transform.position;
         var deliverPos = CommonReferences.Restaurants[RestaurantID].transform.position;
 
-        Reward = (int)Vector2.Distance(pickupPos, deliverPos) * RewardMultiplier;
+        Reward = (int)(Vector2.Distance(pickupPos, deliverPos) * RewardMultiplier);
         this.gameObject.name = Reward.ToString();
 
         GetRandomPerson();

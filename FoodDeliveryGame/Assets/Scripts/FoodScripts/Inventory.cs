@@ -139,7 +139,7 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
             }
 
 
-            coinsReward = reward;
+            coinsReward = reward * (5 - (int)ClickedFood.rating);
 
             /*  LocalData data=DatabaseManager.Instance.GetLocalData();
               data.coins += reward;
@@ -191,11 +191,11 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
             }
 
 
-            coinsReward = reward;
+            coinsReward = reward * (5 - (int)ClickedFood.rating);
 
-          /*  LocalData data=DatabaseManager.Instance.GetLocalData();
-            data.coins += reward;
-            DatabaseManager.Instance.UpdateData(data);*/
+            /*  LocalData data=DatabaseManager.Instance.GetLocalData();
+              data.coins += reward;
+              DatabaseManager.Instance.UpdateData(data);*/
             UIManager.Instance.ShowOrderDeliveredPanel(coinsReward);
             AudioManager.Instance.playSound(0);
 

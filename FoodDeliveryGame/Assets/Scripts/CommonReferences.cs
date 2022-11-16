@@ -209,14 +209,29 @@ public class CommonReferences : MonoBehaviour
     }
 
     #region DispatchOrder
+    private bool firstOrder = true;
     public void DispatchOrder(int DriverID)
     {
         List<Restaurant> AcceptingRestaurants = new List<Restaurant>();
+
+
         foreach (var item in Restaurants)
         {
             if (item.AcceptingOrders)
-                AcceptingRestaurants.Add(item);
+            {
+                if (firstOrder)
+                {
+                    if (Vector2.Distance(item.transform.position, myPlayer.transform.position) < 60)
+                        AcceptingRestaurants.Add(item);
+                }
+                else
+                {
+                    firstOrder = false;
+                    AcceptingRestaurants.Add(item);
+                }
+            }
         }
+        
 
         if (AcceptingRestaurants.Count > 0)
         {
