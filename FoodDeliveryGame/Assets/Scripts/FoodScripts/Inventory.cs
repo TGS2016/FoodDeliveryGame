@@ -19,13 +19,6 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
 
 
 
-    private void Awake()
-    {
-        if (CommonReferences.Instance != null)
-        {
-            CommonReferences.Instance.myInventory = this;
-        }
-    }
     private void OnEnable()
     {
         PhotonNetwork.AddCallbackTarget(this);

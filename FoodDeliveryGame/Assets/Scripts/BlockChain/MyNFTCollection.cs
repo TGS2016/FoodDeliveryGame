@@ -135,6 +135,7 @@ public class MyNFTCollection : MonoBehaviour
     [SerializeField] TMP_Text carMaxFuel_txt;
     [SerializeField] TMP_Text carAvg_txt;
     [SerializeField] TMP_Text carTurnSpeed_txt;
+    [SerializeField] TMP_Text carBagCapacity_txt;
 
 
 
@@ -241,6 +242,7 @@ public class MyNFTCollection : MonoBehaviour
         carMaxFuel_txt.text = "Max Fuel Capacity : " +  AllCarInfo.Instance.allCarInfo[carIndex].maxFuelCapacity.ToString();
         carAvg_txt.text = "Fuel Efficiency :" + (1.5f - AllCarInfo.Instance.allCarInfo[carIndex].FuelBURNAmount).ToString();
         carTurnSpeed_txt.text= "Car Turn Speed :" + AllCarInfo.Instance.allCarInfo[carIndex].carTurnTime.ToString();
+        carBagCapacity_txt.text = "Car Food Capacity :" + AllCarInfo.Instance.allCarInfo[carIndex].maxFoodCapacity.ToString();
 
         /*if (carIndex == 0)
         {

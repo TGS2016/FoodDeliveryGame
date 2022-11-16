@@ -156,6 +156,7 @@ public class CarController : MonoBehaviour,IPunObservable
         turn_speed=  AllCarInfo.Instance.allCarInfo[selected_car].carTurnTime;
         fuelBurnAmount = AllCarInfo.Instance.allCarInfo[selected_car].FuelBURNAmount;
 
+        CommonReferences.Instance.myInventory.BagSize= AllCarInfo.Instance.allCarInfo[selected_car].maxFoodCapacity;
 
         car_sprites = AllCarInfo.Instance.allCarInfo[selected_car].allColorSprite[selected_car_color].car_sprites;
         UpdateSpriteAsPerRotation();

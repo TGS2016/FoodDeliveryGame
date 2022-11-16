@@ -30,6 +30,7 @@ public class CarInfo
 {
     public float carSpeed;
     public float carTurnTime;
+    public int maxFoodCapacity;
     public float maxFuelCapacity;
     public float FuelBURNAmount;
     public List<CarSprites> allColorSprite = new List<CarSprites>();
