@@ -14,15 +14,19 @@ public class UIPointer : MonoBehaviour
         set
         {
             target = value;
-            if (target.name.Equals("gas"))
+            if (target != null)
             {
-                //GAS ICON
-                ChangeIcon(0);
-            }
+                if (target.name.Equals("gas"))
+                {
+                    //GAS ICON
+                    ChangeIcon(0);
+                }
 
-            else if (target== CommonReferences.Instance.myCar.transform) {
-                //CAR ICON
-                ChangeIcon(1);
+                else if (target == CommonReferences.Instance.myCar.transform)
+                {
+                    //CAR ICON
+                    ChangeIcon(1);
+                }
             }
         }
     }

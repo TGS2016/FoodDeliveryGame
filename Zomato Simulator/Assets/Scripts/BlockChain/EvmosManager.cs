@@ -753,6 +753,8 @@ public class EvmosManager : MonoBehaviour
                 userTokenBalance = tokenBalance;
                 Debug.Log("Token Bal : " + Convert.ToDecimal(eth).ToString() + " | " + response);
 
+                if (UIManager.Instance) { UIManager.Instance.SetTokenBalanceText(); }
+
                 //if (StoreManager.insta) StoreManager.insta.UpdateBalance();
             }
             catch (Exception)
@@ -802,13 +804,13 @@ public class EvmosManager : MonoBehaviour
         catch (Exception e)
         {
             Debug.Log("error" + e);
-            //if (MessaeBox.insta) MessaeBox.insta.showMsg("Server Error", true);
+            if (MessageBox.insta) MessageBox.insta.showMsg("Server Error", true);
             return;
         }
 
         if (!string.IsNullOrEmpty(response))
         {
-           // MessaeBox.insta.showMsg("Token will be credited soon", true);
+            MessageBox.insta.showMsg("Token will be credited soon", true);
             // CheckTransactionStatusWithTransID(response, 1);
 
         }
@@ -859,9 +861,18 @@ public class EvmosManager : MonoBehaviour
 #endif
 
             if (!string.IsNullOrEmpty(response))
-            {
+            {               
                 var result = await GetRandomNoFromContract();
-                if (!string.IsNullOrEmpty(result)) return int.Parse(result);
+                if (!string.IsNullOrEmpty(result))
+                {
+                    int number = int.Parse(result);
+
+                    if (number == 0)
+                    {
+                        number = 1;
+                    }
+                    return number;
+                }
             }
 
             return -1;
@@ -883,6 +894,10 @@ public class EvmosManager : MonoBehaviour
         try
         {
             string response = await EVM.Call(chain, network, contractRandom, abiRandom, method, args);
+            if (response == "0")
+            {
+                response = "1";
+            }
             Debug.Log(response);
             return response;
 

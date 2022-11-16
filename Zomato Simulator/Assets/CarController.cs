@@ -348,7 +348,7 @@ public class CarController : MonoBehaviour,IPunObservable
         if (collision.CompareTag("gas_station"))
         {
             StartCoroutine(UIManager.Instance.tutorialCO("fill gas"));
-            UIManager.Instance.ToggleRechargeButton(true);
+            UIManager.Instance.ToggleRechargeButton(true,(int) (maxFuel - currentFuel));
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

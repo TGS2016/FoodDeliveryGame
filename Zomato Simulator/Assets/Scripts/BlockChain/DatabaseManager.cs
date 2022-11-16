@@ -268,7 +268,7 @@ public class DatabaseManager : MonoBehaviour
     async public void UpdateSpinData()
     {
         data = GetLocalData();
-        //data.last_spin_time =(await GetCurrentTime()).ToString();
+        data.last_spin_time =(await GetCurrentTime()).ToString();
         StartCoroutine(updateProfile(0));
     }
    
@@ -383,7 +383,7 @@ public class LocalData
     public int coins = 0;
     public int selected_car=0;
     public int selected_car_color = 0;
-    //public string last_spin_time= "0";    
+    public string last_spin_time= "0";    
     public List<TranscationInfo> transactionsInformation = new List<TranscationInfo>();
     //public List<CarUpgradeInfo> carDetails = new List<CarUpgradeInfo>();
 
@@ -395,7 +395,7 @@ public class LocalData
         coins = 0;
         selected_car = 0;
         selected_car_color = 0;
-       // last_spin_time = "0";
+        last_spin_time = "0";
         transactionsInformation = new List<TranscationInfo>();
        // carDetails = new List<CarUpgradeInfo>();
 

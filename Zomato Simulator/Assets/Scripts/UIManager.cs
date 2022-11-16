@@ -101,7 +101,7 @@ public class UIManager : MonoBehaviour
         Invoke(nameof(CloseTutorialPanel), Step[TutID].PopUpDuration);
     }
 
-
+   
     private int closingTweenID = -1;
     private LTDescr closingTween;
     public void CloseTutorialPanel()
@@ -214,9 +214,10 @@ public class UIManager : MonoBehaviour
     [Header("FUEL AREA")]
     [SerializeField] GameObject FuelRechargeBTN;
 
-    public void ToggleRechargeButton(bool enable)
+    public void ToggleRechargeButton(bool enable,int price=0)
     {
         FuelRechargeBTN.SetActive(enable);
+        FuelRechargeBTN.transform.GetChild(0).GetComponent<TMP_Text>().text ="Cost : "+ price + "-" + (price + 2).ToString() ;
     }
     public void RechargeFuel()
     {
@@ -291,9 +292,7 @@ public class UIManager : MonoBehaviour
         var mycar = CommonReferences.Instance.myCar;
         var rechargeCost = 50;
 
-#if UNITY_EDITOR
-        rechargeCost = 0;
-#endif
+
 
         if(DatabaseManager.Instance.GetLocalData().coins >= rechargeCost)
         {
@@ -308,7 +307,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            MessageBox.insta.showMsg("Not Enough Coins!", true);
+            MessageBox.insta.showMsg("Not Enough Coins! Now go on foot to deliver food.", true);
         }
     }
     #endregion
@@ -445,12 +444,20 @@ public class UIManager : MonoBehaviour
 
     #region Coin Texts
     [SerializeField] TMP_Text[] coin_texts;
+    [SerializeField] TMP_Text[] token_texts;
     public void SetCoinText()
     {
         int coins = DatabaseManager.Instance.GetLocalData().coins;
         for (int i = 0; i < coin_texts.Length; i++)
         {
             coin_texts[i].text = coins.ToString();
+        }
+    }
+    public void SetTokenBalanceText()
+    {
+        for (int i = 0; i < token_texts.Length; i++)
+        {
+            token_texts[i].text = EvmosManager.userTokenBalance;
         }
     }
     #endregion
@@ -464,6 +471,7 @@ public class UIManager : MonoBehaviour
         reward = coinsReward;
         reward_coins_text.text = reward.ToString();
         delivered_ui.SetActive(true);
+        ClaimCoins();
         
     }
     public void ClaimCoins()
@@ -471,9 +479,19 @@ public class UIManager : MonoBehaviour
         LocalData data = DatabaseManager.Instance.GetLocalData();
         data.coins += reward;
         DatabaseManager.Instance.UpdateData(data);
-        delivered_ui.SetActive(false);
+        
         SetCoinText();
 
+    }
+    public void ClaimToken()
+    {
+        delivered_ui.SetActive(false);
+        EvmosManager.Instance.getDailyToken();
+        
+    }
+    public void IgnoreToken()
+    {
+        delivered_ui.SetActive(false);
     }
     public void ClaimExtraCoins()
     {
@@ -484,4 +502,19 @@ public class UIManager : MonoBehaviour
 
 
     #endregion
+
+    #region DAILY SPIN SYSYTEM
+    [SerializeField] GameObject fortuneWheelUI;
+    public void ToggleSpinUI(bool activate)
+    {
+        fortuneWheelUI.SetActive(activate);
+    }
+    #endregion
+
+    [SerializeField] GameObject LoadingPanel;
+    public void ToggleLoadingPanel(bool _show)
+    {
+        LoadingPanel.SetActive(_show);
+    }
+
 }

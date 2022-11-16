@@ -72,7 +72,94 @@ public class PlayerController : MonoBehaviour,IPunObservable
         }
         canMove = true;
     }
+    async void Start()
+    {
+        if (PV.IsMine)
+        {
+            UIManager.Instance.ToggleLoadingPanel(true);
 
+            long lastTimeSpin = long.Parse(DatabaseManager.Instance.GetLocalData().last_spin_time);
+            long currentTime = await DatabaseManager.Instance.GetCurrentTime();
+
+
+            Debug.Log("lastTimeSpin : " + lastTimeSpin);
+            Debug.Log("currentTime : " + currentTime);
+
+            long diff = currentTime - lastTimeSpin;
+
+            Debug.Log("difference : " + diff);
+            //if (lastTimeSpin != null && currentTime != null)
+            {
+                //TimeSpan ts = currentTime - lastTimeSpin;
+#if UNITY_EDITOR
+                diff = 99999;
+#endif
+                if (diff > 86400)
+                {
+                   
+                    UIManager.Instance.ToggleSpinUI(true);
+                }
+            }
+
+            UIManager.Instance.ToggleLoadingPanel(false);
+        }
+    }
+
+    public void ClaimPrize(int prize_index)
+    {
+        Debug.LogWarning("IMPLEMENT NEW CODE HERE");
+        switch (prize_index)
+        {
+            case 0:
+                {
+                    //20 Coins
+                    LocalData data = DatabaseManager.Instance.GetLocalData();
+                    data.coins += 20;
+                    UIManager.Instance.UpdatePlayerUIData(true, data);
+                    DatabaseManager.Instance.UpdateData(data);
+                    UIManager.Instance.SetCoinText();
+                    break;
+                }
+            case 1:
+                {
+                    //NO LUCK
+                    break;
+                }
+            case 2:
+                {
+                    LocalData data = DatabaseManager.Instance.GetLocalData();
+                    data.coins += 40;
+                    UIManager.Instance.UpdatePlayerUIData(true, data);
+                    DatabaseManager.Instance.UpdateData(data);
+                    UIManager.Instance.SetCoinText();
+                    break;
+                }
+            case 3:
+                {
+
+                    break;
+                }
+            case 4:
+                {
+                    LocalData data = DatabaseManager.Instance.GetLocalData();
+                    data.coins += 100;
+                    UIManager.Instance.UpdatePlayerUIData(true, data);
+                    DatabaseManager.Instance.UpdateData(data);
+                    UIManager.Instance.SetCoinText();
+                    break;
+                }
+            case 5:
+                {
+                    LocalData data = DatabaseManager.Instance.GetLocalData();
+                    data.coins += 200;
+                    UIManager.Instance.UpdatePlayerUIData(true, data);
+                    DatabaseManager.Instance.UpdateData(data);
+                    UIManager.Instance.SetCoinText();
+
+                    break;
+                }
+        }        
+    }
     private void Update()
     {
         if (!PV.IsMine) return;
@@ -203,8 +290,8 @@ public class PlayerController : MonoBehaviour,IPunObservable
             Move();
         }
     }
-
-    private void Move()
+    
+            private void Move()
     {
         _rb2d.MovePosition(_rb2d.position + _input.GetPlayerMovement() * Time.fixedDeltaTime * speed);
     }

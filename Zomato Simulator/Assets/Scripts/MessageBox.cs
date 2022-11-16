@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -43,6 +44,11 @@ public class MessageBox : MonoBehaviour
     public void OkButton()
     {
         StopAllCoroutines();
+        msgBoxUI.SetActive(false);
+    }
+
+    internal void hideMsg()
+    {
         msgBoxUI.SetActive(false);
     }
 }

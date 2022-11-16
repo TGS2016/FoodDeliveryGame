@@ -177,7 +177,12 @@ public class OrderList : MonoBehaviour
     #region Misc
     public void CheckAndOpenEmptyPanel()
     {
-        EmptyPanel.SetActive(MenuCard.childCount == 0);
+        //EmptyPanel.SetActive(MenuCard.childCount == 0);
+        if (MenuCard.childCount == 0)
+        {
+            this.gameObject.SetActive(false);
+            CommonReferences.Instance.myInventory.PlayBagTutorial();
+        }
     }
     #endregion
 }
