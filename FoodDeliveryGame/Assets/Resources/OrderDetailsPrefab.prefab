@@ -59,9 +59,10 @@ MonoBehaviour:
   FoodPicID: -1
   HomeID: -1
   RestaurantID: -1
-  HotPlateTimer: 300
-  window: 300
-  RatingTimer: 75
+  HotPlateTimer: 5
+  InitialTimer: 5
+  window: 5
+  RatingTimer: 5
   FreeForAll: 0
   foodPic: {fileID: 0}
   Client: {fileID: 0}

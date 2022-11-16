@@ -17,6 +17,8 @@ public class OrderDetails : MonoBehaviour, IPunObservable
     public int RestaurantID = -1;
 
     public float HotPlateTimer= 60;
+    public float InitialTimer= 60;
+
     public float window= 60;
     public float RatingTimer = 60;
 
@@ -164,7 +166,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
 
     private void Update()
     {
-        if (rating == Stars.one) return;
+        //if (rating == Stars.one + 1) return;
         if (HotPlateTimer > 0)
         {
             HotPlateTimer -= Time.deltaTime;
@@ -172,7 +174,15 @@ public class OrderDetails : MonoBehaviour, IPunObservable
         else
         {
             rating++;
-            if (rating == Stars.one) return;
+            if (rating == Stars.one && isPickedUp)
+                return;
+            if (rating == (Stars.one + 1) && !isPickedUp)
+            {
+                rating = Stars.five;
+                HotPlateTimer += InitialTimer;
+                window = InitialTimer;
+                return;
+            }
             HotPlateTimer += RatingTimer;
             window = RatingTimer;
         }

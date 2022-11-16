@@ -31,7 +31,7 @@ public class FoodIconDetailsHolder : MonoBehaviour
     }
 
     [SerializeField] TMP_Text Rating;
-    [SerializeField] List<Image> Timer = new List<Image>();
+    [SerializeField] public List<Image> Timer = new List<Image>();
     public List<Image> ClientFeatures = new List<Image>();
 
     public Image foodImage;
@@ -58,21 +58,46 @@ public class FoodIconDetailsHolder : MonoBehaviour
         switch (rating)
         {
             case 0:
+                 Timer[0].fillAmount = 1;
+                 Timer[1].fillAmount = 1;
+                 Timer[2].fillAmount = 1;
+                 Timer[3].fillAmount = 1;
+                 Timer[4].fillAmount = 1;
                 currentTimer = Timer[0];
                 break;
             case 1:
                 Timer[0].fillAmount = 0;
+                Timer[1].fillAmount = 1;
+                Timer[2].fillAmount = 1;
+                Timer[3].fillAmount = 1;
+                Timer[4].fillAmount = 1;
+
+                //Timer[0].fillAmount = 0;
                 currentTimer = Timer[1];
                 break;
             case 2:
                 Timer[0].fillAmount = 0;
                 Timer[1].fillAmount = 0;
+                Timer[2].fillAmount = 1;
+                Timer[3].fillAmount = 1;
+                Timer[4].fillAmount = 1;
+
+                /*Timer[0].fillAmount = 0;
+                Timer[1].fillAmount = 0;*/
                 currentTimer = Timer[2];
                 break;
             case 3:
                 Timer[0].fillAmount = 0;
                 Timer[1].fillAmount = 0;
                 Timer[2].fillAmount = 0;
+                Timer[3].fillAmount = 1;
+                Timer[4].fillAmount = 1;
+
+
+
+                /*Timer[0].fillAmount = 0;
+                Timer[1].fillAmount = 0;
+                Timer[2].fillAmount = 0;*/
                 currentTimer = Timer[3];
                 break;
             case 4:
@@ -80,6 +105,22 @@ public class FoodIconDetailsHolder : MonoBehaviour
                 Timer[1].fillAmount = 0;
                 Timer[2].fillAmount = 0;
                 Timer[3].fillAmount = 0;
+                Timer[4].fillAmount = 1;
+
+
+
+                /*Timer[0].fillAmount = 0;
+                Timer[1].fillAmount = 0;
+                Timer[2].fillAmount = 0;
+                Timer[3].fillAmount = 0;*/
+                currentTimer = Timer[4];
+                break;
+            case 5:
+                Timer[0].fillAmount = 0;
+                Timer[1].fillAmount = 0;
+                Timer[2].fillAmount = 0;
+                Timer[3].fillAmount = 0;
+                Timer[4].fillAmount = 0;
                 break;
         }
 
