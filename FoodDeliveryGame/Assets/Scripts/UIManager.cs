@@ -540,6 +540,15 @@ public class UIManager : MonoBehaviour
     public void ToggleSpinUI(bool activate)
     {
         fortuneWheelUI.SetActive(activate);
+
+        if (!activate)
+        {
+            bool tutorialDone = PlayerPrefs.GetInt("TutDone", 0) == 1;
+            if (!tutorialDone)
+            {
+                UIManager.Instance.EnableSteps();
+            }
+        }
     }
     #endregion
 

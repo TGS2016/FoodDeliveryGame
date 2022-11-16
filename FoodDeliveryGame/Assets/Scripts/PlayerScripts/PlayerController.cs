@@ -60,11 +60,7 @@ public class PlayerController : MonoBehaviour,IPunObservable
             UIManager.Instance.SetCoinText();
 
 
-            bool tutorialDone = PlayerPrefs.GetInt("TutDone", 0) == 1;
-            if (!tutorialDone)
-            {
-                UIManager.Instance.EnableSteps();
-            }
+           
         }
         else
         {
@@ -98,6 +94,14 @@ public class PlayerController : MonoBehaviour,IPunObservable
                 {
                    
                     UIManager.Instance.ToggleSpinUI(true);
+                }
+                else
+                {
+                    bool tutorialDone = PlayerPrefs.GetInt("TutDone", 0) == 1;
+                    if (!tutorialDone)
+                    {
+                        UIManager.Instance.EnableSteps();
+                    }
                 }
             }
 
@@ -158,7 +162,17 @@ public class PlayerController : MonoBehaviour,IPunObservable
 
                     break;
                 }
-        }        
+        }
+
+
+       
+       
+            bool tutorialDone = PlayerPrefs.GetInt("TutDone", 0) == 1;
+            if (!tutorialDone)
+            {
+                UIManager.Instance.EnableSteps();
+            }
+        
     }
     private void Update()
     {
