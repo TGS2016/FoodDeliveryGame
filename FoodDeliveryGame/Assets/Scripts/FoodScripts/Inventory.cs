@@ -115,6 +115,58 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
 
 
     public int coinsReward=0;
+    public void foodButtonOnClickMethod(int HouseID_ofClickedHouse, OrderDetails od)
+    {
+        //int FoodID = foodDetails.transform.GetSiblingIndex();
+        OrderDetails ClickedFood = od;
+        House House = CommonReferences.Houses[HouseID_ofClickedHouse];
+
+        var foodtobedeleted = ClickedFood;
+        var actualFood = myPickedUpFood.Find(x => x.HomeID == HouseID_ofClickedHouse);
+        if (DidTheyOrderThisFood(ClickedFood, House))
+        {
+            int reward = ClickedFood.Reward;
+            if (!IsOwnerSame(ClickedFood, House))
+            {
+                if (actualFood != null)
+                {
+
+                    reward = actualFood.Reward;
+                    ClickedFood.TransferDataToNewOrder(actualFood);
+                    ClickedFood = actualFood;
+                }
+
+            }
+
+
+            coinsReward = reward;
+
+            /*  LocalData data=DatabaseManager.Instance.GetLocalData();
+              data.coins += reward;
+              DatabaseManager.Instance.UpdateData(data);*/
+            UIManager.Instance.ShowOrderDeliveredPanel(coinsReward);
+            AudioManager.Instance.playSound(0);
+
+
+            //DataHolder.Instance.CoinCount += reward;
+
+            CommonReferences.Instance.HouseDelivered(ClickedFood, HouseID_ofClickedHouse);
+
+
+            myPickedUpFood.Remove(od);
+
+            Destroy(foodtobedeleted.gameObject);
+            //Destroy(foodDetails.gameObject);
+
+            CloseBag();
+        }
+        else
+        {
+            AudioManager.Instance.playSound(3);
+            /*actualFood.Reward -= 5;
+            actualFood.Reward = Mathf.Clamp(actualFood.Reward ,0, actualFood.Reward);*/
+        }
+    }
     public void foodButtonOnClickMethod(int HouseID_ofClickedHouse, GameObject foodDetails)
     {
         int FoodID = foodDetails.transform.GetSiblingIndex();

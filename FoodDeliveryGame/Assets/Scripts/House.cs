@@ -36,18 +36,34 @@ public class House : MonoBehaviour
 
         if (collision.GetComponentInParent<PhotonView>().IsMine && PendingFood.Count >0)
         {
-           
-            iconCollider.enabled = true;
+
+            //iconCollider.enabled = true;
+
+            //
+            
+            for (int i = 0; i < PendingFood.Count; i++)
+            {
+                int temp = i;
+                if (PendingFood.Count > temp)
+                {
+                    if (CommonReferences.Instance.myInventory.myPickedUpFood.Contains(PendingFood[temp]))
+                    {
+                        CommonReferences.Instance.myInventory.foodButtonOnClickMethod(this.HomeID,PendingFood[temp]);
+                        break;
+                    }
+                }
+            }
+
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponentInParent<PhotonView>() == null) return;
+      /*  if (collision.GetComponentInParent<PhotonView>() == null) return;
 
         if (collision.GetComponentInParent<PhotonView>().IsMine)
         {
-            iconCollider.enabled = false;
-        }
+           // iconCollider.enabled = false;
+        }*/
     }
     #endregion
 
