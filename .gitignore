@@ -2,14 +2,14 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-Zomato Simulator/[Ll]ibrary/
+FoodDeliveryGame/[Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
-Zomato Simulator/[Bb]uild/
-Zomato Simulator/[Bb]uilds/
+FoodDeliveryGame/[Bb]uild/
+FoodDeliveryGame/[Bb]uilds/
 [Ll]ogs/
 [Uu]ser[Ss]ettings/
-Zomato Simulator_*/
+FoodDeliveryGame_*/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
