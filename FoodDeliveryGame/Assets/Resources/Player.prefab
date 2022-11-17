@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2920100840446361829}
+  - component: {fileID: -7249627930467151215}
   - component: {fileID: 2920100840446361828}
   - component: {fileID: 2920100840446361838}
   - component: {fileID: 2920100840446361826}
@@ -16,7 +17,6 @@ GameObject:
   - component: {fileID: 2920100840446361824}
   - component: {fileID: 6825885953041686892}
   - component: {fileID: 1413392045183824487}
-  - component: {fileID: -7249627930467151215}
   - component: {fileID: -8312715795590890591}
   - component: {fileID: 6392694944513996491}
   - component: {fileID: 8711985498905768949}
@@ -42,6 +42,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7249627930467151215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2920100840446361831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: facd6c0ad92057c45987bffc8a28ae6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeTillNextOrder: 30
 --- !u!212 &2920100840446361828
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -220,19 +233,6 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &-7249627930467151215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2920100840446361831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: facd6c0ad92057c45987bffc8a28ae6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TimeTillNextOrder: 30
 --- !u!95 &-8312715795590890591
 Animator:
   serializedVersion: 3

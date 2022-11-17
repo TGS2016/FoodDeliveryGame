@@ -19,14 +19,16 @@ public class OrderList : MonoBehaviour
 
     private void OnEnable()
     {
-        CommonReferences.Instance.myPlayer.canMove = false;
+        CommonReferences.Instance.myCar.DisableInputs = true;
+        CommonReferences.Instance.myPlayer.DisableInputs = true;
         Restaurant.OnOrderPickedUp += OnRemoveItem;
         Restaurant.OnOrderReceived += OnAddItem;
     }
     private void OnDisable()
     {
         DestroyOrderList();
-        CommonReferences.Instance.myPlayer.canMove = true;
+        CommonReferences.Instance.myCar.DisableInputs = false;
+        CommonReferences.Instance.myPlayer.DisableInputs = false;
         Restaurant.OnOrderPickedUp -= OnRemoveItem;
         Restaurant.OnOrderReceived -= OnAddItem;
     }
@@ -36,7 +38,6 @@ public class OrderList : MonoBehaviour
     {
         this.gameObject.SetActive(true);
         RestaurantID = CommonReferences.Restaurants.IndexOf(RS);
-
         #region Populate Menu
         int Items = RS.Orders.Count;
         for (int i = 0; i < Items; i++)
