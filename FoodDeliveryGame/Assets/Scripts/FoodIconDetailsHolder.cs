@@ -46,8 +46,8 @@ public class FoodIconDetailsHolder : MonoBehaviour
         {
             currentTimer.fillAmount = orderDetails.HotPlateTimer / orderDetails.window;
 
-            /*if (!CircularTimer)
-                CheckState();*/
+            if (orderDetails.isPickedUp && orderDetails.rating == Stars.one)
+                Timer[4].fillAmount = 1;
         }
     }
 

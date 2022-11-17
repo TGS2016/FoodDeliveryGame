@@ -96,11 +96,11 @@ public class House : MonoBehaviour
     float DeliveryTimer;
     private void Update()
     {
-        if(StayingNear)
+        if(StayingNear && PendingFood.Count > 0)
         {
             DeliveryTimer+= Time.deltaTime;
 
-            if (DeliveryTimer > 1)
+            if (DeliveryTimer > 2)
             {
                 if (CommonReferences.Instance.myInventory.myPickedUpFood.Contains(PendingFood[0]))
                 {

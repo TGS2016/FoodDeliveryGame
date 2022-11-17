@@ -173,6 +173,7 @@ public class OrderDetails : MonoBehaviour, IPunObservable
         if (HotPlateTimer > 0)
         {
             HotPlateTimer -= Time.deltaTime;
+            HotPlateTimer = Mathf.Clamp(HotPlateTimer, 0, HotPlateTimer);
         }
         else
         {
