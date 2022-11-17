@@ -87,6 +87,7 @@ public class CarController : MonoBehaviour,IPunObservable
     private void Update()
     {
         if (!pv.IsMine) return;
+        if (DisableInputs) return;
 
         if (canDrive && _input.GetInteractButton() )
         {

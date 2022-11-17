@@ -307,6 +307,7 @@ public class UIManager : MonoBehaviour
             if(distance < nearest)
             {
                 nearestStation = item;
+                nearest = distance;
             }
         }
 

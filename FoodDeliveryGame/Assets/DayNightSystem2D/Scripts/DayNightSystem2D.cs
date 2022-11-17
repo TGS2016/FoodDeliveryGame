@@ -59,8 +59,8 @@ public class DayNightSystem2D : MonoBehaviour
     public static Action<float> OnBloomChanged;
 
     [Header("Light Intensity")]
-    [SerializeField] float intensity_freeform=0.35f;
-    [SerializeField] float intensity_normalPole= 0.35f;
+    [SerializeField] float intensity_mapLights=0.35f;
+    [SerializeField] float intensity_normalPoleLights= 0.35f;
     [SerializeField] float intensity_diffPoleLights_Freeform = 0.18f;
     [SerializeField] float intensity_diffPoleLights_circle=0.45f;
     [SerializeField] float intensity_arealigts = 0.22f;
@@ -172,78 +172,78 @@ public class DayNightSystem2D : MonoBehaviour
 
             if (status)
             {
-                LeanTween.value(0, intensity_freeform, 1f).setOnUpdate((value) => {
+                LeanTween.value(0, intensity_mapLights, 1f).setOnUpdate((value) => {
                     foreach (Light2D _light in mapLights)
                     {
                         _light.intensity = value;
 
                     }
-                });
+                }).setIgnoreTimeScale(true);
 
-                LeanTween.value(0, intensity_normalPole, 1f).setOnUpdate((value) => {
+                LeanTween.value(0, intensity_normalPoleLights, 1f).setOnUpdate((value) => {
                     foreach (Light2D _light in normalPoleLights)
                     {
                         _light.intensity = value;
                     }
-                });
+                }).setIgnoreTimeScale(true);
 
                 LeanTween.value(0,intensity_diffPoleLights_Freeform, 1f).setOnUpdate((value) => {
                     foreach (Light2D _light in diffPoleLights_Freeform)
                     {
                         _light.intensity = value;
                     }
-                });
+                }).setIgnoreTimeScale(true);
 
                 LeanTween.value(0, intensity_diffPoleLights_circle, 1f).setOnUpdate((value) => {
                     foreach (Light2D _light in diffPoleLights_Circle)
                     {
                         _light.intensity = value;
                     }
-                });
+                }).setIgnoreTimeScale(true);
 
                 LeanTween.value(0, intensity_arealigts, 1f).setOnUpdate((value) => {
                     foreach (Light2D _light in areaLights)
                     {
                         _light.intensity = value;
                     }
-                });
+                }).setIgnoreTimeScale(true);
 
             }
             else
             {
-                LeanTween.value(intensity_freeform, 0f, 1f).setOnUpdate((value) => {
+                LeanTween.value(intensity_mapLights, 0f, 1f).setOnUpdate((value) => {
                     foreach (Light2D _light in mapLights)
                     {
                         _light.intensity = value;
                     }
-                });
+                }).setIgnoreTimeScale(true);
 
-                LeanTween.value(intensity_normalPole, 0f, 1f).setOnUpdate((value) => {
+                LeanTween.value(intensity_normalPoleLights, 0f, 1f).setOnUpdate((value) => {
                     foreach (Light2D _light in normalPoleLights)
                     {
                         _light.intensity = value;
                     }
-                });
+                }).setIgnoreTimeScale(true);
 
                 LeanTween.value(intensity_diffPoleLights_Freeform, 0f, 1f).setOnUpdate((value) => {
                     foreach (Light2D _light in diffPoleLights_Freeform)
                     {
                         _light.intensity = value;
                     }
-                });
+                }).setIgnoreTimeScale(true);
 
                 LeanTween.value(intensity_diffPoleLights_circle, 0, 1f).setOnUpdate((value) => {
                     foreach (Light2D _light in diffPoleLights_Circle)
                     {
                         _light.intensity = value;
                     }
-                });
+                }).setIgnoreTimeScale(true);
                 LeanTween.value(intensity_arealigts, 0, 1f).setOnUpdate((value) => {
                     foreach (Light2D _light in areaLights)
                     {
                         _light.intensity = value;
                     }
-                });
+                }).setIgnoreTimeScale(true);
             }
      }
 

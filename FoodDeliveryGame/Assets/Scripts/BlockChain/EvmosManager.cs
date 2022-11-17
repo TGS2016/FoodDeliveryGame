@@ -158,8 +158,8 @@ public class EvmosManager : MonoBehaviour
         // reset login message
         SetConnectAccount("");
         CheckUserBalance();
-      
 
+        SingletonDataManager.userethAdd = account;
         if (DatabaseManager.Instance)
         {
             DatabaseManager.Instance.GetData(true);

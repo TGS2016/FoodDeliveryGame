@@ -303,7 +303,7 @@ public class PlayerController : MonoBehaviour,IPunObservable
 
     private void FixedUpdate()
     {
-        if (PV.IsMine && canMove)
+        if (PV.IsMine && canMove && !DisableInputs)
         {
             Move();
         }

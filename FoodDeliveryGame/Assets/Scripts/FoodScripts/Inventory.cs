@@ -134,6 +134,8 @@ public class Inventory : MonoBehaviour,IPunOwnershipCallbacks
 
             coinsReward = reward * (5 - (int)ClickedFood.rating);
 
+            coinsReward = Mathf.Clamp(coinsReward, 25, coinsReward);
+
             /*  LocalData data=DatabaseManager.Instance.GetLocalData();
               data.coins += reward;
               DatabaseManager.Instance.UpdateData(data);*/
