@@ -18,12 +18,12 @@ public class UIManager : MonoBehaviour
 
 
     public TMP_Text CoinCountText;
-
+    public bool getStatedeliveredUI => delivered_ui.activeInHierarchy;
     [SerializeField] GameObject carPointerBTN;
 
     public void ToggleCarPointerBTN(bool enabled)
     {
-        carPointerBTN.SetActive(enabled);
+        carPointerBTN.GetComponent<Button>().interactable = enabled;
     }
 
     #region Tutorial Section
@@ -125,6 +125,11 @@ public class UIManager : MonoBehaviour
 
         if (PlayingTutorial && !Step[ID].SkipThisStep && !Step[ID].AdminSkip)
         {
+            if (StepCode == "find restaurant")
+            {
+                CommonReferences.Instance.myPlayer.DisableInputs = true;
+                CommonReferences.Instance.myCar.DisableInputs = true;
+            }
             OpenTutorialPanel(ID);
         }
     }

@@ -19,6 +19,7 @@ public class CarController : MonoBehaviour,IPunObservable
     public float speed;
 
     public bool canDrive;
+    public bool DisableInputs;
 
 
     [SerializeField] AudioSource engineSound;
@@ -69,6 +70,7 @@ public class CarController : MonoBehaviour,IPunObservable
     {
         if (!pv.IsMine) return;
 
+        
         if (canDrive)
         {
             Move();
@@ -166,7 +168,12 @@ public class CarController : MonoBehaviour,IPunObservable
 
     private void Move()
     {
-       
+
+        if (DisableInputs)
+        {
+            _rb2d.drag = Mathf.Lerp(_rb2d.drag, 3f, Time.fixedDeltaTime * 3);
+            return;
+        }
 
         if (currentFuel <= 0)
         {
@@ -186,6 +193,7 @@ public class CarController : MonoBehaviour,IPunObservable
             _rb2d.drag = 0.2f;            
         }
 
+   
         if (Mathf.Abs(_input.GetVerticalInput()) > 0)
         {
 

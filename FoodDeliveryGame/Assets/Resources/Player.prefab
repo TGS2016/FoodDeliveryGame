@@ -176,6 +176,7 @@ MonoBehaviour:
   player_sr: {fileID: 2920100840446361828}
   _pState: 0
   username_txt: {fileID: 4545072703975163863}
+  DisableInputs: 0
   isPlayerenabled: 1
   canEnterCar: 0
 --- !u!114 &6825885953041686892

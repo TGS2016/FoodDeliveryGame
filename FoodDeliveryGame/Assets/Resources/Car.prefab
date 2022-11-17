@@ -336,6 +336,7 @@ MonoBehaviour:
   pv: {fileID: 7838320739669857311}
   speed: 10
   canDrive: 0
+  DisableInputs: 0
   engineSound: {fileID: 7556588358102251783}
   minPitch: 0.3
   driftFactor: 1.6

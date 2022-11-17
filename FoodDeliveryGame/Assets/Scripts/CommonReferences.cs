@@ -80,6 +80,10 @@ public class CommonReferences : MonoBehaviour
     {
         if (!isMapOpen)
         {
+            if (myPlayer.DisableInputs) myPlayer.DisableInputs = false;
+            if (myCar.DisableInputs) myCar.DisableInputs = false;
+
+
             isMapOpen = true;
             StartCoroutine(UIManager.Instance.tutorialCO("map in"));
             if (myPlayer._pState == PlayerState.WORLD)

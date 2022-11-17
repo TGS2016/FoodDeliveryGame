@@ -98,7 +98,8 @@ public class House : MonoBehaviour
     {
         if(StayingNear && PendingFood.Count > 0)
         {
-            DeliveryTimer+= Time.deltaTime;
+            if (UIManager.Instance.getStatedeliveredUI) { DeliveryTimer = 0; return; }
+            DeliveryTimer += Time.deltaTime;
 
             if (DeliveryTimer > 2)
             {

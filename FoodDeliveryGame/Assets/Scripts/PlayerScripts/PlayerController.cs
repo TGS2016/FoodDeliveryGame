@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour,IPunObservable
     public PlayerState _pState = PlayerState.WORLD;
 
     [SerializeField] TextMesh username_txt;
+    public bool DisableInputs;
 
     private void Awake()
     {
@@ -177,6 +178,13 @@ public class PlayerController : MonoBehaviour,IPunObservable
     private void Update()
     {
         if (!PV.IsMine) return;
+
+        if (_input.GetMapKey())
+        {
+            CommonReferences.Instance.ToggleMap();
+        }
+
+        if (DisableInputs) return;
         if (canEnterCar && _input.GetInteractButton())
         {
             canEnterCar = false;
@@ -189,10 +197,6 @@ public class PlayerController : MonoBehaviour,IPunObservable
         }
 
 
-        if (_input.GetMapKey())
-        {
-            CommonReferences.Instance.ToggleMap();
-        }
         Vector2 tempMov = _input.GetPlayerMovement();
         int animatorStateValue = tempMov.magnitude > 0 ? 4 : 0;
        
