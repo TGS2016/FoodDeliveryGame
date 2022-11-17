@@ -96,6 +96,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 334797b143a72df468575598bbb71dcd, type: 3}
     - target: {fileID: 8811507950281650805, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8811507950281650805, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -111694341
+      objectReference: {fileID: 0}
+    - target: {fileID: 8811507950281650805, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
@@ -207,5 +215,29 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8819295766033853280, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
+      propertyPath: FoodServed.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819295766033853280, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
+      propertyPath: FoodServed.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 437b8935b37ab7b439850918b7f98a3f, type: 3}
+    - target: {fileID: 8819295766033853280, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
+      propertyPath: FoodServed.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: a0b22b08768db6641856234078cca746, type: 3}
+    - target: {fileID: 8819295766033853280, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
+      propertyPath: FoodServed.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: aa4397862c1ddf247a197f7afdadf3d3, type: 3}
+    - target: {fileID: 8819295766033853280, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
+      propertyPath: FoodServed.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: adc84c05b5fae4643be15c7a13e9a449, type: 3}
+    - target: {fileID: 8819295766033853280, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}
+      propertyPath: FoodServed.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4cb8773aee3203643857913f26051a22, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 256aaed47258af849a80f8841cb2bfc7, type: 3}

@@ -253,7 +253,7 @@ public class MyNFTCollection : MonoBehaviour
 
         carSpeed_txt.text ="Car Speed : " +  AllCarInfo.Instance.allCarInfo[carIndex].carSpeed.ToString();
         carMaxFuel_txt.text = "Max Fuel Capacity : " +  AllCarInfo.Instance.allCarInfo[carIndex].maxFuelCapacity.ToString();
-        carAvg_txt.text = "Fuel Efficiency :" + (1.5f - AllCarInfo.Instance.allCarInfo[carIndex].FuelBURNAmount).ToString();
+        carAvg_txt.text = "Fuel Efficiency :" + (10 - AllCarInfo.Instance.allCarInfo[carIndex].FuelBURNAmount).ToString()+"/10";
         carTurnSpeed_txt.text= "Car Turn Speed :" + AllCarInfo.Instance.allCarInfo[carIndex].carTurnTime.ToString();
         carBagCapacity_txt.text = "Car Food Capacity :" + AllCarInfo.Instance.allCarInfo[carIndex].maxFoodCapacity.ToString();
 

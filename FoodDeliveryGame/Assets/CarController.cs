@@ -195,6 +195,10 @@ public class CarController : MonoBehaviour,IPunObservable
         {
             UIManager.Instance.fuelSlider.value = currentFuel / maxFuel;
         }
+
+        DestroyImmediate(colliderObject.GetComponent<PolygonCollider2D>());
+        colliderObject.AddComponent<PolygonCollider2D>();
+
     }
    
     private void Move()
@@ -388,7 +392,7 @@ public class CarController : MonoBehaviour,IPunObservable
         if (collision.CompareTag("gas_station"))
         {
             StartCoroutine(UIManager.Instance.tutorialCO("fill gas"));
-            UIManager.Instance.ToggleRechargeButton(true,(int) (maxFuel - currentFuel));
+            UIManager.Instance.ToggleRechargeButton(true,(int) (maxFuel - currentFuel)/2);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -404,7 +408,7 @@ public class CarController : MonoBehaviour,IPunObservable
     public void RechargeFuel()
     {
         float remainingFuel = maxFuel - currentFuel;
-        int gasPrice =(int) remainingFuel;
+        int gasPrice =(int) remainingFuel /2;
         Debug.Log(gasPrice);
 
         LocalData data = DatabaseManager.Instance.GetLocalData();

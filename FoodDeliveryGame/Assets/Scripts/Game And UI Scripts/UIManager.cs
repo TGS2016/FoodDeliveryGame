@@ -251,7 +251,7 @@ public class UIManager : MonoBehaviour
     public void ToggleRechargeButton(bool enable,int price=0)
     {
         FuelRechargeBTN.SetActive(enable);
-        FuelRechargeBTN.transform.GetChild(0).GetComponent<TMP_Text>().text ="Cost : "+ price + "-" + (price + 2).ToString() ;
+        FuelRechargeBTN.transform.GetChild(0).GetComponent<TMP_Text>().text ="Cost : "+ price.ToString() + "~" ;
     }
     public void RechargeFuel()
     {
