@@ -853,7 +853,7 @@ public class EvmosManager : MonoBehaviour
         {
 
 #if !UNITY_EDITOR
-                 response = "";//await Web3GL.SendContract(method, abiRandom, contractRandom, args, value, gasLimit, gasPrice);
+                 response = await Web3GL.SendContract(method, abiRandom, contractRandom, args, value, gasLimit, gasPrice);
                 Debug.Log(response);
 #else
             //string response = await EVM.Call(chain, network, contract, abi, args, method, args);

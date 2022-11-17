@@ -154,11 +154,11 @@ public class UIManager : MonoBehaviour
 
         if (EventSystem.current.IsPointerOverGameObject())
         {
-            Debug.Log("Its over UI elements");
+            //Debug.Log("Its over UI elements");
         }
         else
         {
-            Debug.Log("Its NOT over UI elements");
+            //Debug.Log("Its NOT over UI elements");
             if (Input.GetMouseButtonDown(0))
             {
                 CloseFoodPanels();

@@ -244,6 +244,7 @@ public class CommonReferences : MonoBehaviour
             Restaurant RS = AcceptingRestaurants[RestaurantID];
             RS.OrderRecieved(DriverID);
             OnOrderDispatched?.Invoke();
+            UIManager.Instance.ShowInformationMsg("You Have Recieved An Order!", 5);
             firstOrder = false;
         }
         else
