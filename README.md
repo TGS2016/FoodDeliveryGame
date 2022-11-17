@@ -20,7 +20,8 @@ Metaverse Food Delivery Multiplayer Game with Web3 Features
 ## Technologies
 - Unity game engine
 - [Polygon (Mumbai Testnet) for in-game purchase, Weapons NFT and reward token ERC-20, exchange token](https://github.com/MoraDefi/MetaRacer/blob/main/Polygon.md)
-- [Chainlink (VRF) To get random number](https://github.com/MoraDefi/MetaRacer/blob/main/Polygon.md)
+- [Chainlink (VRF) To get random number](https://github.com/FDGame2022/FoodDeliveryGame/blob/main/Chainlink.md)
+- [Filecoin/IPFS - Store and Retrive NFT](https://github.com/FDGame2022/FoodDeliveryGame/blob/main/Filecoin-IPFS.md)
 - Remix IDE used to create smart contract for ERC-1155 NFT and In-app store
 
 ### Smart Contracts
