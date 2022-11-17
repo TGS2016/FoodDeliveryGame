@@ -160,6 +160,8 @@ public class EvmosManager : MonoBehaviour
         CheckUserBalance();
 
         SingletonDataManager.userethAdd = account;
+
+
         if (DatabaseManager.Instance)
         {
             DatabaseManager.Instance.GetData(true);
@@ -293,7 +295,7 @@ public class EvmosManager : MonoBehaviour
                
 
                 MyNFTCollection.insta.DisableLastSelectedButton();
-                MyNFTCollection.insta.SetNewData();
+                MyNFTCollection.insta.SetNewData(false);
             }
 
             

@@ -75,12 +75,16 @@ public class MyNFTCollection : MonoBehaviour
     }
 
 
-    public void SetNewData()
+    public void SetNewData(bool clearOldData=true)
     {
         List<string> temp_list = new List<string>();
 
-        available_cars.Clear();
-        available_cars.Add(0);
+        if (clearOldData)
+        {
+            available_cars.Clear();
+            available_cars.Add(0);
+        }
+        
 
         temp_list = EvmosManager.Instance.nftList;
 
@@ -102,10 +106,19 @@ public class MyNFTCollection : MonoBehaviour
            Debug.Log("Available : " + available_cars[i]);
         }
 
-        prev_BTN.SetActive(false);
-        next_BTN.SetActive(true);
+       
 
-        SetCarInfo(0);
+        if (clearOldData)
+        {
+            prev_BTN.SetActive(false);
+            next_BTN.SetActive(true);
+
+            SetCarInfo(0);
+        }
+        else
+        {
+            SetCarInfo(selectedCarinUI);
+        }
     }
 
     public int lastSelectedButton = -1;
