@@ -9,10 +9,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class EvmosManager : MonoBehaviour
+public class CoreWeb3Manager : MonoBehaviour
 {
     #region Singleton
-    public static EvmosManager Instance;
+    public static CoreWeb3Manager Instance;
     private void Awake()
     {
         if (Instance == null)

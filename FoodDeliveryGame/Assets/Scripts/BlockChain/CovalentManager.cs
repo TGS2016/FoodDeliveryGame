@@ -76,7 +76,7 @@ public class CovalentManager : MonoBehaviour
                         for (int i = 0; i < _data.GetField("data").GetField("items").list.Count; i++)
                         {
                             var _add = _data.GetField("data").GetField("items")[i].GetField("contract_address").stringValue.ToLower();
-                            if (EvmosManager.contract.ToLower().Equals(_add))
+                            if (CoreWeb3Manager.contract.ToLower().Equals(_add))
                             {
                                 if (_data.GetField("data").GetField("items")[i].GetField("nft_data").list.Count > 0)
                                 {
@@ -116,7 +116,7 @@ public class CovalentManager : MonoBehaviour
     }
     IEnumerator GetNFTMetaData(string _tokenid)
     {
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(GetMetaDataPreURL + EvmosManager.contract + GetMetaDataMidURL + _tokenid + GetMetaDataPostURL))
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(GetMetaDataPreURL + CoreWeb3Manager.contract + GetMetaDataMidURL + _tokenid + GetMetaDataPostURL))
         {
             webRequest.timeout = 30;
             // Request and wait for the desired page.
@@ -146,7 +146,7 @@ public class CovalentManager : MonoBehaviour
                         for (int i = 0; i < _data.GetField("data").GetField("items").list.Count; i++)
                         {
                             var _add = _data.GetField("data").GetField("items")[i].GetField("contract_address").stringValue.ToLower();
-                            if (EvmosManager.contract.ToLower().Equals(_add))
+                            if (CoreWeb3Manager.contract.ToLower().Equals(_add))
                             {
                                 if (_data.GetField("data").GetField("items")[i].GetField("nft_data").list.Count > 0)
                                 {

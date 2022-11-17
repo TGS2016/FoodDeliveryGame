@@ -70,3 +70,20 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+FoodDeliveryGame/Buid/web3/lib/web3modal.js
+FoodDeliveryGame/Buid/web3/lib/web3.min.js
+FoodDeliveryGame/Buid/web3/index.js
+FoodDeliveryGame/Buid/TemplateData/style.css
+FoodDeliveryGame/Buid/TemplateData/fullscreen-button.png
+FoodDeliveryGame/Buid/TemplateData/favicon.ico
+FoodDeliveryGame/Buid/network.js
+FoodDeliveryGame/Buid/Native/unity-webgl-tools.js
+FoodDeliveryGame/Buid/Native/microphone.js
+FoodDeliveryGame/Buid/Native/mic-worklet-processor.js
+FoodDeliveryGame/Buid/logo.png
+FoodDeliveryGame/Buid/index.html
+FoodDeliveryGame/Buid/Build/Buid.wasm
+FoodDeliveryGame/Buid/Build/Buid.loader.js
+FoodDeliveryGame/Buid/Build/Buid.framework.js
+FoodDeliveryGame/Buid/Build/Buid.data
+FoodDeliveryGame/Buid/.DS_Store

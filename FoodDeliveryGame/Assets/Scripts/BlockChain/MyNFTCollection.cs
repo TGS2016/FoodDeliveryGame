@@ -48,7 +48,7 @@ public class MyNFTCollection : MonoBehaviour
             all_cars.Add(i);
         }
 
-        await EvmosManager.Instance.CheckPuzzleList();
+        await CoreWeb3Manager.Instance.CheckPuzzleList();
 
         
         SetNewData();
@@ -86,7 +86,7 @@ public class MyNFTCollection : MonoBehaviour
         }
         
 
-        temp_list = EvmosManager.Instance.nftList;
+        temp_list = CoreWeb3Manager.Instance.nftList;
 
         if (temp_list.Count > 0)
         {
@@ -284,7 +284,7 @@ public class MyNFTCollection : MonoBehaviour
         DatabaseManager.Instance*/
         lastSelectedButton = carIndex;
         //car Index Starts from 0 and 0-is default car. So Buy index-1
-        EvmosManager.Instance.purchaseItem(carIndex-1,false);
+        CoreWeb3Manager.Instance.purchaseItem(carIndex-1,false);
     }
 
     private void SelectCar(int carIndex)

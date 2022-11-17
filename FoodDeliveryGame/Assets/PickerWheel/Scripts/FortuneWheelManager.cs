@@ -68,7 +68,7 @@ public class FortuneWheelManager : MonoBehaviour
     async public void Spin()
     {
         MessageBox.insta.showMsg("Getting Random Number! \n Please wait and confirm transaction.", false);
-        int number = await EvmosManager.Instance.GetRandomNumber();
+        int number = await CoreWeb3Manager.Instance.GetRandomNumber();
         Debug.Log("Random Number Is "+ number);
         if (number == -1) {
             MessageBox.insta.showMsg("Unable to get random number at this moment! Please try again later.", true);

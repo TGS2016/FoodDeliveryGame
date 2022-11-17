@@ -496,7 +496,7 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < token_texts.Length; i++)
         {
-            token_texts[i].text = EvmosManager.userTokenBalance;
+            token_texts[i].text = CoreWeb3Manager.userTokenBalance;
         }
     }
     #endregion
@@ -525,7 +525,7 @@ public class UIManager : MonoBehaviour
     public void ClaimToken()
     {
         delivered_ui.SetActive(false);
-        EvmosManager.Instance.getDailyToken();
+        CoreWeb3Manager.Instance.getDailyToken();
         
     }
     public void IgnoreToken()

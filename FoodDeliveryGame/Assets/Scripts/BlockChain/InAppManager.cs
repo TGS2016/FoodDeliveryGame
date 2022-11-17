@@ -15,9 +15,9 @@ public class InAppManager : MonoBehaviour
     {
         balanceText.text = "";
 
-        if (EvmosManager.Instance)
+        if (CoreWeb3Manager.Instance)
         {
-            EvmosManager.Instance.CheckUserBalance();
+            CoreWeb3Manager.Instance.CheckUserBalance();
         }
         SetBalanceText();
     }
@@ -25,19 +25,19 @@ public class InAppManager : MonoBehaviour
     [SerializeField] TMP_Text balanceText;
     public void SetBalanceText()
     {
-        balanceText.text = "Balance : " + EvmosManager.userBalance.ToString();
+        balanceText.text = "Balance : " + CoreWeb3Manager.userBalance.ToString();
     }
     public void purchaseCoins(int index)
     {
-        EvmosManager.Instance.CoinBuyOnSendContract(index);
+        CoreWeb3Manager.Instance.CoinBuyOnSendContract(index);
     }
 
     public void ExchangeCoins(int index)
     {
-        int tokenBalance = System.Int32.Parse(EvmosManager.userTokenBalance);
+        int tokenBalance = System.Int32.Parse(CoreWeb3Manager.userTokenBalance);
         if (tokenBalance >= index)
         {
-            EvmosManager.Instance.ExchangeToken(index);
+            CoreWeb3Manager.Instance.ExchangeToken(index);
         }
         else
         {

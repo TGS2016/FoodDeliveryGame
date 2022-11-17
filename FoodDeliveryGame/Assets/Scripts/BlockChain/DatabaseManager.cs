@@ -122,7 +122,7 @@ public class DatabaseManager : MonoBehaviour
                 if (createnew)
                 {
 
-                    EvmosManager.Instance.EnablePlayPanels();
+                    CoreWeb3Manager.Instance.EnablePlayPanels();
                     UIManager.Instance.OpenEditProfile();
                 }
             }
@@ -167,7 +167,7 @@ public class DatabaseManager : MonoBehaviour
                     UIManager.Instance.UpdateUserName(data.name, SingletonDataManager.userethAdd);
                 }
 
-                EvmosManager.Instance.EnablePlayPanels();              
+                CoreWeb3Manager.Instance.EnablePlayPanels();              
 
                 
                 //Debug.Log(obj.GetField("fields").GetField("musedata").GetField("stringValue").stringValue);
@@ -178,7 +178,7 @@ public class DatabaseManager : MonoBehaviour
                         if (data.transactionsInformation[i].transactionStatus.Equals("pending"))
                         {
                             Debug.Log("Pending Test 1");
-                            EvmosManager.Instance.CheckDatabaseTransactionStatus(data.transactionsInformation[i].transactionId);                         
+                            CoreWeb3Manager.Instance.CheckDatabaseTransactionStatus(data.transactionsInformation[i].transactionId);                         
                         }
                     }
                 }
@@ -287,7 +287,7 @@ public class DatabaseManager : MonoBehaviour
     async public Task<long> GetCurrentTime()
     {
         
-        string result =await EvmosManager.Instance.CheckTimeStatus();
+        string result =await CoreWeb3Manager.Instance.CheckTimeStatus();
        
         long currentEpoch;
         if (!string.IsNullOrEmpty(result))

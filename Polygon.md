@@ -2,13 +2,13 @@
 ## Polygon mumbai
 
 ### Contract Address : 
-1) 0x2d75f9320628820DCB25ACb0Feb62ee2CFE2F066
-2) 0x1C6F3128cd4F1D386ace24d2d66fA430B5Ef1238
+1) 0x66255c09a539E1dAC2cB9601b5288C68C5eAfa65
+2) 0xE8E8f06877E92cc77d16506868ff7F0bC35c6f94
 
 ### Blockchain: Polygon Mumbai - Testnet
 ### Explorer : 
-1) https://mumbai.polygonscan.com/address/0x2d75f9320628820DCB25ACb0Feb62ee2CFE2F066
-2) https://mumbai.polygonscan.com/address/0x1C6F3128cd4F1D386ace24d2d66fA430B5Ef1238
+1) https://mumbai.polygonscan.com/address/0x66255c09a539E1dAC2cB9601b5288C68C5eAfa65
+2) https://mumbai.polygonscan.com/address/0xE8E8f06877E92cc77d16506868ff7F0bC35c6f94
 
 #### Script : https://github.com/MoraDefi/MetaRacer/blob/main/MetaGTA-RaceMode/Assets/Scripts/BlockchainManager.cs
 
