@@ -677,7 +677,7 @@ public class EvmosManager : MonoBehaviour
     async public void ExchangeToken(int _pack)
     {
 
-        //if (MessaeBox.insta) MessaeBox.insta.showMsg("Exchange token process started", false);
+        if (MessageBox.insta) MessageBox.insta.showMsg("Exchange token process started", false);
 
         float decimals = 1000000000000000000; // 18 decimals
         float wei = (_pack) * decimals;
@@ -719,7 +719,8 @@ public class EvmosManager : MonoBehaviour
                 // InvokeRepeating("CheckTransactionStatus", 1*Time.timeScale, 5*Time.timeScale);
 
 
-                //if (MessaeBox.insta) MessaeBox.insta.showMsg("Coin exchanged successfully", true);
+                if (MessageBox.insta) MessageBox.insta.showMsg("Coin exchanged successfully", true);
+                DatabaseManager.Instance.AddCoins(_pack);
 
 
 
@@ -728,7 +729,7 @@ public class EvmosManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            //if (MessaeBox.insta) MessaeBox.insta.showMsg("Transaction Has Been Failed", true);
+            if (MessageBox.insta) MessageBox.insta.showMsg("Transaction Has Been Failed", true);
             Debug.Log(e, this);
         }
     }

@@ -333,7 +333,36 @@ public class DatabaseManager : MonoBehaviour
         data.transactionsInformation.Add(info);
         UpdateData(data);
     }
+    public void AddCoins(int pack)
+    {
+        switch (pack)
+        {
+            case 1: {
+                    data.coins += 500;
 
+                    break;
+                }
+            case 2:
+                {
+                    data.coins += 1000;
+                    break;
+                }
+            case 3:
+                {
+                    data.coins += 2000;
+                    break;
+                }
+            case 4:
+                {
+                    data.coins += 4000;
+                    break;
+                }
+
+        }
+        UpdateData(data);
+        UIManager.Instance.SetCoinText();
+
+    }
     public void ChangeTransactionStatus(string transID, string txConfirmed)
     {
         Debug.Log("Changing Database " + transID + " " + txConfirmed);
@@ -378,6 +407,8 @@ public class DatabaseManager : MonoBehaviour
             return "";
         }
     }
+
+  
 }
 [System.Serializable]
 public class LocalData
