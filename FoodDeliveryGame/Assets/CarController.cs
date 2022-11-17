@@ -60,6 +60,7 @@ public class CarController : MonoBehaviour,IPunObservable
         _rb2d = GetComponent<Rigidbody2D>();
         UIManager.Instance.Step[2].ObjectToPoint = this.transform;
 
+
         //_rb2d.isKinematic = true;
 
 
@@ -189,6 +190,10 @@ public class CarController : MonoBehaviour,IPunObservable
         UpdateSpriteAsPerRotation();
 
         lastSetupCar = selected_car;
+        if (UIManager.Instance)
+        {
+            UIManager.Instance.fuelSlider.value = currentFuel / maxFuel;
+        }
     }
    
     private void Move()

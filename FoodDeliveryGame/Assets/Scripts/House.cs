@@ -107,6 +107,7 @@ public class House : MonoBehaviour
                 {
                     DeliveryTimer = 0;
                     CommonReferences.Instance.myInventory.foodButtonOnClickMethod(this.HomeID, PendingFood[0]);
+                    CommonReferences.Instance.myCar.UpdateFuelData();
                 }
             }
         }

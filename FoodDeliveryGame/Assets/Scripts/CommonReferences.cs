@@ -213,7 +213,7 @@ public class CommonReferences : MonoBehaviour
     }
 
     #region DispatchOrder
-    private bool firstOrder = true;
+    public bool firstOrder = true;
     public void DispatchOrder(int DriverID)
     {
         List<Restaurant> AcceptingRestaurants = new List<Restaurant>();
@@ -226,16 +226,17 @@ public class CommonReferences : MonoBehaviour
                 if (firstOrder)
                 {
                     if (Vector2.Distance(item.transform.position, myPlayer.transform.position) < 60)
+                    {
                         AcceptingRestaurants.Add(item);
+                    }
                 }
                 else
                 {
-                    firstOrder = false;
+                    
                     AcceptingRestaurants.Add(item);
                 }
             }
         }
-        
 
         if (AcceptingRestaurants.Count > 0)
         {
@@ -243,6 +244,7 @@ public class CommonReferences : MonoBehaviour
             Restaurant RS = AcceptingRestaurants[RestaurantID];
             RS.OrderRecieved(DriverID);
             OnOrderDispatched?.Invoke();
+            firstOrder = false;
         }
         else
         {

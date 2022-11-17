@@ -86,8 +86,16 @@ public class OrderDetails : MonoBehaviour, IPunObservable
         this.RestaurantID = RestaurantID;
 
         this.HomeID = Random.Range(0, CommonReferences.Houses.Count);
+        if (CommonReferences.Instance.firstOrder)
+        {
+            while (Vector2.Distance(CommonReferences.Houses[this.HomeID].transform.position, CommonReferences.Restaurants[RestaurantID].transform.position) > 50)
+            {
+                Debug.Log("tried finding new house");
+                this.HomeID = Random.Range(0, CommonReferences.Houses.Count);
+            }
+        }
 
-
+        Debug.Log(Vector2.Distance(CommonReferences.Houses[this.HomeID].transform.position, CommonReferences.Restaurants[RestaurantID].transform.position));
         this.DeliveryAddress = CommonReferences.Houses[HomeID].transform;
         this.foodPic = CommonReferences.Instance.foodTypes[foodPicIndex];
 

@@ -463,7 +463,7 @@ MonoBehaviour:
   m_SynchronizeVelocity: 1
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 1
-  m_TeleportIfDistanceGreaterThan: 3
+  m_TeleportIfDistanceGreaterThan: 50
 --- !u!212 &3149977504750617735
 SpriteRenderer:
   m_ObjectHideFlags: 0

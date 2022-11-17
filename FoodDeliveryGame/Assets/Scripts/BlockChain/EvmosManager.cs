@@ -125,10 +125,10 @@ public class EvmosManager : MonoBehaviour
         loadingPanel.SetActive(true);
         SingletonDataManager.userethAdd = account;
         CovalentManager.insta.GetNFTUserBalance();
-        
-       
+        getTokenBalance();
 
-       // Debug.Log("LIST OF PUZZLE: " + await CheckPuzzleList());
+
+        // Debug.Log("LIST OF PUZZLE: " + await CheckPuzzleList());
 
 #endif
 
@@ -158,6 +158,7 @@ public class EvmosManager : MonoBehaviour
         // reset login message
         SetConnectAccount("");
         CheckUserBalance();
+      
 
         if (DatabaseManager.Instance)
         {
@@ -172,7 +173,7 @@ public class EvmosManager : MonoBehaviour
         {
             toDisableObjectsAfterLogin[i].SetActive(false);
         }
-
+        getTokenBalance();
         //CoinBuyOnSendContract(0);
     }
 
