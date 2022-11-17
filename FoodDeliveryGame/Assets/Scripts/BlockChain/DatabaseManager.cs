@@ -60,6 +60,11 @@ public class DatabaseManager : MonoBehaviour
                 else
                 {
                     data = new LocalData();
+                    data.all_cars_fuel = new float[12];
+                    for (int i = 0; i < data.all_cars_fuel.Length; i++)
+                    {
+                        data.all_cars_fuel[i] = AllCarInfo.Instance.allCarInfo[i].maxFuelCapacity;
+                    }
                     data.name = "Player" + UnityEngine.Random.Range(0,99999).ToString();
 
                     
@@ -386,6 +391,7 @@ public class LocalData
     public string last_spin_time= "0";    
     public List<TranscationInfo> transactionsInformation = new List<TranscationInfo>();
     //public List<CarUpgradeInfo> carDetails = new List<CarUpgradeInfo>();
+    public float[] all_cars_fuel;
 
     public LocalData()
     {

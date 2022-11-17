@@ -366,8 +366,8 @@ MonoBehaviour:
   drive_offset: {x: 1, y: 0, z: 0}
   initial_offset: {x: 0, y: 0, z: 0}
   current_angle: 0
-  currentFuel: 0
-  maxFuel: 0
+  currentFuel: 300
+  maxFuel: 300
   turn_speed: 0.2
   fuelBurnAmount: 0
   currentTime: 0

@@ -332,10 +332,11 @@ public class UIManager : MonoBehaviour
         {
             if (mycar.currentFuel / mycar.maxFuel < 0.15f)
             {
-                mycar.currentFuel += mycar.maxFuel * 0.25f;
+                mycar.currentFuel += 35;
                 LocalData data = DatabaseManager.Instance.GetLocalData();
                 data.coins -= rechargeCost;
                 DatabaseManager.Instance.UpdateData(data);
+                mycar.UpdateFuelData();
             }
             else
             {

@@ -127,23 +127,45 @@ public class CarController : MonoBehaviour,IPunObservable
         {
             UIManager.Instance.ToggleCarPointerBTN(!enabled);
         }
+
+        UpdateFuelData();
        // _rb2d.isKinematic = !enabled;
 
-       /* if(enabled == false)
+        /* if(enabled == false)
+         {
+             while (_rb2d.velocity != Vector2.zero)
+             {
+                 //_rb2d.velocity = Vector2.Lerp(_rb2d.velocity, Vector2.zero, stoppingTime);
+                 _rb2d.drag = Mathf.Lerp(_rb2d.drag, 3f, Time.fixedDeltaTime * 3);
+                 yield return new WaitForEndOfFrame();
+             }
+         }*/
+    }
+
+    public void UpdateFuelData()
+    {
+
+        if (pv.IsMine)
         {
-            while (_rb2d.velocity != Vector2.zero)
-            {
-                //_rb2d.velocity = Vector2.Lerp(_rb2d.velocity, Vector2.zero, stoppingTime);
-                _rb2d.drag = Mathf.Lerp(_rb2d.drag, 3f, Time.fixedDeltaTime * 3);
-                yield return new WaitForEndOfFrame();
-            }
-        }*/
+            LocalData data = DatabaseManager.Instance.GetLocalData();
+            data.all_cars_fuel[currentCar] = currentFuel;
+            DatabaseManager.Instance.UpdateData(data);
+        }
     }
 
     int lastSetupCar = -1;
+
+    bool firstTime =true;
     internal void SetupCar(int selected_car, int selected_car_color, bool rechageFuel = true)
     {
+        
+        
+        if (!firstTime)
+        {
+            UpdateFuelData();
+        }
 
+        firstTime = false;
         currentCar = selected_car;
         currentCarColor = selected_car_color;
 
@@ -158,6 +180,9 @@ public class CarController : MonoBehaviour,IPunObservable
         turn_speed=  AllCarInfo.Instance.allCarInfo[selected_car].carTurnTime;
         fuelBurnAmount = AllCarInfo.Instance.allCarInfo[selected_car].FuelBURNAmount;
 
+        currentFuel = DatabaseManager.Instance.GetLocalData().all_cars_fuel[selected_car];
+
+
         CommonReferences.Instance.myInventory.BagSize= AllCarInfo.Instance.allCarInfo[selected_car].maxFoodCapacity;
 
         car_sprites = AllCarInfo.Instance.allCarInfo[selected_car].allColorSprite[selected_car_color].car_sprites;
@@ -165,7 +190,7 @@ public class CarController : MonoBehaviour,IPunObservable
 
         lastSetupCar = selected_car;
     }
-
+   
     private void Move()
     {
 
@@ -399,8 +424,10 @@ public class CarController : MonoBehaviour,IPunObservable
 
                 DatabaseManager.Instance.UpdateData(data);
                 UIManager.Instance.SetCoinText();
+                   UpdateFuelData();
             }
         }
+        UpdateFuelData();
     }
 }
 
