@@ -10,6 +10,9 @@ public class UIPointer : MonoBehaviour
     public GameObject rotator;
     public Sprite[] sprites;
     private Transform target;
+
+    [SerializeField] float minx;
+    [SerializeField] float miny;
     public Transform Target { get { return target; } 
         set
         {
@@ -57,10 +60,10 @@ public class UIPointer : MonoBehaviour
             return;
         }
         img.gameObject.SetActive(isOffScreen());
-        float minx = img.GetPixelAdjustedRect().width / 2;
+        
         float maxx = Screen.width - minx;
 
-        float miny = img.GetPixelAdjustedRect().height / 2;
+     
         float maxy = Screen.height - miny;
 
 
