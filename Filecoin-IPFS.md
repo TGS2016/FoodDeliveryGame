@@ -3,7 +3,8 @@
 
 https://github.com/FDGame2022/FoodDeliveryGame/blob/main/FoodDeliveryGame/Assets/Scripts/BlockChain/CoreWeb3Manager.cs
 
-### Store NFT data on NFT.Storage IPFS
+### Store NFT data on NFT.Storage IPFS & Game Hosting on IPFS
+
 [Official site API](https://nft.storage/api-docs/)
 
 ``` C#
