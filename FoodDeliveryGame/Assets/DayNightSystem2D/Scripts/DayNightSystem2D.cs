@@ -99,6 +99,7 @@ public class DayNightSystem2D : MonoBehaviour
                 {
                     hasToChangeBloom = false;
                     OnBloomChanged?.Invoke(0f);
+                  
                 }
             }
             else
@@ -121,7 +122,7 @@ public class DayNightSystem2D : MonoBehaviour
 
             if (currentStatus != true)
             {
-                if (percent > 0.75f)
+                if (percent > 0.6f)
                 {
                     ControlLightMaps(true); // disable map light (keep enable only at night)
                     if (hasToChangeBloom)
@@ -154,7 +155,9 @@ public class DayNightSystem2D : MonoBehaviour
             {
                 if (percent > 0.9f)
                 {
-                    ControlLightMaps(false); // disable map light (keep enable only at night)                    
+                    ControlLightMaps(false); // disable map light (keep enable only at night)
+                                             // 
+
                 }
             }
 
@@ -245,7 +248,12 @@ public class DayNightSystem2D : MonoBehaviour
                     }
                 }).setIgnoreTimeScale(true);
             }
-     }
+
+        if (CommonReferences.Instance.carLight != null)
+        {
+            CommonReferences.Instance.carLight.SetActive(status);
+        }
+    }
 
    /* void Test_ControlLightMaps(bool status)
      {

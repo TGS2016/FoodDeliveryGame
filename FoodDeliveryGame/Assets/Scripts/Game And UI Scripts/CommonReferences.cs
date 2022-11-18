@@ -26,6 +26,7 @@ public class CommonReferences : MonoBehaviour
     public PhotonView myPV;
     public PlayerController myPlayer;
     public CarController myCar;
+    public GameObject carLight;
 
     public PlayerZomatoApp myZomatoApp;
     public Inventory myInventory;

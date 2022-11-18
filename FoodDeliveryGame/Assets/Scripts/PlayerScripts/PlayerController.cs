@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour,IPunObservable
                 CommonReferences.Instance.myPlayer = this;
                 CommonReferences.Instance.myPV = this.PV;
                 CommonReferences.Instance.myCar= myCar = car.GetComponent<CarController>();
+                CommonReferences.Instance.carLight = car.transform.GetChild(2).gameObject;
 
                 selected_car = DatabaseManager.Instance.GetLocalData().selected_car;
                 selected_car_color= DatabaseManager.Instance.GetLocalData().selected_car_color;
