@@ -15,6 +15,6 @@
 
 
 ### Chailink smart contract source code
-1) https://github.com/FDGame2022/FoodDeliveryGame/Contract/Contract3.txt
+1) https://github.com/FDGame2022/FoodDeliveryGame/blob/main/FoodDeliveryGame/Contract/Contract3.txt
 
 ![Use](/Images/FD2.jpg)
