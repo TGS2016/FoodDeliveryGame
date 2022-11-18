@@ -24,5 +24,5 @@
 1) https://github.com/FDGame2022/FoodDeliveryGame/blob/main/FoodDeliveryGame/Contract/Contract1.txt
 2) https://github.com/FDGame2022/FoodDeliveryGame/blob/main/FoodDeliveryGame/Contract/Contract2.txt
 
-![Use](/Images/GTAT_5.jpg)
-![Use](/Images/GTAT_6.jpg)
+![Use](/Images/FD10.jpg)
+![Use](/Images/FD20.jpg)
