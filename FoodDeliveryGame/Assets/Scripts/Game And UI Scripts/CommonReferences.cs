@@ -104,8 +104,13 @@ public class CommonReferences : MonoBehaviour
             }
             for (int i = 0; i < toScaleObjectsOn_RestarentIcons.Count; i++)
             {
-                LeanTween.cancel(toScaleObjectsOn_RestarentIcons[i].gameObject);
-                LeanTween.scale(toScaleObjectsOn_RestarentIcons[i].gameObject, Vector3.one * 6, 0.8f);
+                var scaleObject = toScaleObjectsOn_RestarentIcons[i].gameObject;
+                LeanTween.cancel(scaleObject);
+                LeanTween.scale(scaleObject, Vector3.one * 6, 0.8f).setOnComplete(() =>
+                {
+                    LeanTween.moveLocalY(scaleObject, 5, 0.5f).setFrom(4).setLoopPingPong();
+                    LeanTween.scaleY(scaleObject, 6 * 1.25f, 0.5f).setFrom(6).setLoopPingPong();
+                });
             }
         }
         else
@@ -126,6 +131,7 @@ public class CommonReferences : MonoBehaviour
             MouseMover.drag = false;
             myPlayer.canMove = true;
             SwitchCamera(lastCamera);
+            //StartCoroutine(UIManager.Instance.tutorialCO("close pending orders"));
 
             for (int i = 0; i < toScaleObjectsOn.Count; i++)
             {
@@ -134,12 +140,18 @@ public class CommonReferences : MonoBehaviour
             }
             for (int i = 0; i < toScaleObjectsOn_RestarentIcons.Count; i++)
             {
-                LeanTween.cancel(toScaleObjectsOn_RestarentIcons[i].gameObject);
-                LeanTween.scale(toScaleObjectsOn_RestarentIcons[i].gameObject, Vector3.one * 4, 0.8f);
+                var scaleObject = toScaleObjectsOn_RestarentIcons[i].gameObject;
+                LeanTween.cancel(scaleObject);
+                LeanTween.scale(scaleObject, Vector3.one * 4, 0.8f).setOnComplete(() =>
+                {
+                    LeanTween.moveLocalY(scaleObject, 5, 0.5f).setFrom(4).setLoopPingPong();
+                    LeanTween.scaleY(scaleObject, 4 * 1.25f, 0.5f).setFrom(4).setLoopPingPong();
+                });
             }
         }
-    }   
+    }
 
+    int iconID = -1;
     internal void SetupCameras()
     {
         camera_car.Follow = myCar.transform;

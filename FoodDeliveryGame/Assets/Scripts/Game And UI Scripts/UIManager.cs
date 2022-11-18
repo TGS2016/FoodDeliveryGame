@@ -125,11 +125,11 @@ public class UIManager : MonoBehaviour
 
         if (PlayingTutorial && !Step[ID].SkipThisStep && !Step[ID].AdminSkip)
         {
-            if (StepCode == "find restaurant")
+            /*if (StepCode == "find restaurant")
             {
                 CommonReferences.Instance.myPlayer.DisableInputs = true;
                 CommonReferences.Instance.myCar.DisableInputs = true;
-            }
+            }*/
             OpenTutorialPanel(ID);
         }
     }
@@ -265,7 +265,6 @@ public class UIManager : MonoBehaviour
         var rect = panel.GetComponent<RectTransform>();
         
         LeanTween.move(rect, Vector3.zero, 0.5f).setEaseOutQuad();
-        StartCoroutine(tutorialCO("close pending orders"));
     }
 
     public void CloseFoodPanel(GameObject panel)
