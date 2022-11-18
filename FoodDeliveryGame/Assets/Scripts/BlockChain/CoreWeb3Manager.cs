@@ -408,7 +408,7 @@ public class CoreWeb3Manager : MonoBehaviour
         Debug.Log("CheckPuzzleList ===================");
         try
         {
-            string response = await EVM.Call(chain, network, contract, abi, method, args, networkRPC);
+            string response = await EVM.Call(chain, network, contract, abi, method, args);
             Debug.Log("CheckPuzzleList =================== Now");
             Debug.Log(response);
             string[] splitArray = response.Split(char.Parse(",")); //return one word for each string in the array
