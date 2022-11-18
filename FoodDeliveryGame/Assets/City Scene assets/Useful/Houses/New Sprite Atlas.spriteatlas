@@ -1,0 +1,169 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: New Sprite Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 1
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 2
+      m_CompressionQuality: 80
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: aef2a7528c292ca45aedebd35c278391, type: 3}
+    - {fileID: 102900000, guid: feeeec84b56da6244b3678373a203abf, type: 3}
+    - {fileID: 102900000, guid: c27e4ed5a612b9b40b36bc36e66dd94f, type: 3}
+    - {fileID: 102900000, guid: 9fbae7773c84c324abe6f49996c87c90, type: 3}
+    - {fileID: 102900000, guid: 30015de069a3c2d42b9bab35e510025f, type: 3}
+    - {fileID: 102900000, guid: 34cd37d3f9ce3d440ac9e0afd49c45ce, type: 3}
+    - {fileID: 102900000, guid: e32f824c7af21c644b40cb9e682e3930, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: eed4fca0d34275d4dbc0d3db01bb3632, type: 3}
+  - {fileID: 21300000, guid: de142301683cd0f44b3a9853ae5cef9d, type: 3}
+  - {fileID: 21300000, guid: 548ccd114768dc94898cb8d1e3990a4e, type: 3}
+  - {fileID: 21300000, guid: fa5d113153cc40447a54346b61e3147b, type: 3}
+  - {fileID: 21300000, guid: 9797da7141ecf1940bf75cf1339b38df, type: 3}
+  - {fileID: 21300000, guid: 1ea7a3915b16ec54fa2befa1d221128e, type: 3}
+  - {fileID: 21300000, guid: 03d6bd9106aaf8440992d76fa0b2b9a9, type: 3}
+  - {fileID: 21300000, guid: 334797b143a72df468575598bbb71dcd, type: 3}
+  - {fileID: 21300000, guid: 92184712716aa604f884241696a63ecb, type: 3}
+  - {fileID: 21300000, guid: 5745a04224b56b44ea477740750b9d7a, type: 3}
+  - {fileID: 21300000, guid: 837939622c18d804b8c0052702e10d43, type: 3}
+  - {fileID: 21300000, guid: f1263372c5f64a743a9ead1e27314841, type: 3}
+  - {fileID: 21300000, guid: 53e45f92fb5008e46b09ad744bd19dcd, type: 3}
+  - {fileID: 21300000, guid: 13113613abf3d9641a75c94fa07ed640, type: 3}
+  - {fileID: 21300000, guid: b90233431cd10874791f9368bb70ad3b, type: 3}
+  - {fileID: 21300000, guid: 4ad853c36e6d2c0439c108cda18ffb7b, type: 3}
+  - {fileID: 21300000, guid: 6609b3045e42b08448c4e76242171ebb, type: 3}
+  - {fileID: 21300000, guid: 862c3e24a17300d47aec111fdf96d980, type: 3}
+  - {fileID: 21300000, guid: f3b2e444bf6422a4eaee8399cd052dcc, type: 3}
+  - {fileID: 21300000, guid: 34faf274b5d456c43bff87928dd4e5ad, type: 3}
+  - {fileID: 21300000, guid: 4aa831e4f309d624b954dc316d56f95f, type: 3}
+  - {fileID: 21300000, guid: 3748a905188c6a444a5da30d971abdb9, type: 3}
+  - {fileID: 21300000, guid: 21ee21158ac8b964f915ce4d8a176b31, type: 3}
+  - {fileID: 21300000, guid: 30bcb785748ffaf479e6a3995258692d, type: 3}
+  - {fileID: 21300000, guid: 036ab7d5239246e47ab0bb1229e3eccf, type: 3}
+  - {fileID: 21300000, guid: b40adf16714d91d46a6391d067a8a4d8, type: 3}
+  - {fileID: 21300000, guid: 18cbab265d3ab034280d2e667d3a2e48, type: 3}
+  - {fileID: 21300000, guid: 12e31b863b424e44885d1ba372484bd9, type: 3}
+  - {fileID: 21300000, guid: 3a528f962f545d546a6834002c7bdb49, type: 3}
+  - {fileID: 21300000, guid: edca55c62070b024185102b926a8d9d2, type: 3}
+  - {fileID: 21300000, guid: 932898f66ea81eb408bbe7e8bb2d51ec, type: 3}
+  - {fileID: 21300000, guid: f4b9a117d8d663c44bdba71b8f77ad59, type: 3}
+  - {fileID: 21300000, guid: 4a8bcf3769b2aa147afa21bca4b156ac, type: 3}
+  - {fileID: 21300000, guid: 1140f748254da274d9a1ecafb34fd348, type: 3}
+  - {fileID: 21300000, guid: 7b6e01585f9f4874fbbb1b884bccc71a, type: 3}
+  - {fileID: 21300000, guid: 1e1b8578cb5c04046830d717764545bf, type: 3}
+  - {fileID: 21300000, guid: a43d2bd85cbab4b4c9d0915e6ce73eeb, type: 3}
+  - {fileID: 21300000, guid: 204fad0970109084391c017e70be9950, type: 3}
+  - {fileID: 21300000, guid: c31f0359cfac93f4aa5d0f586383fa9c, type: 3}
+  - {fileID: 21300000, guid: fb89d279eaccd0a47bf86ff993508fde, type: 3}
+  - {fileID: 21300000, guid: 8df6d71adcc3316449e8216e167cf2b2, type: 3}
+  - {fileID: 21300000, guid: 1a5a7eda46c3688499f32b24fe0475cf, type: 3}
+  - {fileID: 21300000, guid: fc35493b94423544a8b96686bdbc332a, type: 3}
+  - {fileID: 21300000, guid: 46b6145b1f5d1284da879afd23516bc6, type: 3}
+  - {fileID: 21300000, guid: fa02916ba94aa0a4aa16fabd94d2be4b, type: 3}
+  - {fileID: 21300000, guid: e949a6bbc34edb24293b526ec6a40111, type: 3}
+  - {fileID: 21300000, guid: d437dfbb8cfc36843876fa77dab54455, type: 3}
+  - {fileID: 21300000, guid: 38ad67eb0463f684bb0c5a302216df10, type: 3}
+  - {fileID: 21300000, guid: d0d691fb60f7c2d438cad1118536a4c7, type: 3}
+  - {fileID: 21300000, guid: 8ae2466d8b31c2f4f97457a6205f5b87, type: 3}
+  - {fileID: 21300000, guid: 12c55badf0bc3374dbc61030de41f88d, type: 3}
+  - {fileID: 21300000, guid: 491981ae1b739134286518d23ab96b4c, type: 3}
+  - {fileID: 21300000, guid: 23e324bf0ddc9764d8ba92279b77d0a4, type: 3}
+  - {fileID: 21300000, guid: eaf401df1167fbe4781d58746d28f110, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Modern_Exteriors_Singles_Building_1_Bottom_48x48_1
+  - Modern_Exteriors_Singles_Building_1_Bottom_48x48_2 1
+  - Modern_Exteriors_Singles_Building_1_48x48_2
+  - Modern_Exteriors_Singles_Building_1_Modular_48x48_1
+  - Modern_Exteriors_Singles_Building_1_Modular_48x48_3 1
+  - Modern_Exteriors_Singles_Building_4_48x48_Wrecked
+  - Modern_Exteriors_Singles_Shop_Market_48x48_13
+  - Modern_Exteriors_Singles_Shop_Market_48x48_10
+  - Modern_Exteriors_Singles_Building_1_Bottom_48x48_3 1
+  - Modern_Exteriors_Singles_Shop_Market_48x48_7
+  - Modern_Exteriors_Singles_Building_5_48x48_1
+  - Modern_Exteriors_Singles_Building_5_48x48_4
+  - Modern_Exteriors_Singles_Shop_Market_48x48_4
+  - Modern_Exteriors_Singles_Building_3_48x48_1
+  - Modern_Exteriors_Singles_Shop_Market_48x48_3
+  - Modern_Exteriors_Singles_Building_1_Roof_48x48_2
+  - Modern_Exteriors_Singles_Shop_Market_48x48_2
+  - Modern_Exteriors_Singles_Backyard_Playhouse_48x48_1
+  - Modern_Exteriors_Singles_Building_1_Modular_48x48_2
+  - Modern_Exteriors_Singles_Shop_Market_48x48_5
+  - Modern_Exteriors_Singles_Shop_Market_48x48_6
+  - Modern_Exteriors_Singles_Building_5_48x48_3
+  - Modern_Exteriors_Singles_Building_5_48x48_5
+  - Modern_Exteriors_Singles_Building_1_Bottom_48x48_2
+  - Modern_Exteriors_Singles_Building_4_48x48_2
+  - Modern_Exteriors_Singles_Building_1_Modular_48x48_1 1
+  - Modern_Exteriors_Singles_Shop_Market_48x48_16
+  - Modern_Exteriors_Singles_Building_4_48x48_3
+  - Modern_Exteriors_Singles_Shop_Market_48x48_9
+  - Modern_Exteriors_Singles_Building_1_Roof_48x48_3
+  - Modern_Exteriors_Singles_Shop_Market_48x48_11
+  - Modern_Exteriors_Singles_Shop_Market_48x48_12
+  - Modern_Exteriors_Singles_Shop_Market_48x48_14
+  - Modern_Exteriors_Singles_Shop_Market_48x48_15
+  - Modern_Exteriors_Singles_Building_1_48x48_3
+  - Modern_Exteriors_Singles_Backyard_Playhouse_48x48_3
+  - Modern_Exteriors_Singles_Building_1_Roof_48x48_1
+  - Modern_Exteriors_Singles_Shop_Shopping_Center_48x48_1
+  - Modern_Exteriors_Singles_Shop_Market_48x48_8
+  - Modern_Exteriors_Singles_Building_1_Modular_48x48_2 1
+  - Modern_Exteriors_Singles_Building_1_Bottom_48x48_1 1
+  - Modern_Exteriors_Singles_Backyard_Playhouse_48x48_7
+  - Modern_Exteriors_Singles_Shop_Market_48x48_18
+  - 768
+  - Modern_Exteriors_Singles_Building_1_Bottom_48x48_3
+  - Modern_Exteriors_Singles_Building_1_Modular_48x48_3
+  - Modern_Exteriors_Singles_Shop_Market_48x48_1
+  - Modern_Exteriors_Singles_Building_3_48x48_2
+  - Modern_Exteriors_Singles_Backyard_Playhouse_48x48_5
+  - Modern_Exteriors_Singles_Building_5_48x48_2
+  - Modern_Exteriors_Singles_Building_1_48x48_1
+  - Modern_Exteriors_Singles_Building_2_48x48_2
+  - Modern_Exteriors_Singles_Shop_Market_48x48_17
+  - Modern_Exteriors_Singles_Building_4_48x48_1
+  m_RenderDataMap: {}
+  m_Tag: New Sprite Atlas
+  m_IsVariant: 0
