@@ -745,7 +745,7 @@ public class CoreWeb3Manager : MonoBehaviour
         string args = Newtonsoft.Json.JsonConvert.SerializeObject(inputParams);
         try
         {
-            string response = await EVM.Call(chain, network, contractToken, abiToken, method, args, networkRPC);
+            string response = await EVM.Call(chain, network, contractToken, abiToken, method, args);
             Debug.Log(response);
             try
             {
