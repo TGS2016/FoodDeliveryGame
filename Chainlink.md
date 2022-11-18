@@ -14,7 +14,7 @@
 * VRF - Random Number Generation
 
 
-### Polygon smart contract source code
+### Chailink smart contract source code
 1) https://github.com/FDGame2022/FoodDeliveryGame/Contract/Contract3.txt
 
-![Use](/Images/GTAT_5.jpg)
+![Use](/Images/FD2.jpg)
